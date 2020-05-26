@@ -1,4 +1,6 @@
-#+Title: miryoku.org
+#+Title: Miryoku Layout
+
+# After making changes here call org-babel-tangle (C-c C-v t).
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-keycodes.png]]
 
@@ -10,7 +12,6 @@ layouts as a subset without code duplication using the QMK userspace feature and
 C macros.  Versions of the layout can also be seen outside of the QMK source at
 [[https://github.com/manna-harbour/miryoku/]].
 
-After making changes here call org-babel-tangle (C-c C-v t).
 
 * Contents
 
@@ -86,21 +87,72 @@ into the corresponding tap-hold keycodes for mods and layer change.  RST and
 mods will be available on sub layers on the same hand as the layer change thumb
 key.  Unknown names are considered to be layer names.
 
-Base layer alphas are Colemak DHm.  Thumb keys are backspace, enter, delete on
+Base layer alphas are Colemak-DHm.  Thumb keys are backspace, enter, delete on
 the right and space, tab, escape on the left.  Dot, comma and apostrophe are
 included for prose, dot and slash for file and directory names.
 
-#+NAME: tap
+**** Tap
+
+#+NAME: colemakdhm
 | Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | G    | M    | N    | E    | I    | O    |
 | Z    | X    | C    | D    | V    | K    | H    | ,    | .    | /    |
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+**** Hold
 
 #+NAME: hold
 | RST  |      |      |      |      |      |      |      |      | RST  |
 | LGUI | LALT | LCTL | LSFT |      |      | LSFT | LCTL | LALT | LGUI |
 |      | ALGR |      |      |      |      |      |      | ALGR |      |
 | NP   | NP   | MEDR | NAVR | MOUR | NSSL | NSL  | FUNL | NP   | NP   |
+
+
+**** Alternative Base Layer Alphas
+
+Alternative base layer alphas are provided. To select, add
+e.g. ~MIRYOKU_BASE=QWERTY~ to the make command line when building.
+
+***** QWERTY (QWERTY)
+#+NAME: qwerty
+| Q    | W    | E    | R    | T    | Y    | U    | I    | O    | P    |
+| A    | S    | D    | F    | G    | H    | J    | K    | L    | '    |
+| Z    | X    | C    | V    | B    | N    | M    | ,    | .    | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** Dvorak (DVORAK)
+#+NAME: dvorak
+| '    | ,    | .    | P    | Y    | F    | G    | C    | R    | L    |
+| A    | O    | E    | U    | I    | D    | H    | T    | N    | S    |
+| /    | Q    | J    | K    | X    | B    | M    | W    | V    | Z    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** Colemak (COLEMAK)
+#+NAME: colemak
+| Q    | W    | F    | P    | G    | J    | L    | U    | Y    | '    |
+| A    | R    | S    | T    | D    | H    | N    | E    | I    | O    |
+| Z    | X    | C    | V    | B    | K    | M    | ,    | .    | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** Colemak Mod-DH (COLEMAKDH)
+#+NAME: colemakdh
+| Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
+| A    | R    | S    | T    | G    | K    | N    | E    | I    | O    |
+| Z    | X    | C    | D    | V    | M    | H    | ,    | .    | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** Workman (WORKMAN)
+#+NAME: workman
+| Q    | D    | R    | W    | B    | J    | F    | U    | P    | '    |
+| A    | S    | H    | T    | G    | Y    | N    | E    | O    | I    |
+| Z    | X    | M    | C    | V    | K    | L    | ,    | .    | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
 
 
 *** Navigation (NAVR)
@@ -120,15 +172,27 @@ layer to avoid having to layer change mid edit and to enable auto-repeat.
 *** Mouse (MOUR)
 
 Secondary RH layer is mouse emulation.  Mouse movement mirrors cursor navigation
-on home and wheel mirrors line / page movement below.  Buttons are on the
-thumbs.  Mouse movement, click, and drag with modifiers can be performed from
+on home and wheel mirrors line / page movement below.  Buttons are on the thumbs
+(L, M, R).  Mouse movement, click, and drag with modifiers can be performed from
 the home position.  Unused keys are available for other related functions.
 
 #+NAME: mour
 |      |      |      |      |      |
 |      | MS_L | MS_D | MS_U | MS_R |
 |      | WH_L | WH_D | WH_U | WH_R |
-| BTN3 | BTN1 | BTN2 | NP   | NP   |
+| BTN1 | BTN3 | BTN2 | NP   | NP   |
+
+
+**** Mouse Buttons Overlay (MBO)
+
+Available for automatic activation depending on keyboard hardware and
+configuration.  Not activated manually.
+
+#+NAME: mbo
+|      |      |      |      |      |      |      |      |      |      |
+|      |      |      |      |      |      |      |      |      |      |
+|      |      |      |      |      |      |      |      |      |      |
+| NP   | NP   |      |      |      | BTN1 | BTN3 | BTN2 | NP   | NP   |
 
 
 *** Media (MEDR)
@@ -222,14 +286,14 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 Produce base layer from separate tap and hold tables.
 
 #+NAME: table-layout-taphold
-#+BEGIN_SRC python :var tap_table=tap :var hold_table=hold :var symbol_names_table=symbol-names :var mods_list=mods :tangle no :results verbatim
+#+BEGIN_SRC python :var layer_name="BASE" :var tap_table=colemakdhm :var hold_table=hold :var symbol_names_table=symbol-names :var mods_list=mods :tangle no :results verbatim
 width = 19
 mods_dict = dict.fromkeys(mods_list)
 symbol_names_dict = {}
 for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
   symbol_names_dict[symbol] = name
   symbol_names_dict[shifted_symbol] = shifted_name
-results = '  [BASE] = LAYOUT_miryoku(\n'
+results = '  [' + layer_name + '] = LAYOUT_miryoku(\n'
 for tap_row, hold_row in map(None, tap_table, hold_table):
   results += '    '
   for tap, hold in map(None, tap_row, hold_row):
@@ -254,7 +318,7 @@ return results
 :   [BASE] = LAYOUT_miryoku(
 :     KC_Q,              KC_W,              KC_F,              KC_P,              KC_B,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,
 :     LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_G,              KC_M,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),
-:     KC_Z,              KC_X,              KC_C,              KC_D,              KC_V,              KC_K,              KC_H,              KC_COMM,           KC_DOT,            KC_SLSH,
+:     KC_Z,              ALGR_T(KC_X),      KC_C,              KC_D,              KC_V,              KC_K,              KC_H,              KC_COMM,           ALGR_T(KC_DOT),    KC_SLSH,
 :     KC_NP,             KC_NP,             LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_NP,             KC_NP
 :   )
 
@@ -313,6 +377,42 @@ return results
 :     KC_NP,   KC_NP,   KC_DOT,  KC_0,    KC_MINS, KC_NA,   KC_NA,   KC_NA,   KC_NP,   KC_NP
 :   )
 
+*** table-layout-full
+
+Produce full layer from single table.  Fill for unused keys is configurable.
+
+#+NAME: table-layout-full
+#+BEGIN_SRC python :var table=mbo :var layer_name="MBO" :var fill="TRNS" :var symbol_names_table=symbol-names :tangle no :results verbatim
+width = 9
+symbol_names_dict = {}
+for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
+  symbol_names_dict[symbol] = name
+  symbol_names_dict[shifted_symbol] = shifted_name
+results = '  [' + layer_name + '] = LAYOUT_miryoku(\n'
+for row in table:
+  results += '    '
+  for key in row:
+    if key == '':
+      code = fill
+    elif key in symbol_names_dict:
+      code = symbol_names_dict[key]
+    else:
+      code = key
+    code = 'KC_' + str(code)
+    results += (code + ', ').ljust(width)
+  results = results.rstrip(' ') + '\n'
+results = results.rstrip('\n, ') + '\n  )'
+return results
+#+END_SRC
+
+#+RESULTS: table-layout-full
+:   [MBO] = LAYOUT_miryoku(
+:     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+:     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+:     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+:     KC_NP,   KC_NP,   KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN3, KC_BTN2, KC_NP,   KC_NP
+:   )
+
 
 *** table-enums
 
@@ -321,7 +421,7 @@ Produce layer enums from layer names in hold table.
 #+NAME: table-enums
 #+BEGIN_SRC python :var hold_table=hold :var mods_list=mods :tangle no
 mods_dict = dict.fromkeys(mods_list)
-results = 'enum layers { BASE, '
+results = 'enum layers { BASE, MBO, '
 for hold_row in hold_table:
   for hold in hold_row:
     if hold not in mods_dict and hold != '' and hold != 'NP' and hold != 'RST':
@@ -331,7 +431,7 @@ return results
 #+END_SRC
 
 #+RESULTS: table-enums
-: enum layers { BASE, MEDR, NAVR, MOUR, NSSL, NSL, FUNL };
+: enum layers { BASE, MBO, MEDR, NAVR, MOUR, NSSL, NSL, FUNL };
 
 
 ** Data
@@ -425,9 +525,22 @@ Contains the keymap.  Included from keymap.c
 <<table-enums()>>
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-<<table-layout-taphold()>>,
+#if defined MIRYOKU_BASE_QWERTY
+<<table-layout-taphold(layer_name="BASE", tap_table=qwerty, hold_table=hold)>>,
+#elif defined MIRYOKU_BASE_DVORAK
+<<table-layout-taphold(layer_name="BASE", tap_table=dvorak, hold_table=hold)>>,
+#elif defined MIRYOKU_BASE_COLEMAK
+<<table-layout-taphold(layer_name="BASE", tap_table=colemak, hold_table=hold)>>,
+#elif defined MIRYOKU_BASE_COLEMAKDH
+<<table-layout-taphold(layer_name="BASE", tap_table=colemakdh, hold_table=hold)>>,
+#elif defined MIRYOKU_BASE_WORKMAN
+<<table-layout-taphold(layer_name="BASE", tap_table=workman, hold_table=hold)>>,
+#else
+<<table-layout-taphold(layer_name="BASE", tap_table=colemakdhm, hold_table=hold)>>,
+#endif
 <<table-layout-half(layer_name="NAVR", half_table=navr)>>,
 <<table-layout-half(layer_name="MOUR", half_table=mour)>>,
+<<table-layout-full(layer_name="MBO", table=mbo, fill="TRNS")>>,
 <<table-layout-half(layer_name="MEDR", half_table=medr)>>,
 <<table-layout-half(layer_name="FUNL", half_table=funl)>>,
 <<table-layout-half(layer_name="NSL", half_table=nsl)>>,
@@ -446,6 +559,9 @@ Config options.  Automatically included.
 
 #pragma once
 
+// default but important
+#define TAPPING_TERM 200
+
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
 
@@ -454,6 +570,18 @@ Config options.  Automatically included.
 
 // Recommended for heavy chording.
 #define QMK_KEYS_PER_SCAN 4
+
+// Mouse key speed and acceleration.
+#undef MOUSEKEY_DELAY
+#define MOUSEKEY_DELAY          0
+#undef MOUSEKEY_INTERVAL
+#define MOUSEKEY_INTERVAL       16
+#undef MOUSEKEY_WHEEL_DELAY
+#define MOUSEKEY_WHEEL_DELAY    0
+#undef MOUSEKEY_MAX_SPEED
+#define MOUSEKEY_MAX_SPEED      6
+#undef MOUSEKEY_TIME_TO_MAX
+#define MOUSEKEY_TIME_TO_MAX    64
 
 #+END_SRC
 
@@ -466,9 +594,13 @@ Build options.  Automatically included.
 #+BEGIN_SRC makefile :noweb yes :padline no :tangle rules.mk
 # <<header>>
 
-MOUSEKEY_ENABLE = yes        # Mouse keys(+4700)
-EXTRAKEY_ENABLE = yes        # Audio control and System control(+450)
-EXTRAFLAGS += -flto	     # Link Time Optimization to reduce code size, 31358->28034/28672
+MOUSEKEY_ENABLE = yes        # Mouse keys
+EXTRAKEY_ENABLE = yes        # Audio control and System control
+
+
+ifneq ($(strip $(MIRYOKU_BASE)),)
+  OPT_DEFS += -DMIRYOKU_BASE_$(MIRYOKU_BASE)
+endif
 
 #+END_SRC
 
@@ -515,7 +647,7 @@ To build for any keyboard using the this layout (ergodone, ergodox_ez,
 ergodox_infinity, hotdox) e.g. the ergodox_ez,
 
 #+BEGIN_SRC sh :tangle no
-cd ../.. && make ergodox_ez:manna-harbour_miryoku:teensy
+cd ../.. && make ergodox_ez:manna-harbour_miryoku:flash
 #+END_SRC
 
 
@@ -555,7 +687,7 @@ vitamins_included, zinc, zlant, ortho48, kbd4x, levinson, wavelet, plaid)
 e.g. the levinson,
 
 #+BEGIN_SRC sh :tangle no
-make keebio/levinson:manna-harbour_miryoku:avrdude
+cd ../.. && make keebio/levinson:manna-harbour_miryoku:flash
 #+END_SRC
 
 
@@ -568,8 +700,6 @@ macro, leaving the unused keys as KC_NO.  The userspace keymap is then included.
 *** crkbd
 
 The outer columns are unused.
-
-**** keymap.c
 
 [[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c][keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c]]
 #+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c
@@ -590,94 +720,13 @@ KC_NO, K20,   K21,   K22,   K23,   K24,   K25,   K26,   K27,   K28,   K29,   KC_
 
 #include "manna-harbour_miryoku.c"
 
-
-#ifdef SSD1306OLED
-
-#include "ssd1306.h"
-
-void matrix_init_user(void) {
-  iota_gfx_init(!has_usb());   // turns on the display
-}
-
-// When add source files to SRC in rules.mk, you can use functions.
-const char *read_logo(void);
-
-void matrix_scan_user(void) {
-   iota_gfx_task();
-}
-
-void matrix_render_user(struct CharacterMatrix *matrix) {
-  if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-    matrix_write(matrix, read_logo());
-  }
-}
-
-void matrix_update(struct CharacterMatrix *dest, const struct CharacterMatrix *source) {
-  if (memcmp(dest->display, source->display, sizeof(dest->display))) {
-    memcpy(dest->display, source->display, sizeof(dest->display));
-    dest->dirty = true;
-  }
-}
-
-void iota_gfx_task_user(void) {
-  struct CharacterMatrix matrix;
-  matrix_clear(&matrix);
-  matrix_render_user(&matrix);
-  matrix_update(&display, &matrix);
-}
-
-#endif //SSD1306OLED
-
 #+END_SRC
-
-
-**** config.h
-
-[[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/config.h][keyboards/crkbd/keymaps/manna-harbour_miryoku/config.h]]
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/crkbd/keymaps/manna-harbour_miryoku/config.h
-// <<header>>
-
-#pragma once
-
-#define EE_HANDS
-
-#ifdef RGB_MATRIX_ENABLE
-#define RGB_MATRIX_KEYPRESSES  // reacts to keypresses
-#define RGB_DISABLE_WHEN_USB_SUSPENDED true  // turn off effects when suspended
-#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150 // limits maximum brightness of LEDs to 150 out of 255. Higher may cause the controller to crash.
-#define RGB_MATRIX_HUE_STEP 8
-#define RGB_MATRIX_SAT_STEP 8
-#define RGB_MATRIX_VAL_STEP 8
-#define RGB_MATRIX_SPD_STEP 10
-#endif
-
-#define SSD1306OLED // old oled driver
-
-#+END_SRC
-
-
-**** rules.mk
-
-[[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/rules.mk][keyboards/crkbd/keymaps/manna-harbour_miryoku/rules.mk]]
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/crkbd/keymaps/manna-harbour_miryoku/rules.mk
-# <<header>>
-
-RGB_MATRIX_ENABLE = WS2812
-
-# old oled driver
-SRC += ./lib/glcdfont.c \
-       ./lib/logo_reader.c
-
-#+END_SRC
-
 
 To build for this keyboard,
 
 #+BEGIN_SRC sh :tangle no
 cd ../.. && make crkbd:manna-harbour_miryoku:flash
 #+END_SRC
-
 
 * Related Documentation
 :PROPERTIES:
