@@ -1,69 +1,74 @@
-#+Title: Miryoku Layout
+# After making changes to code or tables call org-babel-tangle (C-c C-v t).
 
-# After making changes here call org-babel-tangle (C-c C-v t).
+#+Title: Miryoku [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/miryoku-roa-32.png]]
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-keycodes.png]]
 
-The miryoku layout is an ergonomic, minimal, orthogonal layout for ergo or ortho
-keyboards, implemented as part of the QMK firmware.  The layout is maintained in
-emacs org-mode tables and converted to QMK keymap data structures using embedded
-python scripts.  The layout is mapped onto keyboards with different physical
-layouts as a subset without code duplication using the QMK userspace feature and
-C macros.  Versions of the layout can also be seen outside of the QMK source at
-[[https://github.com/manna-harbour/miryoku/]].
+Miryoku is an ergonomic, minimal, orthogonal layout for ergo or ortho keyboards,
+implemented as part of the QMK firmware.
 
+The layout is maintained in emacs org-mode tables and converted to QMK keymap
+data structures using embedded python scripts.  It is mapped onto keyboards with
+different physical layouts as a subset without code duplication using the QMK
+userspace feature and C macros.
 
-* Contents
+Please see the [[https://github.com/manna-harbour/qmk_firmware/blob/miryoku/users/manna-harbour_miryoku/miryoku.org][development branch]] for any [[https://github.com/qmk/qmk_firmware/compare/master...manna-harbour:miryoku][updates not yet merged into QMK]].
+[[https://github.com/manna-harbour/miryoku/blob/master/README.org][Additional visualisations]] are provided outside QMK.
 
+* Contents                                                              :TOC:
 - [[#layout][Layout]]
+  - [[#general-principles][General Principles]]
+  - [[#details][Details]]
+  - [[#layers][Layers]]
 - [[#code-generation][Code Generation]]
+  - [[#table-conversion-scripts][Table Conversion Scripts]]
+  - [[#data][Data]]
 - [[#subset-mapping][Subset Mapping]]
-- [[#related-documentation][Related Documentation]]
-
+  - [[#userspace][Userspace]]
+  - [[#layouts][Layouts]]
+  - [[#keyboards][Keyboards]]
+- [[#documentation][Documentation]]
+  - [[#qmk][QMK]]
+  - [[#org-mode][Org Mode]]
 
 * Layout
-:PROPERTIES:
-:CUSTOM_ID: layout
-:END:
 
-** Info
+** General Principles
 
-*** General Principles
-
-    - Use layers instead of reaching.
-    - Use both hands instead of contortions.
-    - Use the home positions as much as possible.
-    - Make full use of the thumbs.
-    - Avoid unnecessary complication.
+- Use layers instead of reaching.
+- Use both hands instead of contortions.
+- Use the home positions as much as possible.
+- Make full use of the thumbs.
+- Avoid unnecessary complication.
 
 
-*** Specifics
+** Details
 
-    - 5 columns, 3 rows, 3 thumb keys, 2 hands.
-    - Can be used on almost any split or non-split ergo or ortho keyboard.
-    - Includes all keys found on a US layout TKL keyboard, plus media keys and
-      mouse emulation.
-    - Home row is the middle row, home thumb key is the middle thumb key.
-    - Maximum 1-u movement from home position for fingers and thumbs, and only
-      along one axis (except for the inner index finger column which is
-      deprioritised compared with the home columns).
-    - Dual-function modifiers on home row, mirrored on both hands.
-    - Dual-function layer change on thumbs.
-    - Layers are designed orthogonally with a single purpose per hand and are
-      accessed by holding a thumb key on the opposite hand.
-    - All layers on the same hand are based on the same basic key arrangement.
-    - Holding layer change and modifiers on one hand combined with a single key
-      press on the other hand can produce any combination of modifiers and
-      single keys without any finger contortions.
-    - Single function mods are also defined on layers on the same hand as the
-      layer change thumb key so layer change and mods can be held in any order
-      or simultaneously without race conditions.
-    - As mods are only enabled on the opposite hand, auto-repeat is available on
-      the home row on layers for use with cursor and mouse keys.
-    - Tap-hold auto-repeat is disabled to permit faster tap-hold switching on
-      thumbs, but thumb tap keys are mirrored onto some layers for use with
-      auto-repeat.  On other layers thumb keys are redefined with important
-      functions for that layer.
+- 5 columns, 3 rows, 3 thumb keys, 2 hands.
+- Can be used on almost any split or non-split ergo or ortho keyboard.
+- Includes all keys found on a US layout TKL keyboard, plus media keys and mouse
+  emulation.
+- Home row is the middle row, home thumb key is the middle thumb key.
+- Maximum 1-u movement from home position for fingers and thumbs, and only along
+  one axis (except for the inner index finger column which is deprioritised
+  compared with the home columns).
+- Dual-function modifiers on home row, mirrored on both hands.
+- Dual-function layer change on thumbs.
+- Layers are designed orthogonally with a single purpose per hand and are
+  accessed by holding a thumb key on the opposite hand.
+- All layers on the same hand are based on the same basic key arrangement.
+- Holding layer change and modifiers on one hand combined with a single key
+  press on the other hand can produce any combination of modifiers and single
+  keys without any finger contortions.
+- Single function mods are also defined on layers on the same hand as the layer
+  change thumb key so layer change and mods can be held in any order or
+  simultaneously without race conditions.
+- As mods are only enabled on the opposite hand, auto-repeat is available on the
+  home row on layers for use with cursor and mouse keys.
+- Tap-hold auto-repeat is disabled to permit faster tap-hold switching on
+  thumbs, but thumb tap keys are mirrored onto some layers for use with
+  auto-repeat.  On other layers thumb keys are redefined with important
+  functions for that layer.
 
 
 ** Layers
@@ -275,9 +280,6 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 
 
 * Code Generation
-:PROPERTIES:
-:CUSTOM_ID: code-generation
-:END:
 
 ** Table Conversion Scripts
 
@@ -376,6 +378,7 @@ return results
 :     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_NA,
 :     KC_NP,   KC_NP,   KC_DOT,  KC_0,    KC_MINS, KC_NA,   KC_NA,   KC_NA,   KC_NP,   KC_NP
 :   )
+
 
 *** table-layout-full
 
@@ -476,8 +479,6 @@ Modifiers usable in hold table.  Need to have the same name for KC_ and _T versi
 - ALGR
 
 
-** Other
-
 *** header
 
 Header for tangled src files.
@@ -489,9 +490,6 @@ generated from users/manna-harbour_miryoku/miryoku.org  -*- buffer-read-only: t 
 
 
 * Subset Mapping
-:PROPERTIES:
-:CUSTOM_ID: subset-mapping
-:END:
 
 ** Userspace
 
@@ -728,22 +726,21 @@ To build for this keyboard,
 cd ../.. && make crkbd:manna-harbour_miryoku:flash
 #+END_SRC
 
-* Related Documentation
-:PROPERTIES:
-:CUSTOM_ID: related-documentation
-:END:
 
+* Documentation
 
 ** QMK
 
 - https://qmk.fm/
 - https://docs.qmk.fm/#/getting_started_introduction
-- https://docs.qmk.fm/#/hardware_keyboard_guidelines
 - https://docs.qmk.fm/#/config_options
 - https://docs.qmk.fm/#/keycodes
 - https://docs.qmk.fm/#/feature_advanced_keycodes
+- https://docs.qmk.fm/#/feature_layers
+- https://docs.qmk.fm/#/mod_tap
 - https://docs.qmk.fm/#/feature_layouts
 - https://docs.qmk.fm/#/feature_userspace
+- https://docs.qmk.fm/#/feature_mouse_keys
 - https://docs.qmk.fm/#/getting_started_make_guide
 
 
