@@ -30,6 +30,7 @@ Please see the [[https://github.com/manna-harbour/qmk_firmware/blob/miryoku/user
 - [[#documentation][Documentation]]
   - [[#qmk][QMK]]
   - [[#org-mode][Org Mode]]
+- [[#contact][Contact]]
 
 * Layout
 
@@ -116,7 +117,7 @@ included for prose, dot and slash for file and directory names.
 
 **** Alternative Base Layer Alphas
 
-Alternative base layer alphas are provided. To select, add
+Alternative base layer alphas are provided. To select, append
 e.g. ~MIRYOKU_BASE=QWERTY~ to the make command line when building.
 
 ***** QWERTY (QWERTY)
@@ -491,20 +492,25 @@ generated from users/manna-harbour_miryoku/miryoku.org  -*- buffer-read-only: t 
 
 * Subset Mapping
 
+The keymap, build options, and configuration are shared between keyboards.  The
+layout is mapped onto keyboards with different physical layouts as a subset.
+
 ** Userspace
 
-The keymap and configuration are shared between keyboards.  The keymap is
-defined for LAYOUT_miryoku which is 10x4, with the outer 2 positions on the
-bottom row unused and the rest of the bottom row are the thumb keys.
+The keymap is defined for LAYOUT_miryoku which is 10x4, with the outer 2
+positions on the bottom row unused and the rest of the bottom row being the
+thumb keys.
 
+*** manna-harbour_miryoku.h
 
-*** manna-harbour_miryoku.c
+Keymap-related definitions.  Included from manna-harbour_miryoku.c.  Can be
+included from keymap or layout keymap.c if needed.
 
-Contains the keymap.  Included from keymap.c
-
-[[./manna-harbour_miryoku.c][users/manna-harbour_miryoku/manna-harbour_miryoku.c]]
-#+BEGIN_SRC C :noweb yes :padline no :tangle manna-harbour_miryoku.c
+[[./manna-harbour_miryoku.h][users/manna-harbour_miryoku/manna-harbour_miryoku.h]]
+#+BEGIN_SRC C :noweb yes :padline no :tangle manna-harbour_miryoku.h
 // <<header>>
+
+#pragma once
 
 #include QMK_KEYBOARD_H
 
@@ -521,6 +527,18 @@ Contains the keymap.  Included from keymap.c
 #define KC_VAI RGB_VAI
 
 <<table-enums()>>
+#+END_SRC
+
+
+*** manna-harbour_miryoku.c
+
+Contains the keymap.  Added from rules.mk.
+
+[[./manna-harbour_miryoku.c][users/manna-harbour_miryoku/manna-harbour_miryoku.c]]
+#+BEGIN_SRC C :noweb yes :padline no :tangle manna-harbour_miryoku.c
+// <<header>>
+
+#include "manna-harbour_miryoku.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #if defined MIRYOKU_BASE_QWERTY
@@ -592,14 +610,20 @@ Build options.  Automatically included.
 #+BEGIN_SRC makefile :noweb yes :padline no :tangle rules.mk
 # <<header>>
 
-MOUSEKEY_ENABLE = yes        # Mouse keys
-EXTRAKEY_ENABLE = yes        # Audio control and System control
+MOUSEKEY_ENABLE = yes # Mouse keys
+EXTRAKEY_ENABLE = yes # Audio control and System control
 
+SRC += manna-harbour_miryoku.c # keymap
 
+# select alternative base layer alphas
 ifneq ($(strip $(MIRYOKU_BASE)),)
   OPT_DEFS += -DMIRYOKU_BASE_$(MIRYOKU_BASE)
 endif
 
+# select alternative subset mappings
+ifneq ($(strip $(MIRYOKU_LAYOUT)),)
+  OPT_DEFS += -DMIRYOKU_LAYOUT_$(MIRYOKU_LAYOUT)
+endif
 #+END_SRC
 
 
@@ -607,7 +631,9 @@ endif
 
 To use the keymap on a keyboard supporting the layouts feature, LAYOUT_miryoku
 is defined as a macro mapping onto the layout's own LAYOUT macro, leaving the
-unused keys as KC_NO.  The userspace keymap is then included.
+unused keys as KC_NO.
+
+The following are example layouts.
 
 *** ergodox
 
@@ -616,8 +642,22 @@ secondary thumb keys are the inner and outer 2u thumb keys and the tertiary
 thumb key is the innermost key of the partial bottom row.  The remaining keys
 are unused.
 
-[[../../layouts/community/ergodox/manna-harbour_miryoku/keymap.c][layouts/community/ergodox/manna-harbour_miryoku/keymap.c]]
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ergodox/manna-harbour_miryoku/keymap.c
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-mapping-ergodox.png]]
+
+To build for any keyboard using the this layout (ergodone, ergodox_ez,
+ergodox_infinity, hotdox) e.g. the ergodox_ez,
+
+#+BEGIN_SRC sh :tangle no
+make ergodox_ez:manna-harbour_miryoku:flash
+#+END_SRC
+
+
+**** config.h
+
+Contains subset mapping.
+
+[[../../layouts/community/ergodox/manna-harbour_miryoku/config.h][layouts/community/ergodox/manna-harbour_miryoku/config.h]]
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ergodox/manna-harbour_miryoku/config.h
 // <<header>>
 
 #define LAYOUT_miryoku(\
@@ -636,32 +676,57 @@ KC_NO, KC_NO, KC_NO, KC_NO, K32,                               K37,   KC_NO, KC_
                                           KC_NO, KC_NO, \
                             K33,   K34,   KC_NO, KC_NO, K35,   K36 \
 )
-
-#include "manna-harbour_miryoku.c"
-
 #+END_SRC
 
-To build for any keyboard using the this layout (ergodone, ergodox_ez,
-ergodox_infinity, hotdox) e.g. the ergodox_ez,
 
-#+BEGIN_SRC sh :tangle no
-cd ../.. && make ergodox_ez:manna-harbour_miryoku:flash
+**** keymap.c
+
+Required by the build system.
+
+[[../../layouts/community/ergodox/manna-harbour_miryoku/keymap.c][layouts/community/ergodox/manna-harbour_miryoku/keymap.c]]
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ergodox/manna-harbour_miryoku/keymap.c
+// <<header>>
 #+END_SRC
-
 
 
 *** ortho_4x12
 
-For the ortho_4x12 layout, the right half as is as follows: The rightmost column
-bottom 3 rows is the pinkie column.  The middle 4 columns top 3 rows are for the
-remaining fingers.  The pinkie column is one row lower than the other columns to
-provide some column stagger on ortho keyboards.  The bottom row left 3 columns
-are the thumb keys.  The remaining keys are unused.
+For the ortho_4x12 layout, the middle two columns, and the 2 keys on each end of
+the bottom row are unused.  This allows the hands to be positioned without ulnar
+deviation of the wrists.
 
-[[../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c][layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c]]
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-mapping-ortho_4x12.png]]
+
+For split keyboards using this layout the halves can be positioned and rotated
+for each hand and so an alternative mapping is provided.  The right half as is
+as follows: The rightmost column bottom 3 keys is the pinkie column.  The middle
+4 columns top 3 rows are for the remaining fingers.  The pinkie column is one
+row lower than the other columns to provide some column stagger.  The bottom row
+left 3 keys are the thumb keys.  The remaining keys are unused.  To select this
+mapping, append ~MIRYOKU_LAYOUT=SPLIT~ to the make command line when building.
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-mapping-ortho_4x12-split.png]]
+
+To build for any keyboard using this layout (4x4, nori, chimera_ls, contra,
+divergetm2, jj40, lets_split, lets_split_eh, meira, niu_mini, planck, telophase,
+vitamins_included, zinc, zlant, ortho48, kbd4x, levinson, wavelet, plaid):
+
+#+BEGIN_SRC sh :tangle no
+make planck/rev6:manna-harbour_miryoku:flash # planck
+make keebio/levinson:manna-harbour_miryoku:flash MIRYOKU_LAYOUT=SPLIT # levinson
+#+END_SRC
+
+
+**** config.h
+
+Contains subset mapping.
+
+[[../../layouts/community/ortho_4x12/manna-harbour_miryoku/config.h][layouts/community/ortho_4x12/manna-harbour_miryoku/config.h]]
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/config.h
 // <<header>>
 
+
+#if defined MIRYOKU_LAYOUT_SPLIT
 #define LAYOUT_miryoku(\
 K00,   K01,   K02,   K03,   K04,   K05,   K06,   K07,   K08,   K09,\
 K10,   K11,   K12,   K13,   K14,   K15,   K16,   K17,   K18,   K19,\
@@ -674,18 +739,30 @@ K00,   K11,   K12,   K13,   K14,   KC_NO, KC_NO, K15,   K16,   K17,   K18,   K09
 K10,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K19,\
 K20,   KC_NO, KC_NO, K32,   K33,   K34,   K35,   K36,   K37,   KC_NO, KC_NO, K29\
 )
-
-#include "manna-harbour_miryoku.c"
-
+#else
+#define LAYOUT_miryoku(\
+K00,   K01,   K02,   K03,   K04,   K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,   K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,   K25,   K26,   K27,   K28,   K29,\
+N30,   N31,   K32,   K33,   K34,   K35,   K36,   K37,   N38,   N39\
+)\
+LAYOUT_ortho_4x12(\
+K00,   K01,   K02,   K03,   K04,   KC_NO, KC_NO, K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,   KC_NO, KC_NO, K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K29,\
+KC_NO, KC_NO, K32,   K33,   K34,   KC_NO, KC_NO, K35,   K36,   K37,   KC_NO, KC_NO\
+)
+#endif
 #+END_SRC
 
-To build for any keyboard using this layout (4x4, nori, chimera_ls, contra,
-divergetm2, jj40, lets_split, lets_split_eh, meira, niu_mini, planck, telophase,
-vitamins_included, zinc, zlant, ortho48, kbd4x, levinson, wavelet, plaid)
-e.g. the levinson,
 
-#+BEGIN_SRC sh :tangle no
-cd ../.. && make keebio/levinson:manna-harbour_miryoku:flash
+**** keymap.c
+
+Required by the build system.
+
+[[../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c][layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c]]
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c
+// <<header>>
 #+END_SRC
 
 
@@ -693,14 +770,26 @@ cd ../.. && make keebio/levinson:manna-harbour_miryoku:flash
 
 To use the keymap on a keyboard which does not support the layouts feature,
 LAYOUT_miryoku is defined as a macro mapping onto the keyboard's own LAYOUT
-macro, leaving the unused keys as KC_NO.  The userspace keymap is then included.
+macro, leaving the unused keys as KC_NO.
+
+The following are example keyboards.
 
 *** crkbd
 
 The outer columns are unused.
 
-[[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c][keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c]]
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c
+To build for this keyboard,
+
+#+BEGIN_SRC sh :tangle no
+make crkbd:manna-harbour_miryoku:flash
+#+END_SRC
+
+**** config.h
+
+Contains subset mapping.
+
+[[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/config.h][keyboards/crkbd/keymaps/manna-harbour_miryoku/config.h]]
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/crkbd/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #define LAYOUT_miryoku( \
@@ -715,15 +804,16 @@ KC_NO, K10,   K11,   K12,   K13,   K14,   K15,   K16,   K17,   K18,   K19,   KC_
 KC_NO, K20,   K21,   K22,   K23,   K24,   K25,   K26,   K27,   K28,   K29,   KC_NO, \
                      K32,   K33,   K34,   K35,   K36,   K37 \
 )
-
-#include "manna-harbour_miryoku.c"
-
 #+END_SRC
 
-To build for this keyboard,
 
-#+BEGIN_SRC sh :tangle no
-cd ../.. && make crkbd:manna-harbour_miryoku:flash
+**** keymap.c
+
+Required by the build system.
+
+[[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c][keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c]]
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c
+// <<header>>
 #+END_SRC
 
 
@@ -749,3 +839,13 @@ cd ../.. && make crkbd:manna-harbour_miryoku:flash
 - https://orgmode.org/
 - https://orgmode.org/manual/Tables.html
 - https://orgmode.org/manual/Working-with-Source-Code.html
+
+
+* Contact
+
+To request support for additional base layer alphas, layouts, or keyboards, or
+for other issues, please [[https://github.com/manna-harbour/qmk_firmware/issues/new][open an issue]].
+
+For more general discussion, please join a [[https://www.reddit.com/search/?q=author%3Amanna_harbour%20miryoku&sort=new][recent thread]] or [[https://www.reddit.com/message/compose/?to=manna_harbour][send a PM]].
+
+[[https://github.com/manna-harbour][https://raw.githubusercontent.com/manna-harbour/miryoku/master/manna-harbour-boa-32.png]]
