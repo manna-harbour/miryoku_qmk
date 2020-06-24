@@ -88,7 +88,6 @@ layers are specified as a single hand.
 
 *** Base (~BASE~)
 
-
 The base layer is maintained as separate tap and hold tables and are combined
 into the corresponding tap-hold keycodes for mods and layer change.  Mods (and
 reset) will be available on sub layers on the same hand as the layer change
@@ -114,52 +113,6 @@ included for prose, dot and slash for file and directory names.
 | LGUI | LALT | LCTL | LSFT |      |      | LSFT | LCTL | LALT | LGUI |
 |      | ALGR |      |      |      |      |      |      | ALGR |      |
 | NP   | NP   | MEDR | NAVR | MOUR | NSSL | NSL  | FUNL | NP   | NP   |
-
-
-**** Alternative Base Layer Alphas
-
-Alternative base layer alphas are provided. To select, append
-e.g. ~MIRYOKU_ALPHAS=QWERTY~ to the ~make~ command line when building.
-
-***** QWERTY (QWERTY)
-#+NAME: qwerty
-| Q    | W    | E    | R    | T    | Y    | U    | I    | O    | P    |
-| A    | S    | D    | F    | G    | H    | J    | K    | L    | '    |
-| Z    | X    | C    | V    | B    | N    | M    | ,    | .    | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
-
-
-***** Dvorak (DVORAK)
-#+NAME: dvorak
-| '    | ,    | .    | P    | Y    | F    | G    | C    | R    | L    |
-| A    | O    | E    | U    | I    | D    | H    | T    | N    | S    |
-| /    | Q    | J    | K    | X    | B    | M    | W    | V    | Z    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
-
-
-***** Colemak (COLEMAK)
-#+NAME: colemak
-| Q    | W    | F    | P    | G    | J    | L    | U    | Y    | '    |
-| A    | R    | S    | T    | D    | H    | N    | E    | I    | O    |
-| Z    | X    | C    | V    | B    | K    | M    | ,    | .    | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
-
-
-***** Colemak Mod-DH (COLEMAKDH)
-#+NAME: colemakdh
-| Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
-| A    | R    | S    | T    | G    | K    | N    | E    | I    | O    |
-| Z    | X    | C    | D    | V    | M    | H    | ,    | .    | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
-
-
-***** Workman (WORKMAN)
-#+NAME: workman
-| Q    | D    | R    | W    | B    | J    | F    | U    | P    | '    |
-| A    | S    | H    | T    | G    | Y    | N    | E    | O    | I    |
-| Z    | X    | M    | C    | V    | K    | L    | ,    | .    | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
-
 
 
 *** Navigation (~NAVR~)
@@ -221,7 +174,7 @@ available for other related functions.
 
 Primary left-hand layer (right home thumb) is numerals and symbols.  Numerals
 are in the standard numpad locations with symbols in the remaining positions.
-Dot is duplicated from the base layer for convenience.
+Dot is duplicated from the base layer.
 
 #+NAME: nsl
 | [    | 7    | 8    | 9    | ]    |
@@ -234,7 +187,7 @@ Dot is duplicated from the base layer for convenience.
 
 Secondary left-hand layer has shifted symbols in the same locations to reduce
 chording when using mods with shifted symbols.  Open parenthesis is duplicated
-for convenience.
+next to close parenthesis.
 
 #+NAME: nssl
 | {    | &    | *    | (    | }    |
@@ -256,6 +209,89 @@ the base layer to enable auto-repeat.
 | F11  | F4   | F5   | F6   | SLCK |
 | F10  | F1   | F2   | F3   | PAUS |
 | NP   | NP   | APP  | SPC  | TAB  |
+
+
+*** Alternative Layouts
+
+The defaults are recommended, but alternative layouts are provided to
+accommodate existing muscle memory.
+
+**** Base Layer Alphas
+
+To select, append the corresponding option to the ~make~ command line when
+building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
+
+***** QWERTY (~MIRYOKU_ALPHAS=QWERTY~)
+#+NAME: qwerty
+| Q    | W    | E    | R    | T    | Y    | U    | I    | O    | P    |
+| A    | S    | D    | F    | G    | H    | J    | K    | L    | '    |
+| Z    | X    | C    | V    | B    | N    | M    | ,    | .    | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** Dvorak (~MIRYOKU_ALPHAS=DVORAK~)
+#+NAME: dvorak
+| '    | ,    | .    | P    | Y    | F    | G    | C    | R    | L    |
+| A    | O    | E    | U    | I    | D    | H    | T    | N    | S    |
+| /    | Q    | J    | K    | X    | B    | M    | W    | V    | Z    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** Colemak (~MIRYOKU_ALPHAS=COLEMAK~)
+#+NAME: colemak
+| Q    | W    | F    | P    | G    | J    | L    | U    | Y    | '    |
+| A    | R    | S    | T    | D    | H    | N    | E    | I    | O    |
+| Z    | X    | C    | V    | B    | K    | M    | ,    | .    | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** Colemak Mod-DH (~MIRYOKU_ALPHAS=COLEMAKDH~)
+#+NAME: colemakdh
+| Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
+| A    | R    | S    | T    | G    | K    | N    | E    | I    | O    |
+| Z    | X    | C    | D    | V    | M    | H    | ,    | .    | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** Workman (~MIRYOKU_ALPHAS=WORKMAN~)
+#+NAME: workman
+| Q    | D    | R    | W    | B    | J    | F    | U    | P    | '    |
+| A    | S    | H    | T    | G    | Y    | N    | E    | O    | I    |
+| Z    | X    | M    | C    | V    | K    | L    | ,    | .    | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+
+**** vi-Style Navigation
+
+To select, append ~MIRYOKU_NAV=VI~ to the ~make~ command line when building.
+
+***** Navigation (NAVR)
+
+#+NAME: navr-vi
+| AGIN | UNDO | CUT  | COPY | PSTE |
+| LEFT | DOWN | UP   | RGHT | CAPS |
+| HOME | PGDN | PGUP | END  | INS  |
+| ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** Mouse (MOUR)
+
+#+NAME: mour-vi
+|      |      |      |      |      |
+| MS_L | MS_D | MS_U | MS_R |      |
+| WH_L | WH_D | WH_U | WH_R |      |
+| BTN1 | BTN3 | BTN2 | NP   | NP   |
+
+
+***** Media (MEDR)
+
+#+NAME: medr-vi
+| TOG  | MOD  | HUI  | SAI  | VAI  |
+| MPRV | VOLD | VOLU | MNXT |      |
+|      |      |      |      |      |
+| MSTP | MPLY | MUTE | NP   | NP   |
+
 
 
 *** COMMENT Templates
@@ -561,10 +597,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #else
 <<table-layout-taphold(layer_name="BASE", tap_table=colemakdhm, hold_table=hold)>>,
 #endif
+#if defined MIRYOKU_NAV_VI
+<<table-layout-half(layer_name="NAVR", half_table=navr-vi)>>,
+<<table-layout-half(layer_name="MOUR", half_table=mour-vi)>>,
+<<table-layout-half(layer_name="MEDR", half_table=medr-vi)>>,
+#else
 <<table-layout-half(layer_name="NAVR", half_table=navr)>>,
 <<table-layout-half(layer_name="MOUR", half_table=mour)>>,
-<<table-layout-full(layer_name="MBO", table=mbo, fill="TRNS")>>,
 <<table-layout-half(layer_name="MEDR", half_table=medr)>>,
+#endif
+<<table-layout-full(layer_name="MBO", table=mbo, fill="TRNS")>>,
 <<table-layout-half(layer_name="FUNL", half_table=funl)>>,
 <<table-layout-half(layer_name="NSL", half_table=nsl)>>,
 <<table-layout-half(layer_name="NSSL", half_table=nssl)>>
@@ -623,6 +665,11 @@ SRC += manna-harbour_miryoku.c # keymap
 # select alternative base layer alphas
 ifneq ($(strip $(MIRYOKU_ALPHAS)),)
   OPT_DEFS += -DMIRYOKU_ALPHAS_$(MIRYOKU_ALPHAS)
+endif
+
+# select alternative nav
+ifneq ($(strip $(MIRYOKU_NAV)),)
+  OPT_DEFS += -DMIRYOKU_NAV_$(MIRYOKU_NAV)
 endif
 
 # select alternative subset mappings
