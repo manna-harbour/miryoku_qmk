@@ -855,6 +855,6 @@ Required by the build system.
 For issues with this branch, or to request support for additional base layer
 alphas, layouts, or keyboards, please [[https://github.com/manna-harbour/qmk_firmware/issues/new][open an issue]].
 
-For more general discussion, please join a relevant [[https://www.reddit.com/user/manna_harbour/posts/?sort=new][recent thread]] or [[https://www.reddit.com/message/compose/?to=manna_harbour][send a PM]].
+For more general discussion, please join a recent relevant [[https://www.reddit.com/user/manna_harbour/][thread]] or [[https://www.reddit.com/message/compose/?to=manna_harbour][send a PM]].
 
 [[https://github.com/manna-harbour][https://raw.githubusercontent.com/manna-harbour/miryoku/master/manna-harbour-boa-32.png]]
