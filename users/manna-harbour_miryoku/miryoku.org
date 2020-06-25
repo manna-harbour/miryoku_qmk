@@ -231,8 +231,14 @@ Dot is duplicated from the base layer for convenience.
 *** Shifted Numerals and Symbols (NSSL)
 
 Secondary LH layer has shifted symbols in the same locations to reduce chording
-when using mods with shifted symbols.  Automatically generated from unshifted
-table.
+when using mods with shifted symbols.  Open parenthesis is duplicated for
+convenience.
+
+#+NAME: nssl
+| {    | &    | *    | (    | }    |
+| :    | $    | %    | ^    | +    |
+| ~    | !    | @    | #    | PIPE |
+| NP   | NP   | (    | )    | _    |
 
 
 *** Function and System (FUNL)
@@ -560,7 +566,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 <<table-layout-half(layer_name="MEDR", half_table=medr)>>,
 <<table-layout-half(layer_name="FUNL", half_table=funl)>>,
 <<table-layout-half(layer_name="NSL", half_table=nsl)>>,
-<<table-layout-half(layer_name="NSSL", half_table=nsl, shift="true")>>
+<<table-layout-half(layer_name="NSSL", half_table=nssl)>>
 };
 #+END_SRC
 
