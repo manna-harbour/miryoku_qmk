@@ -1018,6 +1018,49 @@ Required by the build system.
 #+END_SRC
 
 
+*** minidox
+
+To build for this keyboard,
+
+#+BEGIN_SRC sh :tangle no
+make minidox/rev1:manna-harbour_miryoku:flash
+#+END_SRC
+
+**** [[../../keyboards/lily58/keymaps/manna-harbour_miryoku/config.h][keyboards/minidox/keymaps/manna-harbour_miryoku/config.h]]
+
+Contains subset mapping.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/minidox/keymaps/manna-harbour_miryoku/config.h
+// <<header>>
+
+#pragma once
+
+#define XXX KC_NO
+
+#define LAYOUT_miryoku(\
+K00, K01, K02, K03, K04,     K05, K06, K07, K08, K09,\
+K10, K11, K12, K13, K14,     K15, K16, K17, K18, K19,\
+K20, K21, K22, K23, K24,     K25, K26, K27, K28, K29,\
+N30, N31, K32, K33, K34,     K35, K36, K37, N38, N39\
+)\
+LAYOUT(\
+K00, K01, K02, K03, K04,     K05, K06, K07, K08, K09,\
+K10, K11, K12, K13, K14,     K15, K16, K17, K18, K19,\
+K20, K21, K22, K23, K24,     K25, K26, K27, K28, K29,\
+          K32, K33, K34,     K35, K36, K37\
+)
+#+END_SRC
+
+
+**** [[../../keyboards/lily58/keymaps/manna-harbour_miryoku/keymap.c][keyboards/minidox/keymaps/manna-harbour_miryoku/keymap.c]]
+
+Required by the build system.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/minidox/keymaps/manna-harbour_miryoku/keymap.c
+// <<header>>
+#+END_SRC
+
+
 * Documentation
 
 ** QMK
