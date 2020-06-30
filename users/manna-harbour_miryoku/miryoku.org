@@ -41,10 +41,10 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#header][header]]
 - [[#subset-mapping][Subset Mapping]]
   - [[#userspace][Userspace]]
+    - [[#usersmanna-harbour_miryokurulesmk][users/manna-harbour_miryoku/rules.mk]]
+    - [[#usersmanna-harbour_miryokuconfigh][users/manna-harbour_miryoku/config.h]]
     - [[#usersmanna-harbour_miryokumanna-harbour_miryokuh][users/manna-harbour_miryoku/manna-harbour_miryoku.h]]
     - [[#usersmanna-harbour_miryokumanna-harbour_miryokuc][users/manna-harbour_miryoku/manna-harbour_miryoku.c]]
-    - [[#usersmanna-harbour_miryokuconfigh][users/manna-harbour_miryoku/config.h]]
-    - [[#usersmanna-harbour_miryokurulesmk][users/manna-harbour_miryoku/rules.mk]]
   - [[#layouts][Layouts]]
     - [[#ergodox][ergodox]]
     - [[#ortho_4x12][ortho_4x12]]
@@ -571,6 +571,71 @@ The keymap is defined for ~LAYOUT_miryoku~ which is 10x4, with the outer 2
 positions on the bottom row unused and the rest of the bottom row being the
 thumb keys.
 
+*** [[./rules.mk][users/manna-harbour_miryoku/rules.mk]]
+
+Build options.  Automatically included.
+
+#+BEGIN_SRC makefile :noweb yes :padline no :tangle rules.mk
+# <<header>>
+
+MOUSEKEY_ENABLE = yes # Mouse keys
+EXTRAKEY_ENABLE = yes # Audio control and System control
+
+SRC += manna-harbour_miryoku.c # keymap
+
+# select alternative base layer alphas
+ifneq ($(strip $(MIRYOKU_ALPHAS)),)
+  OPT_DEFS += -DMIRYOKU_ALPHAS_$(MIRYOKU_ALPHAS)
+endif
+
+# select alternative nav
+ifneq ($(strip $(MIRYOKU_NAV)),)
+  OPT_DEFS += -DMIRYOKU_NAV_$(MIRYOKU_NAV)
+endif
+
+# select alternative subset mappings
+ifneq ($(strip $(MIRYOKU_MAPPING)),)
+  OPT_DEFS += -DMIRYOKU_MAPPING_$(MIRYOKU_MAPPING)
+endif
+#+END_SRC
+
+
+*** [[./config.h][users/manna-harbour_miryoku/config.h]]
+
+Config options.  Automatically included.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle config.h
+// <<header>>
+
+#pragma once
+
+// default but important
+#define TAPPING_TERM 200
+
+// Prevent normal rollover on alphas from accidentally triggering mods.
+#define IGNORE_MOD_TAP_INTERRUPT
+
+// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
+#define TAPPING_FORCE_HOLD
+
+// Recommended for heavy chording.
+#define QMK_KEYS_PER_SCAN 4
+
+// Mouse key speed and acceleration.
+#undef MOUSEKEY_DELAY
+#define MOUSEKEY_DELAY          0
+#undef MOUSEKEY_INTERVAL
+#define MOUSEKEY_INTERVAL       16
+#undef MOUSEKEY_WHEEL_DELAY
+#define MOUSEKEY_WHEEL_DELAY    0
+#undef MOUSEKEY_MAX_SPEED
+#define MOUSEKEY_MAX_SPEED      6
+#undef MOUSEKEY_TIME_TO_MAX
+#define MOUSEKEY_TIME_TO_MAX    64
+
+#+END_SRC
+
+
 *** [[./manna-harbour_miryoku.h][users/manna-harbour_miryoku/manna-harbour_miryoku.h]]
 
 Keymap-related definitions.  Included from ~manna-harbour_miryoku.c~.  Can be
@@ -636,71 +701,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 <<table-layout-half(layer_name="NSL", half_table=nsl)>>,
 <<table-layout-half(layer_name="NSSL", half_table=nssl)>>
 };
-#+END_SRC
-
-
-*** [[./config.h][users/manna-harbour_miryoku/config.h]]
-
-Config options.  Automatically included.
-
-#+BEGIN_SRC C :noweb yes :padline no :tangle config.h
-// <<header>>
-
-#pragma once
-
-// default but important
-#define TAPPING_TERM 200
-
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
-
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define TAPPING_FORCE_HOLD
-
-// Recommended for heavy chording.
-#define QMK_KEYS_PER_SCAN 4
-
-// Mouse key speed and acceleration.
-#undef MOUSEKEY_DELAY
-#define MOUSEKEY_DELAY          0
-#undef MOUSEKEY_INTERVAL
-#define MOUSEKEY_INTERVAL       16
-#undef MOUSEKEY_WHEEL_DELAY
-#define MOUSEKEY_WHEEL_DELAY    0
-#undef MOUSEKEY_MAX_SPEED
-#define MOUSEKEY_MAX_SPEED      6
-#undef MOUSEKEY_TIME_TO_MAX
-#define MOUSEKEY_TIME_TO_MAX    64
-
-#+END_SRC
-
-
-*** [[./rules.mk][users/manna-harbour_miryoku/rules.mk]]
-
-Build options.  Automatically included.
-
-#+BEGIN_SRC makefile :noweb yes :padline no :tangle rules.mk
-# <<header>>
-
-MOUSEKEY_ENABLE = yes # Mouse keys
-EXTRAKEY_ENABLE = yes # Audio control and System control
-
-SRC += manna-harbour_miryoku.c # keymap
-
-# select alternative base layer alphas
-ifneq ($(strip $(MIRYOKU_ALPHAS)),)
-  OPT_DEFS += -DMIRYOKU_ALPHAS_$(MIRYOKU_ALPHAS)
-endif
-
-# select alternative nav
-ifneq ($(strip $(MIRYOKU_NAV)),)
-  OPT_DEFS += -DMIRYOKU_NAV_$(MIRYOKU_NAV)
-endif
-
-# select alternative subset mappings
-ifneq ($(strip $(MIRYOKU_MAPPING)),)
-  OPT_DEFS += -DMIRYOKU_MAPPING_$(MIRYOKU_MAPPING)
-endif
 #+END_SRC
 
 
