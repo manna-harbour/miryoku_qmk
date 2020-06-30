@@ -16,21 +16,46 @@ Please see the [[https://github.com/manna-harbour/qmk_firmware/blob/miryoku/user
 Additional implementations and visualisations are provided outside QMK in the
 [[https://github.com/manna-harbour/miryoku/blob/master/README.org][Miryoku (Extras) repository]].
 
-* Contents                                                              :TOC:
+* Contents                                                              :TOC_3:
 - [[#layout][Layout]]
   - [[#general-principles][General Principles]]
   - [[#details][Details]]
   - [[#layers][Layers]]
+    - [[#base-base][Base (~BASE~)]]
+    - [[#navigation-navr][Navigation (~NAVR~)]]
+    - [[#mouse-mour][Mouse (~MOUR~)]]
+    - [[#media-medr][Media (~MEDR~)]]
+    - [[#numerals-and-symbols-nsl][Numerals and Symbols (~NSL~)]]
+    - [[#shifted-numerals-and-symbols-nssl][Shifted Numerals and Symbols (~NSSL~)]]
+    - [[#function-and-system-funl][Function and System (~FUNL~)]]
+    - [[#alternative-layouts][Alternative Layouts]]
 - [[#code-generation][Code Generation]]
   - [[#table-conversion-scripts][Table Conversion Scripts]]
+    - [[#table-layout-taphold][table-layout-taphold]]
+    - [[#table-layout-half][table-layout-half]]
+    - [[#table-layout-full][table-layout-full]]
+    - [[#table-enums][table-enums]]
   - [[#data][Data]]
+    - [[#symbol-names][symbol-names]]
+    - [[#mods][mods]]
+    - [[#header][header]]
 - [[#subset-mapping][Subset Mapping]]
   - [[#userspace][Userspace]]
+    - [[#usersmanna-harbour_miryokumanna-harbour_miryokuh][users/manna-harbour_miryoku/manna-harbour_miryoku.h]]
+    - [[#usersmanna-harbour_miryokumanna-harbour_miryokuc][users/manna-harbour_miryoku/manna-harbour_miryoku.c]]
+    - [[#usersmanna-harbour_miryokuconfigh][users/manna-harbour_miryoku/config.h]]
+    - [[#usersmanna-harbour_miryokurulesmk][users/manna-harbour_miryoku/rules.mk]]
   - [[#layouts][Layouts]]
+    - [[#ergodox][ergodox]]
+    - [[#ortho_4x12][ortho_4x12]]
   - [[#keyboards][Keyboards]]
+    - [[#crkbd][crkbd]]
+    - [[#gergo][gergo]]
+    - [[#iris][iris]]
+    - [[#kyria][kyria]]
+    - [[#lily58][lily58]]
+    - [[#minidox][minidox]]
 - [[#documentation][Documentation]]
-  - [[#qmk][QMK]]
-  - [[#org-mode][Org Mode]]
 - [[#contact][Contact]]
 
 * Layout
@@ -1107,7 +1132,7 @@ Required by the build system.
 #+END_SRC
 
 
-* Documentation
+* Documentation                                                  :noexport_1:
 
 ** QMK
 
