@@ -56,6 +56,7 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#kyria][kyria]]
     - [[#lily58][lily58]]
     - [[#minidox][minidox]]
+  - [[#customisation][Customisation]]
 - [[#documentation][Documentation]]
 - [[#contact][Contact]]
 
@@ -854,17 +855,6 @@ To use the keymap on a keyboard which does not support the layouts feature,
 ~LAYOUT_miryoku~ is defined as a macro mapping onto the keyboard's own ~LAYOUT~
 macro, leaving the unused keys as ~KC_NO~.
 
-To add customisations to a keyboard while importing the miryoku keymap (using
-the crkbd as an example), copy ~config.h~ and ~keymap.c~ from
-~keyboards/crkbd/keymaps/manna-harbour_miryoku/~ to a new directory under
-~keyboards/crkbd/keymaps/~, and create ~rules.mk~ containing ~USER_NAME :=
-manna-harbour_miryoku~.  The miryoku keymap will be imported and customisations
-can be added to those files as usual.  Keycodes can be added to unused keys by
-editing ~LAYOUT_miryoku~ in ~config.h~.
-
-For an unsupported keyboard, do as above but define ~LAYOUT_miryoku~ in
-~config.h~ referring to the keyboard's ~LAYOUT~ macro and the examples below.
-
 *** atreus
 
 Only the main 5x3 alphas and the inner 3 thumb keys are used.
@@ -1176,6 +1166,20 @@ Required by the build system.
 #+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/minidox/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
+
+
+** Customisation
+
+To add customisations to a keyboard or layout while importing the miryoku
+keymap, copy ~config.h~ and ~keymap.c~ from the keyboard or layout's
+~manna-harbour_miryoku/~ directory to a new directory, and create ~rules.mk~
+containing ~USER_NAME := manna-harbour_miryoku~.  The miryoku keymap will be
+imported and customisations can be added to those files as usual.  Keycodes can
+be added to unused keys by editing ~LAYOUT_miryoku~ in ~config.h~.
+
+For an unsupported keyboard or layout, do as above with a similar keyboard or
+layout and modify ~LAYOUT_miryoku~ in ~config.h~ referring to the keyboard or
+layout's ~LAYOUT~ macro.
 
 
 * Documentation                                                  :noexport_1:
