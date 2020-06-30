@@ -49,6 +49,7 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#ergodox][ergodox]]
     - [[#ortho_4x12][ortho_4x12]]
   - [[#keyboards][Keyboards]]
+    - [[#atreus][atreus]]
     - [[#crkbd][crkbd]]
     - [[#gergo][gergo]]
     - [[#iris][iris]]
@@ -863,6 +864,51 @@ editing ~LAYOUT_miryoku~ in ~config.h~.
 
 For an unsupported keyboard, do as above but define ~LAYOUT_miryoku~ in
 ~config.h~ referring to the keyboard's ~LAYOUT~ macro and the examples below.
+
+*** atreus
+
+Only the main 5x3 alphas and the inner 3 thumb keys are used.
+
+To build for this keyboard,
+
+#+BEGIN_SRC sh :tangle no
+make atreus:manna-harbour_miryoku:flash
+#+END_SRC
+
+**** [[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/config.h][keyboards/atreus/keymaps/manna-harbour_miryoku/config.h]]
+
+Contains subset mapping.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/atreus/keymaps/manna-harbour_miryoku/config.h
+// <<header>>
+
+#pragma once
+
+#define XXX KC_NO
+
+#define LAYOUT_miryoku(\
+K00, K01, K02, K03, K04,                K05, K06, K07, K08, K09,\
+K10, K11, K12, K13, K14,                K15, K16, K17, K18, K19,\
+K20, K21, K22, K23, K24,                K25, K26, K27, K28, K29,\
+N30, N31, K32, K33, K34,                K35, K36, K37, N38, N39\
+)\
+LAYOUT(\
+K00, K01, K02, K03, K04,                K05, K06, K07, K08, K09,\
+K10, K11, K12, K13, K14,                K15, K16, K17, K18, K19,\
+K20, K21, K22, K23, K24,                K25, K26, K27, K28, K29,\
+XXX, XXX, XXX, K32, K33, K34,      K35, K36, K37, XXX, XXX, XXX\
+)
+#+END_SRC
+
+
+**** [[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c][keyboards/atreus/keymaps/manna-harbour_miryoku/keymap.c]]
+
+Required by the build system.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/atreus/keymaps/manna-harbour_miryoku/keymap.c
+// <<header>>
+#+END_SRC
+
 
 *** crkbd
 
