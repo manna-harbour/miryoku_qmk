@@ -942,7 +942,7 @@ To build for this keyboard,
 make atreus:manna-harbour_miryoku:flash
 #+END_SRC
 
-**** [[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/config.h][keyboards/atreus/keymaps/manna-harbour_miryoku/config.h]]
+**** [[../../keyboards/atreus/keymaps/manna-harbour_miryoku/config.h][keyboards/atreus/keymaps/manna-harbour_miryoku/config.h]]
 
 Contains subset mapping.
 
@@ -968,7 +968,7 @@ XXX, XXX, XXX, K32, K33, K34,      K35, K36, K37, XXX, XXX, XXX\
 #+END_SRC
 
 
-**** [[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c][keyboards/atreus/keymaps/manna-harbour_miryoku/keymap.c]]
+**** [[../../keyboards/atreus/keymaps/manna-harbour_miryoku/keymap.c][keyboards/atreus/keymaps/manna-harbour_miryoku/keymap.c]]
 
 Required by the build system.
 
@@ -1030,7 +1030,7 @@ To build for this keyboard,
 make gergo:manna-harbour_miryoku:flash
 #+END_SRC
 
-**** [[../../keyboards/lily58/keymaps/manna-harbour_miryoku/config.h][keyboards/gergo/keymaps/manna-harbour_miryoku/config.h]]
+**** [[../../keyboards/gergo/keymaps/manna-harbour_miryoku/config.h][keyboards/gergo/keymaps/manna-harbour_miryoku/config.h]]
 
 Contains subset mapping.
 
@@ -1056,7 +1056,7 @@ XXX, K20, K21, K22, K23, K24, XXX, XXX,      XXX, XXX, K25, K26, K27, K28, K29, 
 #+END_SRC
 
 
-**** [[../../keyboards/lily58/keymaps/manna-harbour_miryoku/keymap.c][keyboards/gergo/keymaps/manna-harbour_miryoku/keymap.c]]
+**** [[../../keyboards/gergo/keymaps/manna-harbour_miryoku/keymap.c][keyboards/gergo/keymaps/manna-harbour_miryoku/keymap.c]]
 
 Required by the build system.
 
@@ -1121,7 +1121,7 @@ To build for this keyboard,
 make keebio/iris/rev4:manna-harbour_miryoku:flash
 #+END_SRC
 
-**** [[../../keyboards/lily58/keymaps/manna-harbour_miryoku/config.h][keyboards/keebio/iris/keymaps/manna-harbour_miryoku/config.h]]
+**** [[../../keyboards/iris/keymaps/manna-harbour_miryoku/config.h][keyboards/keebio/iris/keymaps/manna-harbour_miryoku/config.h]]
 
 Contains subset mapping.
 
@@ -1148,7 +1148,7 @@ XXX, K20, K21, K22, K23, K24, XXX,      XXX, K25, K26, K27, K28, K29, XXX,\
 #+END_SRC
 
 
-**** [[../../keyboards/lily58/keymaps/manna-harbour_miryoku/keymap.c][keyboards/keebio/iris/keymaps/manna-harbour_miryoku/keymap.c]]
+**** [[../../keyboards/iris/keymaps/manna-harbour_miryoku/keymap.c][keyboards/keebio/iris/keymaps/manna-harbour_miryoku/keymap.c]]
 
 Required by the build system.
 
@@ -1167,7 +1167,7 @@ To build for this keyboard,
 make kyria/rev1:manna-harbour_miryoku:flash
 #+END_SRC
 
-**** [[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/config.h][keyboards/kyria/keymaps/manna-harbour_miryoku/config.h]]
+**** [[../../keyboards/kyria/keymaps/manna-harbour_miryoku/config.h][keyboards/kyria/keymaps/manna-harbour_miryoku/config.h]]
 
 Contains subset mapping.
 
@@ -1193,7 +1193,7 @@ XXX, K20, K21, K22, K23, K24, XXX, XXX,      XXX, XXX, K25, K26, K27, K28, K29, 
 #+END_SRC
 
 
-**** [[../../keyboards/crkbd/keymaps/manna-harbour_miryoku/keymap.c][keyboards/kyria/keymaps/manna-harbour_miryoku/keymap.c]]
+**** [[../../keyboards/kyria/keymaps/manna-harbour_miryoku/keymap.c][keyboards/kyria/keymaps/manna-harbour_miryoku/keymap.c]]
 
 Required by the build system.
 
@@ -1256,7 +1256,7 @@ To build for this keyboard,
 make minidox/rev1:manna-harbour_miryoku:flash
 #+END_SRC
 
-**** [[../../keyboards/lily58/keymaps/manna-harbour_miryoku/config.h][keyboards/minidox/keymaps/manna-harbour_miryoku/config.h]]
+**** [[../../keyboards/minidox/keymaps/manna-harbour_miryoku/config.h][keyboards/minidox/keymaps/manna-harbour_miryoku/config.h]]
 
 Contains subset mapping.
 
@@ -1282,7 +1282,7 @@ K20, K21, K22, K23, K24,     K25, K26, K27, K28, K29,\
 #+END_SRC
 
 
-**** [[../../keyboards/lily58/keymaps/manna-harbour_miryoku/keymap.c][keyboards/minidox/keymaps/manna-harbour_miryoku/keymap.c]]
+**** [[../../keyboards/minidox/keymaps/manna-harbour_miryoku/keymap.c][keyboards/minidox/keymaps/manna-harbour_miryoku/keymap.c]]
 
 Required by the build system.
 
