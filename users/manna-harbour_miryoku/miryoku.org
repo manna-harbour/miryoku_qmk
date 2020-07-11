@@ -111,7 +111,8 @@ thumb keys.  The grid arrangement of the tables does not imply a particular
 physical layout.
 
 Basic keycodes are entered without the ~KC_~ prefix.  Symbols can be entered
-as-is, except for '"' (~DQUO~) and '|' (~PIPE~).  Empty cells are unused.
+as-is, except for '-' (~MINS~), '.' (~DOT~), '|' (~PIPE~), and '"' (~DQUO~).
+Empty cells are unused.
 
 The base layer has both halves of the layout joined for convenience.  Other
 layers are specified as a single hand.
@@ -134,7 +135,7 @@ included for prose, dot and slash for file and directory names.
 #+NAME: colemakdhm
 | Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | G    | M    | N    | E    | I    | O    |
-| Z    | X    | C    | D    | V    | K    | H    | ,    | .    | /    |
+| Z    | X    | C    | D    | V    | K    | H    | ,    | DOT  | /    |
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
@@ -212,7 +213,7 @@ Dot is duplicated from the base layer.
 | [    | 7    | 8    | 9    | ]    |
 | ;    | 4    | 5    | 6    | =    |
 | `    | 1    | 2    | 3    | \    |
-| NP   | NP   | .    | 0    | -    |
+| NP   | NP   | DOT  | 0    | MINS |
 
 
 *** Shifted Numerals and Symbols (~NSSL~)
@@ -259,13 +260,13 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 #+NAME: qwerty
 | Q    | W    | E    | R    | T    | Y    | U    | I    | O    | P    |
 | A    | S    | D    | F    | G    | H    | J    | K    | L    | '    |
-| Z    | X    | C    | V    | B    | N    | M    | ,    | .    | /    |
+| Z    | X    | C    | V    | B    | N    | M    | ,    | DOT  | /    |
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
 ***** Dvorak (~MIRYOKU_ALPHAS=DVORAK~)
 #+NAME: dvorak
-| '    | ,    | .    | P    | Y    | F    | G    | C    | R    | L    |
+| '    | ,    | DOT  | P    | Y    | F    | G    | C    | R    | L    |
 | A    | O    | E    | U    | I    | D    | H    | T    | N    | S    |
 | /    | Q    | J    | K    | X    | B    | M    | W    | V    | Z    |
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
@@ -275,7 +276,7 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 #+NAME: colemak
 | Q    | W    | F    | P    | G    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | D    | H    | N    | E    | I    | O    |
-| Z    | X    | C    | V    | B    | K    | M    | ,    | .    | /    |
+| Z    | X    | C    | V    | B    | K    | M    | ,    | DOT  | /    |
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
@@ -283,7 +284,7 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 #+NAME: colemakdh
 | Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | G    | K    | N    | E    | I    | O    |
-| Z    | X    | C    | D    | V    | M    | H    | ,    | .    | /    |
+| Z    | X    | C    | D    | V    | M    | H    | ,    | DOT  | /    |
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
@@ -291,7 +292,7 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 #+NAME: workman
 | Q    | D    | R    | W    | B    | J    | F    | U    | P    | '    |
 | A    | S    | H    | T    | G    | Y    | N    | E    | O    | I    |
-| Z    | X    | M    | C    | V    | K    | L    | ,    | .    | /    |
+| Z    | X    | M    | C    | V    | K    | L    | ,    | DOT  | /    |
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
@@ -369,9 +370,9 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 Produce base layer from separate tap and hold tables.
 
 #+NAME: table-layout-taphold
-#+BEGIN_SRC python :var layer_name="BASE" :var tap_table=colemakdhm :var hold_table=hold :var symbol_names_table=symbol-names :var mods_list=mods :tangle no :results verbatim
+#+BEGIN_SRC python :var layer_name="BASE" :var tap_table=colemakdhm :var hold_table=hold :var symbol_names_table=symbol-names :var mods_table=mods :tangle no :results verbatim
 width = 19
-mods_dict = dict.fromkeys(mods_list)
+mods_dict = dict.fromkeys(mods_table[0])
 symbol_names_dict = {}
 for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
   symbol_names_dict[symbol] = name
@@ -413,9 +414,9 @@ incorporating mods and reset from base layer.  Layer names must end with 'R' or
 'L'.  A layer with shifted symbols can also be generated.
 
 #+NAME: table-layout-half
-#+BEGIN_SRC python :var hold_table=hold :var layer_name="NSL" :var half_table=nsl :var symbol_names_table=symbol-names :var mods_list=mods :var shift="false" :tangle no :results verbatim
+#+BEGIN_SRC python :var hold_table=hold :var layer_name="NSL" :var half_table=nsl :var symbol_names_table=symbol-names :var mods_table=mods :var shift="false" :tangle no :results verbatim
 width = 9
-mods_dict = dict.fromkeys(mods_list)
+mods_dict = dict.fromkeys(mods_table[0])
 symbol_names_dict = {}
 shifted_symbol_names_dict = {}
 for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
@@ -456,7 +457,7 @@ return results
 :   [NSL] = LAYOUT_miryoku(
 :     KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_RST,
 :     KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  KC_NA,   KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-:     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_NA,
+:     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, KC_NA,   KC_NA,   KC_NA,   KC_ALGR, KC_NA,
 :     KC_NP,   KC_NP,   KC_DOT,  KC_0,    KC_MINS, KC_NA,   KC_NA,   KC_NA,   KC_NP,   KC_NP
 :   )
 
@@ -503,8 +504,8 @@ return results
 Produce layer enums from layer names in hold table.
 
 #+NAME: table-enums
-#+BEGIN_SRC python :var hold_table=hold :var mods_list=mods :tangle no
-mods_dict = dict.fromkeys(mods_list)
+#+BEGIN_SRC python :var hold_table=hold :var mods_table=mods :tangle no
+mods_dict = dict.fromkeys(mods_table[0])
 results = 'enum layers { BASE, MBO, '
 for hold_row in hold_table:
   for hold in hold_row:
@@ -526,7 +527,7 @@ Symbol, name, and shifted symbol mappings for use in tables.
 
 #+NAME: symbol-names
 | `    | GRV  | ~    | TILD |
-| -    | MINS | _    | UNDS |
+| "-"  | MINS | _    | UNDS |
 | =    | EQL  | +    | PLUS |
 | [    | LBRC | {    | LCBR |
 | ]    | RBRC | }    | RCBR |
@@ -534,7 +535,7 @@ Symbol, name, and shifted symbol mappings for use in tables.
 | ;    | SCLN | :    | COLN |
 | '    | QUOT | DQUO | DQUO |
 | ,    | COMM | <    | LT   |
-| .    | DOT  | >    | GT   |
+| "."  | DOT  | >    | GT   |
 | /    | SLSH | ?    | QUES |
 | 1    | 1    | !    | EXLM |
 | 2    | 2    | @    | AT   |
@@ -554,11 +555,7 @@ Modifiers usable in hold table.  Need to have the same name for ~KC_~ and ~_T~
 versions.
 
 #+NAME: mods
-- LSFT
-- LCTL
-- LALT
-- LGUI
-- ALGR
+| LSFT | LCTL | LALT | LGUI | ALGR |
 
 
 *** header
