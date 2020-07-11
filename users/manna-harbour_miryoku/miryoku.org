@@ -885,7 +885,13 @@ Required by the build system.
 
 *** split_3x5_3
 
-The split_3x5_3 layout corresponds directly to the miryoku layout.
+To build for any keyboard using this layout (arch_36, centromere mini,
+gergoplex, miniaxe, minidox, squiggle 36, suihankey) e.g. the minidox,
+
+#+BEGIN_SRC sh :tangle no
+make minidox:manna-harbour_miryoku:flash
+#+END_SRC
+
 
 **** [[../../layouts/community/split_3x5_3/manna-harbour_miryoku/config.h][layouts/community/split_3x5_3/manna-harbour_miryoku/config.h]]
 
