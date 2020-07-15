@@ -255,7 +255,10 @@ To select, append the corresponding option to the ~make~ command line when
 building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 
 
-***** Colemak (~MIRYOKU_ALPHAS=COLEMAK~)
+***** Colemak
+
+~MIRYOKU_ALPHAS=COLEMAK~
+
 #+NAME: colemak
 | Q    | W    | F    | P    | G    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | D    | H    | N    | E    | I    | O    |
@@ -263,7 +266,10 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
-***** Colemak Mod-DH (~MIRYOKU_ALPHAS=COLEMAKDH~)
+***** Colemak Mod-DH
+
+~MIRYOKU_ALPHAS=COLEMAKDH~
+
 #+NAME: colemakdh
 | Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | G    | K    | N    | E    | I    | O    |
@@ -271,7 +277,10 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
-***** Dvorak (~MIRYOKU_ALPHAS=DVORAK~)
+***** Dvorak
+
+~MIRYOKU_ALPHAS=DVORAK~
+
 #+NAME: dvorak
 | '    | ,    | DOT  | P    | Y    | F    | G    | C    | R    | L    |
 | A    | O    | E    | U    | I    | D    | H    | T    | N    | S    |
@@ -279,7 +288,10 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
-***** Halmak (~MIRYOKU_ALPHAS=HALMAK~)
+***** Halmak
+
+~MIRYOKU_ALPHAS=HALMAK~
+
 #+NAME: halmak
 | W    | L    | R    | B    | Z    | '    | Q    | U    | D    | J    |
 | S    | H    | N    | T    | ,    | DOT  | A    | E    | O    | I    |
@@ -287,7 +299,10 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
-***** Workman (~MIRYOKU_ALPHAS=WORKMAN~)
+***** Workman
+
+~MIRYOKU_ALPHAS=WORKMAN~
+
 #+NAME: workman
 | Q    | D    | R    | W    | B    | J    | F    | U    | P    | '    |
 | A    | S    | H    | T    | G    | Y    | N    | E    | O    | I    |
@@ -295,7 +310,10 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
-***** QWERTY (~MIRYOKU_ALPHAS=QWERTY~)
+***** QWERTY
+
+~MIRYOKU_ALPHAS=QWERTY~
+
 #+NAME: qwerty
 | Q    | W    | E    | R    | T    | Y    | U    | I    | O    | P    |
 | A    | S    | D    | F    | G    | H    | J    | K    | L    | '    |
