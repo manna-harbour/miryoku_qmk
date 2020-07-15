@@ -255,22 +255,6 @@ To select, append the corresponding option to the ~make~ command line when
 building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 
 
-***** QWERTY (~MIRYOKU_ALPHAS=QWERTY~)
-#+NAME: qwerty
-| Q    | W    | E    | R    | T    | Y    | U    | I    | O    | P    |
-| A    | S    | D    | F    | G    | H    | J    | K    | L    | '    |
-| Z    | X    | C    | V    | B    | N    | M    | ,    | DOT  | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
-
-
-***** Dvorak (~MIRYOKU_ALPHAS=DVORAK~)
-#+NAME: dvorak
-| '    | ,    | DOT  | P    | Y    | F    | G    | C    | R    | L    |
-| A    | O    | E    | U    | I    | D    | H    | T    | N    | S    |
-| /    | Q    | J    | K    | X    | B    | M    | W    | V    | Z    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
-
-
 ***** Colemak (~MIRYOKU_ALPHAS=COLEMAK~)
 #+NAME: colemak
 | Q    | W    | F    | P    | G    | J    | L    | U    | Y    | '    |
@@ -287,13 +271,12 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
-***** Workman (~MIRYOKU_ALPHAS=WORKMAN~)
-#+NAME: workman
-| Q    | D    | R    | W    | B    | J    | F    | U    | P    | '    |
-| A    | S    | H    | T    | G    | Y    | N    | E    | O    | I    |
-| Z    | X    | M    | C    | V    | K    | L    | ,    | DOT  | /    |
+***** Dvorak (~MIRYOKU_ALPHAS=DVORAK~)
+#+NAME: dvorak
+| '    | ,    | DOT  | P    | Y    | F    | G    | C    | R    | L    |
+| A    | O    | E    | U    | I    | D    | H    | T    | N    | S    |
+| /    | Q    | J    | K    | X    | B    | M    | W    | V    | Z    |
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
-
 
 
 ***** Halmak (~MIRYOKU_ALPHAS=HALMAK~)
@@ -303,6 +286,21 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | F    | M    | V    | C    | /    | G    | P    | X    | K    | Y    |
 | NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
+
+***** Workman (~MIRYOKU_ALPHAS=WORKMAN~)
+#+NAME: workman
+| Q    | D    | R    | W    | B    | J    | F    | U    | P    | '    |
+| A    | S    | H    | T    | G    | Y    | N    | E    | O    | I    |
+| Z    | X    | M    | C    | V    | K    | L    | ,    | DOT  | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+***** QWERTY (~MIRYOKU_ALPHAS=QWERTY~)
+#+NAME: qwerty
+| Q    | W    | E    | R    | T    | Y    | U    | I    | O    | P    |
+| A    | S    | D    | F    | G    | H    | J    | K    | L    | '    |
+| Z    | X    | C    | V    | B    | N    | M    | ,    | DOT  | /    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
 
 
 **** vi-Style Navigation
@@ -691,18 +689,18 @@ Contains the keymap.  Added from ~rules.mk~.
 #include "manna-harbour_miryoku.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-#if defined MIRYOKU_ALPHAS_QWERTY
-<<table-layout-taphold(layer_name="BASE", tap_table=qwerty, hold_table=hold)>>,
-#elif defined MIRYOKU_ALPHAS_DVORAK
-<<table-layout-taphold(layer_name="BASE", tap_table=dvorak, hold_table=hold)>>,
-#elif defined MIRYOKU_ALPHAS_COLEMAK
+#if defined MIRYOKU_ALPHAS_COLEMAK
 <<table-layout-taphold(layer_name="BASE", tap_table=colemak, hold_table=hold)>>,
 #elif defined MIRYOKU_ALPHAS_COLEMAKDH
 <<table-layout-taphold(layer_name="BASE", tap_table=colemakdh, hold_table=hold)>>,
-#elif defined MIRYOKU_ALPHAS_WORKMAN
-<<table-layout-taphold(layer_name="BASE", tap_table=workman, hold_table=hold)>>,
+#elif defined MIRYOKU_ALPHAS_DVORAK
+<<table-layout-taphold(layer_name="BASE", tap_table=dvorak, hold_table=hold)>>,
 #elif defined MIRYOKU_ALPHAS_HALMAK
 <<table-layout-taphold(layer_name="BASE", tap_table=halmak, hold_table=hold)>>,
+#elif defined MIRYOKU_ALPHAS_WORKMAN
+<<table-layout-taphold(layer_name="BASE", tap_table=workman, hold_table=hold)>>,
+#elif defined MIRYOKU_ALPHAS_QWERTY
+<<table-layout-taphold(layer_name="BASE", tap_table=qwerty, hold_table=hold)>>,
 #else
 <<table-layout-taphold(layer_name="BASE", tap_table=colemakdhm, hold_table=hold)>>,
 #endif
