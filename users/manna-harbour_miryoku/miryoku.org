@@ -296,6 +296,15 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 
 
 
+***** Halmak (~MIRYOKU_ALPHAS=HALMAK~)
+#+NAME: halmak
+| W    | L    | R    | B    | Z    | '    | Q    | U    | D    | J    |
+| S    | H    | N    | T    | ,    | DOT  | A    | E    | O    | I    |
+| F    | M    | V    | C    | /    | G    | P    | X    | K    | Y    |
+| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+
+
+
 **** vi-Style Navigation
 
 To select, append ~MIRYOKU_NAV=VI~ to the ~make~ command line when building.
@@ -692,6 +701,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 <<table-layout-taphold(layer_name="BASE", tap_table=colemakdh, hold_table=hold)>>,
 #elif defined MIRYOKU_ALPHAS_WORKMAN
 <<table-layout-taphold(layer_name="BASE", tap_table=workman, hold_table=hold)>>,
+#elif defined MIRYOKU_ALPHAS_HALMAK
+<<table-layout-taphold(layer_name="BASE", tap_table=halmak, hold_table=hold)>>,
 #else
 <<table-layout-taphold(layer_name="BASE", tap_table=colemakdhm, hold_table=hold)>>,
 #endif
