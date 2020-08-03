@@ -100,6 +100,8 @@ Additional implementations and visualisations are provided outside QMK in the
   thumbs, but thumb tap keys are mirrored onto some layers for use with
   auto-repeat.  On other layers thumb keys are redefined with important
   functions for that layer.
+- Auto Shift for alphas, numbers and symbols, including home row alphas with
+  Retro Shift.
 
 
 ** Layers
@@ -613,6 +615,7 @@ Build options.  Automatically included.
 
 MOUSEKEY_ENABLE = yes # Mouse keys
 EXTRAKEY_ENABLE = yes # Audio control and System control
+AUTO_SHIFT_ENABLE = yes # Auto Shift
 
 SRC += manna-harbour_miryoku.c # keymap
 
@@ -642,7 +645,7 @@ Config options.  Automatically included.
 
 #pragma once
 
-// default but important
+// default but used in macros
 #define TAPPING_TERM 200
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
@@ -650,6 +653,10 @@ Config options.  Automatically included.
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
 #define TAPPING_FORCE_HOLD
+
+// Auto Shift and Retro Shift (Auto Shift for Tap Hold).
+#define AUTO_SHIFT_TIMEOUT TAPPING_TERM
+#define RETRO_SHIFT 500
 
 // Recommended for heavy chording.
 #define QMK_KEYS_PER_SCAN 4
@@ -665,7 +672,6 @@ Config options.  Automatically included.
 #define MOUSEKEY_MAX_SPEED      6
 #undef MOUSEKEY_TIME_TO_MAX
 #define MOUSEKEY_TIME_TO_MAX    64
-
 #+END_SRC
 
 
@@ -1320,17 +1326,19 @@ layout's ~LAYOUT~ macro.
 
 ** QMK
 
-- https://qmk.fm/
-- https://docs.qmk.fm/#/getting_started_introduction
+- https://docs.qmk.fm/
 - https://docs.qmk.fm/#/config_options
-- https://docs.qmk.fm/#/keycodes
 - https://docs.qmk.fm/#/feature_advanced_keycodes
+- https://docs.qmk.fm/#/feature_auto_shift
 - https://docs.qmk.fm/#/feature_layers
-- https://docs.qmk.fm/#/mod_tap
 - https://docs.qmk.fm/#/feature_layouts
-- https://docs.qmk.fm/#/feature_userspace
 - https://docs.qmk.fm/#/feature_mouse_keys
+- https://docs.qmk.fm/#/feature_userspace
+- https://docs.qmk.fm/#/getting_started_introduction
 - https://docs.qmk.fm/#/getting_started_make_guide
+- https://docs.qmk.fm/#/keycodes
+- https://docs.qmk.fm/#/mod_tap
+- https://docs.qmk.fm/#/tap_hold
 
 
 ** Org Mode
