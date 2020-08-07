@@ -48,6 +48,7 @@ Additional implementations and visualisations are provided outside QMK in the
   - [[#layouts][Layouts]]
     - [[#ergodox][ergodox]]
     - [[#ortho_4x12][ortho_4x12]]
+    - [[#planck_mit][planck_mit]]
     - [[#split_3x5_3][split_3x5_3]]
     - [[#split_3x6_3][split_3x6_3]]
   - [[#keyboards][Keyboards]]
@@ -814,10 +815,6 @@ For the ortho_4x12 layout, the middle two columns, and the 2 keys on each end of
 the bottom row are unused.  This allows the hands to be positioned without ulnar
 deviation of the wrists.
 
-In the implementation, the 2 unused middle columns bottom row keys are mapped as
-duplicates of their adjacent keys to support alternative bottom row physical
-layouts including 1x2uC (MIT), 1x2uR, 1x2uL, and 2x2u.
-
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-mapping-ortho_4x12.png]]
 
 For split keyboards using this layout the halves can be positioned and rotated
@@ -831,9 +828,10 @@ building.
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-mapping-ortho_4x12-split.png]]
 
-To build for any keyboard using this layout (4x4, nori, chimera_ls, contra,
-divergetm2, jj40, lets_split, lets_split_eh, meira, niu_mini, planck, telophase,
-vitamins_included, zinc, zlant, ortho48, kbd4x, levinson, wavelet, plaid):
+To build for any keyboard using this layout (4x12, 4x4, chimera_ls, contra,
+efreet, eon40, jj40, jnao, kbd4x, lets_split, lets_split_eh, levinson, meira,
+niu_mini, nori, nyquist, ortho48, pancake, plaid, planck, rebound, shark,
+split_blackpill, telophase, vitamins_included, wavelet, zlant, zv48, zygomorph):
 
 #+BEGIN_SRC sh :tangle no
 make planck/rev6:manna-harbour_miryoku:flash # planck
@@ -874,7 +872,7 @@ LAYOUT_ortho_4x12(\
 K00,   K01,   K02,   K03,   K04,   KC_NO, KC_NO, K05,   K06,   K07,   K08,   K09,\
 K10,   K11,   K12,   K13,   K14,   KC_NO, KC_NO, K15,   K16,   K17,   K18,   K19,\
 K20,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K29,\
-KC_NO, KC_NO, K32,   K33,   K34,   K34,   K35,   K35,   K36,   K37,   KC_NO, KC_NO\
+KC_NO, KC_NO, K32,   K33,   K34,   KC_NO, KC_NO, K35,   K36,   K37,   KC_NO, KC_NO\
 )
 #endif
 #+END_SRC
@@ -885,6 +883,51 @@ KC_NO, KC_NO, K32,   K33,   K34,   K34,   K35,   K35,   K36,   K37,   KC_NO, KC_
 Required by the build system.
 
 #+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c
+// <<header>>
+#+END_SRC
+
+
+*** planck_mit
+
+The middle two columns including the middle 2u key, and the 2 keys on each end
+of the bottom row are unused.
+
+To build for any keyboard using this layout (bm40hsrgb, contra, efreet, eon40,
+jj40, kbd4x, mt40, niu_mini, pancake, plaid, planck, zlant), e.g. planck/ez:
+
+#+BEGIN_SRC sh :tangle no
+make planck/ez:manna-harbour_miryoku:flash
+#+END_SRC
+
+**** [[../../layouts/community/planck_mit/manna-harbour_miryoku/config.h][layouts/community/planck_mit/manna-harbour_miryoku/config.h]]
+
+Contains subset mapping.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/planck_mit/manna-harbour_miryoku/config.h
+// <<header>>
+
+#pragma once
+
+#define LAYOUT_miryoku(\
+K00,   K01,   K02,   K03,   K04,                 K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,                 K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,                 K25,   K26,   K27,   K28,   K29,\
+N30,   N31,   K32,   K33,   K34,                 K35,   K36,   K37,   N38,   N39\
+)\
+LAYOUT_planck_mit(\
+K00,   K01,   K02,   K03,   K04,   KC_NO, KC_NO, K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,   KC_NO, KC_NO, K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K29,\
+KC_NO, KC_NO, K32,   K33,   K34,      KC_NO,     K35,   K36,   K37,   KC_NO, KC_NO\
+)
+#+END_SRC
+
+
+**** [[../../layouts/community/planck_mit/manna-harbour_miryoku/keymap.c][layouts/community/planck_mit/manna-harbour_miryoku/keymap.c]]
+
+Required by the build system.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/planck_mit/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
