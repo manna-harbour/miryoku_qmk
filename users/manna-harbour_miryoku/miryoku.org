@@ -38,6 +38,7 @@ Additional implementations and visualisations are provided outside QMK in the
   - [[#data][Data]]
     - [[#symbol-names][symbol-names]]
     - [[#mods][mods]]
+    - [[#nonkc][nonkc]]
     - [[#header][header]]
 - [[#subset-mapping][Subset Mapping]]
   - [[#userspace][Userspace]]
@@ -107,9 +108,9 @@ Additional implementations and visualisations are provided outside QMK in the
 
 ** Layers
 
-The layers are maintained in tables, with the thumb keys on the bottom row.  NP
-indicates the key is not present and is used to fill in the table around the
-thumb keys.  The grid arrangement of the tables does not imply a particular
+The layers are maintained in tables, with the thumb keys on the bottom row.
+~X_NP~ indicates the key is not present and is used to fill in the table around
+the thumb keys.  The grid arrangement of the tables does not imply a particular
 physical layout.
 
 Basic keycodes are entered without the ~KC_~ prefix.  Symbols can be entered
@@ -135,19 +136,19 @@ included for prose, dot and slash for file and directory names.
 **** Tap
 
 #+NAME: colemakdhm
-| Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
-| A    | R    | S    | T    | G    | M    | N    | E    | I    | O    |
-| Z    | X    | C    | D    | V    | K    | H    | ,    | DOT  | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+| Q     | W     | F     | P     | B     | J     | L     | U     | Y     | '     |
+| A     | R     | S     | T     | G     | M     | N     | E     | I     | O     |
+| Z     | X     | C     | D     | V     | K     | H     | ,     | DOT   | /     |
+| X_NP  | X_NP  | ESC   | SPC   | TAB   | ENT   | BSPC  | DEL   | X_NP  | X_NP  |
 
 
 **** Hold
 
 #+NAME: hold
-| RST  |      |      |      |      |      |      |      |      | RST  |
-| LGUI | LALT | LCTL | LSFT |      |      | LSFT | LCTL | LALT | LGUI |
-|      | ALGR |      |      |      |      |      |      | ALGR |      |
-| NP   | NP   | MEDR | NAVR | MOUR | NSSL | NSL  | FUNL | NP   | NP   |
+| RESET |       |       |       |       |       |       |       |       | RESET |
+| LGUI  | LALT  | LCTL  | LSFT  |       |       | LSFT  | LCTL  | LALT  | LGUI  |
+|       | ALGR  |       |       |       |       |       |       | ALGR  |       |
+| X_NP  | X_NP  | MEDR  | NAVR  | MOUR  | NSSL  | NSL   | FUNL  | X_NP  | X_NP  |
 
 
 *** Navigation (~NAVR~)
@@ -161,7 +162,7 @@ base layer to avoid having to layer change mid edit and to enable auto-repeat.
 | AGIN | UNDO | CUT  | COPY | PSTE |
 | CAPS | LEFT | DOWN | UP   | RGHT |
 | INS  | HOME | PGDN | PGUP | END  |
-| ENT  | BSPC | DEL  | NP   | NP   |
+| ENT  | BSPC | DEL  | X_NP | X_NP |
 
 
 *** Mouse (~MOUR~)
@@ -176,7 +177,7 @@ functions.
 |      |      |      |      |      |
 |      | MS_L | MS_D | MS_U | MS_R |
 |      | WH_L | WH_D | WH_U | WH_R |
-| BTN1 | BTN3 | BTN2 | NP   | NP   |
+| BTN1 | BTN3 | BTN2 | X_NP | X_NP |
 
 
 **** Mouse Buttons Overlay (~MBO~)
@@ -188,7 +189,7 @@ configuration.  Not activated manually.
 |      |      |      |      |      |      |      |      |      |      |
 |      |      |      |      |      |      |      |      |      |      |
 |      |      |      |      |      |      |      |      |      |      |
-| NP   | NP   |      |      |      | BTN1 | BTN3 | BTN2 | NP   | NP   |
+| X_NP | X_NP |      |      |      | BTN1 | BTN3 | BTN2 | X_NP | X_NP |
 
 
 *** Media (~MEDR~)
@@ -199,10 +200,10 @@ control is on the top row (combine with shift to invert).  Unused keys are
 available for other related functions.
 
 #+NAME: medr
-| TOG  | MOD  | HUI  | SAI  | VAI  |
-|      | MPRV | VOLD | VOLU | MNXT |
-|      |      |      |      |      |
-| MSTP | MPLY | MUTE | NP   | NP   |
+| RGB_TOG | RGB_MOD | RGB_HUI | RGB_SAI | RGB_VAI |
+|         | MPRV    | VOLD    | VOLU    | MNXT    |
+|         |         |         |         |         |
+| MSTP    | MPLY    | MUTE    | X_NP    | X_NP    |
 
 
 *** Numerals and Symbols (~NSL~)
@@ -215,7 +216,7 @@ Dot is duplicated from the base layer.
 | [    | 7    | 8    | 9    | ]    |
 | ;    | 4    | 5    | 6    | =    |
 | `    | 1    | 2    | 3    | \    |
-| NP   | NP   | DOT  | 0    | MINS |
+| X_NP | X_NP | DOT  | 0    | MINS |
 
 
 *** Shifted Numerals and Symbols (~NSSL~)
@@ -228,7 +229,7 @@ next to close parenthesis.
 | {    | &    | *    | (    | }    |
 | :    | $    | %    | ^    | +    |
 | ~    | !    | @    | #    | PIPE |
-| NP   | NP   | (    | )    | _    |
+| X_NP | X_NP | (    | )    | _    |
 
 
 *** Function and System (~FUNL~)
@@ -243,7 +244,7 @@ the base layer to enable auto-repeat.
 | F12  | F7   | F8   | F9   | PSCR |
 | F11  | F4   | F5   | F6   | SLCK |
 | F10  | F1   | F2   | F3   | PAUS |
-| NP   | NP   | APP  | SPC  | TAB  |
+| X_NP | X_NP | APP  | SPC  | TAB  |
 
 
 *** Alternative Layouts
@@ -266,7 +267,7 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | Q    | W    | F    | P    | G    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | D    | H    | N    | E    | I    | O    |
 | Z    | X    | C    | V    | B    | K    | M    | ,    | DOT  | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+| X_NP | X_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | X_NP | X_NP |
 
 
 ***** Colemak Mod-DH
@@ -277,7 +278,7 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | G    | K    | N    | E    | I    | O    |
 | Z    | X    | C    | D    | V    | M    | H    | ,    | DOT  | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+| X_NP | X_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | X_NP | X_NP |
 
 
 ***** Dvorak
@@ -288,7 +289,7 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | '    | ,    | DOT  | P    | Y    | F    | G    | C    | R    | L    |
 | A    | O    | E    | U    | I    | D    | H    | T    | N    | S    |
 | /    | Q    | J    | K    | X    | B    | M    | W    | V    | Z    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+| X_NP | X_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | X_NP | X_NP |
 
 
 ***** Halmak
@@ -299,7 +300,7 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | W    | L    | R    | B    | Z    | '    | Q    | U    | D    | J    |
 | S    | H    | N    | T    | ,    | DOT  | A    | E    | O    | I    |
 | F    | M    | V    | C    | /    | G    | P    | X    | K    | Y    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+| X_NP | X_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | X_NP | X_NP |
 
 
 ***** Workman
@@ -310,7 +311,7 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | Q    | D    | R    | W    | B    | J    | F    | U    | P    | '    |
 | A    | S    | H    | T    | G    | Y    | N    | E    | O    | I    |
 | Z    | X    | M    | C    | V    | K    | L    | ,    | DOT  | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+| X_NP | X_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | X_NP | X_NP |
 
 
 ***** QWERTY
@@ -321,7 +322,7 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | Q    | W    | E    | R    | T    | Y    | U    | I    | O    | P    |
 | A    | S    | D    | F    | G    | H    | J    | K    | L    | '    |
 | Z    | X    | C    | V    | B    | N    | M    | ,    | DOT  | /    |
-| NP   | NP   | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | NP   | NP   |
+| X_NP | X_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | X_NP | X_NP |
 
 
 **** vi-Style Navigation
@@ -335,7 +336,7 @@ To select, append ~MIRYOKU_NAV=VI~ to the ~make~ command line when building.
 | AGIN | UNDO | CUT  | COPY | PSTE |
 | LEFT | DOWN | UP   | RGHT | CAPS |
 | HOME | PGDN | PGUP | END  | INS  |
-| ENT  | BSPC | DEL  | NP   | NP   |
+| ENT  | BSPC | DEL  | X_NP | X_NP |
 
 
 ***** Mouse (MOUR)
@@ -344,16 +345,16 @@ To select, append ~MIRYOKU_NAV=VI~ to the ~make~ command line when building.
 |      |      |      |      |      |
 | MS_L | MS_D | MS_U | MS_R |      |
 | WH_L | WH_D | WH_U | WH_R |      |
-| BTN1 | BTN3 | BTN2 | NP   | NP   |
+| BTN1 | BTN3 | BTN2 | X_NP | X_NP |
 
 
 ***** Media (MEDR)
 
 #+NAME: medr-vi
-| TOG  | MOD  | HUI  | SAI  | VAI  |
-| MPRV | VOLD | VOLU | MNXT |      |
-|      |      |      |      |      |
-| MSTP | MPLY | MUTE | NP   | NP   |
+| RGB_TOG | RGB_MOD | RGB_HUI | RGB_SAI | RGB_VAI |
+| MPRV    | VOLD    | VOLU    | MNXT    |         |
+|         |         |         |         |         |
+| MSTP    | MPLY    | MUTE    | X_NP    | X_NP    |
 
 
 
@@ -365,7 +366,7 @@ To select, append ~MIRYOKU_NAV=VI~ to the ~make~ command line when building.
 |      |      |      |      |      |      |      |      |      |      |
 |      |      |      |      |      |      |      |      |      |      |
 |      |      |      |      |      |      |      |      |      |      |
-| NP   | NP   |      |      |      |      |      |      | NP   | NP   |
+| X_NP | X_NP |      |      |      |      |      |      | X_NP | X_NP |
 
 
 Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
@@ -376,7 +377,7 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 |      |      |      |      |      |
 |      |      |      |      |      |
 |      |      |      |      |      |
-| ENT  | BSPC | DEL  | NP   | NP   |
+| ENT  | BSPC | DEL  | X_NP | X_NP |
 
 #+NAME: teml
 | <l4> | <l4> | <l4> | <l4> | <l4> |
@@ -384,7 +385,7 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 |      |      |      |      |      |
 |      |      |      |      |      |
 |      |      |      |      |      |
-| NP   | NP   | ESC  | SPC  | TAB  |
+| X_NP | X_NP | ESC  | SPC  | TAB  |
 
 
 * Code Generation
@@ -397,9 +398,10 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 Produce base layer from separate tap and hold tables.
 
 #+NAME: table-layout-taphold
-#+BEGIN_SRC python :var layer_name="BASE" :var tap_table=colemakdhm :var hold_table=hold :var symbol_names_table=symbol-names :var mods_table=mods :tangle no :results verbatim
+#+BEGIN_SRC python :var layer_name="BASE" :var tap_table=colemakdhm :var hold_table=hold :var symbol_names_table=symbol-names :var mods_table=mods :var nonkc_table=nonkc :tangle no :results verbatim
 width = 19
 mods_dict = dict.fromkeys(mods_table[0])
+nonkc_tuple = tuple(nonkc_table[0])
 symbol_names_dict = {}
 for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
   symbol_names_dict[symbol] = name
@@ -409,15 +411,16 @@ for tap_row, hold_row in map(None, tap_table, hold_table):
   results += '    '
   for tap, hold in map(None, tap_row, hold_row):
     if tap == '':
-      code = 'NU'
+      code = 'X_NU'
     elif tap in symbol_names_dict:
       code = symbol_names_dict[tap]
     else:
       code = tap
-    code = 'KC_' + str(code)
+    if not str(code).startswith(nonkc_tuple):
+      code = 'KC_' + str(code)
     if hold in mods_dict:
       code = str(hold) + '_T(' + code + ')'
-    elif hold != '' and hold != 'NP' and hold != 'RST':
+    elif hold != '' and hold != 'X_NP' and hold != 'RESET':
       code = 'LT(' + str(hold) + ', ' + code + ')'
     results += (code + ', ').ljust(width)
   results = results.rstrip(' ') + '\n'
@@ -430,7 +433,7 @@ return results
 :     KC_Q,              KC_W,              KC_F,              KC_P,              KC_B,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,
 :     LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_G,              KC_M,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),
 :     KC_Z,              ALGR_T(KC_X),      KC_C,              KC_D,              KC_V,              KC_K,              KC_H,              KC_COMM,           ALGR_T(KC_DOT),    KC_SLSH,
-:     KC_NP,             KC_NP,             LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_NP,             KC_NP
+:     X_NP,              X_NP,              LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  X_NP,              X_NP
 :   )
 
 
@@ -441,9 +444,10 @@ incorporating mods and reset from base layer.  Layer names must end with 'R' or
 'L'.  A layer with shifted symbols can also be generated.
 
 #+NAME: table-layout-half
-#+BEGIN_SRC python :var hold_table=hold :var layer_name="NSL" :var half_table=nsl :var symbol_names_table=symbol-names :var mods_table=mods :var shift="false" :tangle no :results verbatim
+#+BEGIN_SRC python :var hold_table=hold :var layer_name="NSL" :var half_table=nsl :var symbol_names_table=symbol-names :var mods_table=mods :var nonkc_table=nonkc :var shift="false" :tangle no :results verbatim
 width = 9
 mods_dict = dict.fromkeys(mods_table[0])
+nonkc_tuple = tuple(nonkc_table[0])
 symbol_names_dict = {}
 shifted_symbol_names_dict = {}
 for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
@@ -460,21 +464,25 @@ for half_row, hold_row in map(None, half_table, hold_table):
     if lr == mode:
       for half in half_row:
         if half == '':
-          code = 'NU'
+          code = 'X_NU'
         elif shift == "true" and half in shifted_symbol_names_dict:
           code = shifted_symbol_names_dict[half]
         elif half in symbol_names_dict:
           code = symbol_names_dict[half]
         else:
           code = half
-        results += ('KC_' + str(code) + ', ').ljust(width)
+        if not str(code).startswith(nonkc_tuple):
+          code = 'KC_' + str(code)
+        results += (str(code) + ', ').ljust(width)
     else:
       for hold in hold_row_lr:
-        if hold == '' or hold != 'NP' and hold != 'RST' and hold not in mods_dict:
-          code = 'NA'
+        if hold == '' or hold != 'X_NP' and hold != 'RESET' and hold not in mods_dict:
+          code = 'X_NA'
         else:
           code = hold
-        results += ('KC_' + str(code) + ', ').ljust(width)
+        if not str(code).startswith(nonkc_tuple):
+          code = 'KC_' + str(code)
+        results += (str(code) + ', ').ljust(width)
   results = results.rstrip(' ') + '\n'
 results = results.rstrip('\n, ') + '\n  )'
 return results
@@ -482,10 +490,10 @@ return results
 
 #+RESULTS: table-layout-half
 :   [NSL] = LAYOUT_miryoku(
-:     KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_RST,
-:     KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  KC_NA,   KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-:     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, KC_NA,   KC_NA,   KC_NA,   KC_ALGR, KC_NA,
-:     KC_NP,   KC_NP,   KC_DOT,  KC_0,    KC_MINS, KC_NA,   KC_NA,   KC_NA,   KC_NP,   KC_NP
+:     KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, X_NA,    X_NA,    X_NA,    X_NA,    RESET,
+:     KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  X_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+:     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, X_NA,    X_NA,    X_NA,    KC_ALGR, X_NA,
+:     X_NP,    X_NP,    KC_DOT,  KC_0,    KC_MINS, X_NA,    X_NA,    X_NA,    X_NP,    X_NP
 :   )
 
 
@@ -494,9 +502,10 @@ return results
 Produce full layer from single table.  Fill for unused keys is configurable.
 
 #+NAME: table-layout-full
-#+BEGIN_SRC python :var table=mbo :var layer_name="MBO" :var fill="TRNS" :var symbol_names_table=symbol-names :tangle no :results verbatim
+#+BEGIN_SRC python :var table=mbo :var layer_name="MBO" :var fill="TRNS" :var symbol_names_table=symbol-names :var nonkc_table=nonkc :tangle no :results verbatim
 width = 9
 symbol_names_dict = {}
+nonkc_tuple = tuple(nonkc_table[0])
 for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
   symbol_names_dict[symbol] = name
   symbol_names_dict[shifted_symbol] = shifted_name
@@ -510,7 +519,8 @@ for row in table:
       code = symbol_names_dict[key]
     else:
       code = key
-    code = 'KC_' + str(code)
+    if not str(code).startswith(nonkc_tuple):
+      code = 'KC_' + str(code)
     results += (code + ', ').ljust(width)
   results = results.rstrip(' ') + '\n'
 results = results.rstrip('\n, ') + '\n  )'
@@ -522,7 +532,7 @@ return results
 :     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 :     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 :     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-:     KC_NP,   KC_NP,   KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN3, KC_BTN2, KC_NP,   KC_NP
+:     X_NP,    X_NP,    KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN3, KC_BTN2, X_NP,    X_NP
 :   )
 
 
@@ -536,7 +546,7 @@ mods_dict = dict.fromkeys(mods_table[0])
 results = 'enum layers { BASE, MBO, '
 for hold_row in hold_table:
   for hold in hold_row:
-    if hold not in mods_dict and hold != '' and hold != 'NP' and hold != 'RST':
+    if hold not in mods_dict and hold != '' and hold != 'X_NP' and hold != 'RESET':
       results += hold + ', '
 results = results.rstrip(', ') + ' };'
 return results
@@ -583,6 +593,15 @@ versions.
 
 #+NAME: mods
 | LSFT | LCTL | LALT | LGUI | ALGR |
+
+
+*** nonkc
+
+Keycodes that match any of these prefixes will not have ~KC_~ automatically
+prepended.
+
+#+NAME: nonkc
+| X_    | RGB_  | RESET |
 
 
 *** header
@@ -688,17 +707,9 @@ included from keymap or layout ~keymap.c~ if needed.
 
 #include QMK_KEYBOARD_H
 
-#define KC_NP KC_NO // key is not present
-#define KC_NA KC_NO // present but not available for use
-#define KC_NU KC_NO // available but not used
-
-// non-KC_ keycodes
-#define KC_RST RESET
-#define KC_TOG RGB_TOG
-#define KC_MOD RGB_MOD
-#define KC_HUI RGB_HUI
-#define KC_SAI RGB_SAI
-#define KC_VAI RGB_VAI
+#define X_NP KC_NO // key is not present
+#define X_NA KC_NO // present but not available for use
+#define X_NU KC_NO // available but not used
 
 <<table-enums()>>
 #+END_SRC
