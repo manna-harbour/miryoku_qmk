@@ -50,6 +50,7 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#60_ansi][60_ansi]]
     - [[#ergodox][ergodox]]
     - [[#ortho_4x12][ortho_4x12]]
+    - [[#ortho_5x15][ortho_5x15]]
     - [[#planck_mit][planck_mit]]
     - [[#split_3x5_3][split_3x5_3]]
     - [[#split_3x6_3][split_3x6_3]]
@@ -935,6 +936,84 @@ KC_NO, KC_NO, K32,   K33,   K34,   KC_NO, KC_NO, K35,   K36,   K37,   KC_NO, KC_
 Required by the build system.
 
 #+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c
+// <<header>>
+#+END_SRC
+
+
+*** ortho_5x15
+
+For the ortho_Sx12 layout, the top row, middle 5 columns, and the 2 keys on each
+end of the bottom row are unused.  This allows the hands to be positioned
+without ulnar deviation of the wrists.
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle/kle-miryoku-mapping-ortho_5x15.png]]
+
+An alternative subset mapping is also provided with the thumb keys shifted
+across one position in the direction of thumb extension.  To select this
+mapping, append ~MIRYOKU_MAPPING=EXTENDED_THUMBS~ to the ~make~ command line
+when building.
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle/kle-miryoku-mapping-ortho_5x15-extended_thumbs.png]]
+
+To build for any keyboard using this layout (atomic, i75, idobo, ortho75,
+punk75, xd75), e.g. idobo:
+
+#+BEGIN_SRC sh :tangle no
+make idobo:manna-harbour_miryoku:flash
+make idobo:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # extended thumb position
+#+END_SRC
+
+
+**** [[../../layouts/community/ortho_5x15/manna-harbour_miryoku/config.h][layouts/community/ortho_5x15/manna-harbour_miryoku/config.h]]
+
+Contains subset mapping.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_5x15/manna-harbour_miryoku/config.h
+// <<header>>
+
+#pragma once
+
+#define XXX KC_NO
+
+#if defined MIRYOKU_MAPPING_EXTENDED_THUMBS
+#define LAYOUT_miryoku(\
+K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09,\
+K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19,\
+K20, K21, K22, K23, K24,                          K25, K26, K27, K28, K29,\
+N30, N31, K32, K33, K34,                          K35, K36, K37, N38, N39\
+)\
+LAYOUT_ortho_5x15(\
+XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX,\
+K00, K01, K02, K03, K04, XXX, XXX, XXX, XXX, XXX, K05, K06, K07, K08, K09,\
+K10, K11, K12, K13, K14, XXX, XXX, XXX, XXX, XXX, K15, K16, K17, K18, K19,\
+K20, K21, K22, K23, K24, XXX, XXX, XXX, XXX, XXX, K25, K26, K27, K28, K29,\
+XXX, XXX, XXX, K32, K33, K34, XXX, XXX, XXX, K35, K36, K37, XXX, XXX, XXX\
+)
+#else
+#define LAYOUT_miryoku(\
+K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09,\
+K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19,\
+K20, K21, K22, K23, K24,                          K25, K26, K27, K28, K29,\
+N30, N31, K32, K33, K34,                          K35, K36, K37, N38, N39\
+)\
+LAYOUT_ortho_5x15(\
+XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX,\
+K00, K01, K02, K03, K04, XXX, XXX, XXX, XXX, XXX, K05, K06, K07, K08, K09,\
+K10, K11, K12, K13, K14, XXX, XXX, XXX, XXX, XXX, K15, K16, K17, K18, K19,\
+K20, K21, K22, K23, K24, XXX, XXX, XXX, XXX, XXX, K25, K26, K27, K28, K29,\
+XXX, XXX, K32, K33, K34, XXX, XXX, XXX, XXX, XXX, K35, K36, K37, XXX, XXX\
+)
+#endif
+#+END_SRC
+
+#+RESULTS:
+
+
+**** [[../../layouts/community/ortho_5x15/manna-harbour_miryoku/keymap.c][layouts/community/ortho_5x15/manna-harbour_miryoku/keymap.c]]
+
+Required by the build system.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_5x15/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
