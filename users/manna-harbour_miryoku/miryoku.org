@@ -942,7 +942,7 @@ Required by the build system.
 
 *** ortho_5x15
 
-For the ortho_Sx12 layout, the top row, middle 5 columns, and the 2 keys on each
+For the ortho_5x15 layout, the top row, middle 5 columns, and the 2 keys on each
 end of the bottom row are unused.  This allows the hands to be positioned
 without ulnar deviation of the wrists.
 
