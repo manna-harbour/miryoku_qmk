@@ -62,6 +62,7 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#kyria][kyria]]
     - [[#lily58][lily58]]
     - [[#moonlander][moonlander]]
+    - [[#redox_w][redox_w]]
   - [[#customisation][Customisation]]
 - [[#documentation][Documentation]]
 - [[#contact][Contact]]
@@ -1482,6 +1483,55 @@ XXX, XXX, XXX, XXX, XXX,      XXX,     XXX,      XXX, XXX, XXX, XXX, XXX,\
 Required by the build system.
 
 #+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/moonlander/keymaps/manna-harbour_miryoku/keymap.c
+// <<header>>
+#+END_SRC
+
+
+*** redox_w
+
+Only the main 5x3 alphas and the main 3 thumb keys are used.
+
+To build for this keyboard,
+
+#+BEGIN_SRC sh :tangle no
+make redox_w:manna-harbour_miryoku:flash
+#+END_SRC
+
+
+**** [[../../keyboards/redox_w/keymaps/manna-harbour_miryoku/config.h][keyboards/redox_w/keymaps/manna-harbour_miryoku/config.h]]
+
+Contains subset mapping.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/redox_w/keymaps/manna-harbour_miryoku/config.h
+// <<header>>
+
+#pragma once
+
+#define XXX KC_NO
+
+#define LAYOUT_miryoku(\
+     K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09,\
+     K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19,\
+     K20, K21, K22, K23, K24,                          K25, K26, K27, K28, K29,\
+     N30, N31, K32, K33, K34,                          K35, K36, K37, N38, N39\
+)\
+LAYOUT(\
+XXX, XXX, XXX, XXX, XXX, XXX,                          XXX, XXX, XXX, XXX, XXX, XXX,\
+XXX, K00, K01, K02, K03, K04, XXX,                XXX, K05, K06, K07, K08, K09, XXX,\
+XXX, K10, K11, K12, K13, K14, XXX,                XXX, K15, K16, K17, K18, K19, XXX,\
+XXX, K20, K21, K22, K23, K24, XXX, XXX,      XXX, XXX, K25, K26, K27, K28, K29, XXX,\
+XXX, XXX, XXX, XXX,    K32,   K33, K34,      K35, K36,    K37,   XXX, XXX, XXX, XXX\
+)
+#+END_SRC
+
+#+RESULTS:
+
+
+**** [[../../keyboards/redox_w/keymaps/manna-harbour_miryoku/keymap.c][keyboards/redox_w/keymaps/manna-harbour_miryoku/keymap.c]]
+
+Required by the build system.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/redox_w/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
