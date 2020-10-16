@@ -13,6 +13,7 @@
 
 // Auto Shift and Retro Shift (Auto Shift for Tap Hold).
 #define AUTO_SHIFT_TIMEOUT TAPPING_TERM
+#define AUTO_SHIFT_NO_SETUP
 #define RETRO_SHIFT 500
 
 // Recommended for heavy chording.
