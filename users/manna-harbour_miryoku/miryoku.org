@@ -1,8 +1,8 @@
 # After making changes to code or tables call org-babel-tangle (C-c C-v t).
 
-#+Title: Miryoku [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/miryoku-roa-32.png]]
+#+Title: Miryoku [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/logos/miryoku-roa-32.png]]
 
-[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-keycodes.png]]
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/qmk/miryoku-kle-qmk_keycodes.png]]
 
 Miryoku is an ergonomic, minimal, orthogonal layout for ergo or ortho keyboards,
 implemented as part of the QMK firmware.
@@ -769,7 +769,7 @@ unused keys as ~KC_NO~.
 
 *** 60_ansi
 
-[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-mapping-60_ansi.png]]
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-60_ansi.png]]
 
 
 **** [[../../layouts/community/60_ansi/manna-harbour_miryoku/config.h][layouts/community/60_ansi/manna-harbour_miryoku/config.h]]
@@ -815,7 +815,7 @@ secondary thumb keys are the inner and outer 2u thumb keys and the tertiary
 thumb key is the innermost key of the partial bottom row.  The remaining keys
 are unused.
 
-[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-mapping-ergodox.png]]
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ergodox.png]]
 
 To build for any keyboard using the this layout (ergodone, ergodox_ez,
 ergodox_infinity, hotdox) e.g. the ergodox_ez,
@@ -870,7 +870,7 @@ For the ortho_4x12 layout, the middle two columns, and the 2 keys on each end of
 the bottom row are unused.  This allows the hands to be positioned without ulnar
 deviation of the wrists.
 
-[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-mapping-ortho_4x12.png]]
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ortho_4x12.png]]
 
 For split keyboards using this layout the halves can be positioned and rotated
 for each hand and so an alternative mapping is provided.  The right half is as
@@ -881,7 +881,7 @@ left 3 keys are the thumb keys.  The remaining keys are unused.  To select this
 mapping, append ~MIRYOKU_MAPPING=SPLIT~ to the ~make~ command line when
 building.
 
-[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle-miryoku-mapping-ortho_4x12-split.png]]
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ortho_4x12-split.png]]
 
 To build for any keyboard using this layout (4x12, 4x4, chimera_ls, contra,
 efreet, eon40, jj40, jnao, kbd4x, lets_split, lets_split_eh, levinson, meira,
@@ -948,14 +948,14 @@ For the ortho_5x15 layout, the top row, middle 5 columns, and the 2 keys on each
 end of the bottom row are unused.  This allows the hands to be positioned
 without ulnar deviation of the wrists.
 
-[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle/kle-miryoku-mapping-ortho_5x15.png]]
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ortho_5x15.png]]
 
 An alternative subset mapping is also provided with the thumb keys shifted
 across one position in the direction of thumb extension.  To select this
 mapping, append ~MIRYOKU_MAPPING=EXTENDED_THUMBS~ to the ~make~ command line
 when building.
 
-[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/kle/kle-miryoku-mapping-ortho_5x15-extended_thumbs.png]]
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ortho_5x15-extended_thumbs.png]]
 
 To build for any keyboard using this layout (atomic, i75, idobo, ortho75,
 punk75, xd75), e.g. idobo:
@@ -1584,4 +1584,4 @@ alphas, layouts, or keyboards, please [[https://github.com/manna-harbour/qmk_fir
 
 For more general discussion, please join a recent relevant [[https://www.reddit.com/user/manna_harbour/][thread]] or [[https://www.reddit.com/message/compose/?to=manna_harbour][send a PM]].
 
-[[https://github.com/manna-harbour][https://raw.githubusercontent.com/manna-harbour/miryoku/master/manna-harbour-boa-32.png]]
+[[https://github.com/manna-harbour][https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/logos/manna-harbour-boa-32.png]]
