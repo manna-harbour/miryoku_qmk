@@ -13,8 +13,17 @@ different physical layouts as a subset without code duplication using the QMK
 userspace feature and C macros.
 
 Please see the [[https://github.com/manna-harbour/qmk_firmware/blob/miryoku/users/manna-harbour_miryoku/miryoku.org][development branch]] for any [[https://github.com/qmk/qmk_firmware/compare/master...manna-harbour:miryoku][updates not yet merged into QMK]].
+
+To checkout the development branch in your existing QMK build environment:
+#+BEGIN_SRC sh :tangle no
+git remote add manna-harbour git@github.com:manna-harbour/qmk_firmware.git
+git fetch manna-harbour
+git checkout --track manna-harbour/miryoku
+#+END_SRC
+
 Additional implementations and visualisations are provided outside QMK in the
 [[https://github.com/manna-harbour/miryoku/blob/master/README.org][Miryoku (Extras) repository]].
+
 
 * Contents                                                              :TOC_3:
 - [[#layout][Layout]]
