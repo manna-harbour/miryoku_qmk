@@ -20,3 +20,8 @@ endif
 ifneq ($(strip $(MIRYOKU_MAPPING)),)
   OPT_DEFS += -DMIRYOKU_MAPPING_$(MIRYOKU_MAPPING)
 endif
+
+# select alternative clipboard
+ifneq ($(strip $(MIRYOKU_CLIPBOARD)),)
+  OPT_DEFS += -DMIRYOKU_CLIPBOARD_$(MIRYOKU_CLIPBOARD)
+endif
