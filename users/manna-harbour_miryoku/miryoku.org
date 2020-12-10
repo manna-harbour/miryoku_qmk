@@ -74,6 +74,9 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#moonlander][moonlander]]
     - [[#redox_w][redox_w]]
   - [[#customisation][Customisation]]
+- [[#experimental-features][Experimental Features]]
+  - [[#bilateral-combinations][Bilateral Combinations]]
+  - [[#retro-shift][Retro Shift]]
 - [[#documentation][Documentation]]
 - [[#contact][Contact]]
 
@@ -1695,6 +1698,27 @@ be added to unused keys by editing ~LAYOUT_miryoku~ in ~config.h~.
 For an unsupported keyboard or layout, do as above with a similar keyboard or
 layout and modify ~LAYOUT_miryoku~ in ~config.h~ referring to the keyboard or
 layout's ~LAYOUT~ macro.
+
+
+* Experimental Features
+
+** Bilateral Combinations
+
+- [[https://github.com/manna-harbour/qmk_firmware/blob/bilateral-combinations/docs/tap_hold.md#bilateral-combinations][Bilateral Combinations documentation]]
+
+To enable, merge the following branch:
+
+- https://github.com/manna-harbour/qmk_firmware/tree/bilateral-combinations/
+
+
+** Retro Shift
+
+- [[https://github.com/manna-harbour/qmk_firmware/blob/retro-shift/docs/tap_hold.md#retro-shift][Retro Shift documentation]]
+
+To enable, merge the following branches:
+
+- https://github.com/manna-harbour/qmk_firmware/tree/retro-shift
+- https://github.com/manna-harbour/qmk_firmware/tree/miryoku-retro-shift-test
 
 
 * Documentation                                                  :noexport_1:
