@@ -39,12 +39,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 int tp_buttons;
 
-#if defined RETRO_TAPPING || defined RETRO_SHIFT
+#ifdef RETRO_TAPPING
 int retro_tapping_counter = 0;
-#endif
-
-#ifdef RETRO_SHIFT
-#    include "quantum.h"
 #endif
 
 #ifdef FAUXCLICKY_ENABLE
@@ -71,7 +67,7 @@ void action_exec(keyevent_t event) {
         dprint("EVENT: ");
         debug_event(event);
         dprintln();
-#if defined RETRO_TAPPING || defined RETRO_SHIFT
+#ifdef RETRO_TAPPING
         retro_tapping_counter++;
 #endif
     }
@@ -233,16 +229,10 @@ void process_action(keyrecord_t *record, action_t action) {
 #ifndef NO_ACTION_TAPPING
     uint8_t tap_count = record->tap.count;
 #endif
-#ifdef RETRO_SHIFT
-    static uint16_t retro_shift_start_time;
-#endif
 
     if (event.pressed) {
         // clear the potential weak mods left by previously pressed keys
         clear_weak_mods();
-#ifdef RETRO_SHIFT
-        retro_shift_start_time = event.time;
-#endif
     }
 
 #ifndef NO_ACTION_ONESHOT
@@ -702,7 +692,7 @@ void process_action(keyrecord_t *record, action_t action) {
 #endif
 
 #ifndef NO_ACTION_TAPPING
-#    if defined RETRO_TAPPING || defined RETRO_SHIFT
+#    ifdef RETRO_TAPPING
     if (!is_tap_action(action)) {
         retro_tapping_counter = 0;
     } else {
@@ -716,39 +706,7 @@ void process_action(keyrecord_t *record, action_t action) {
                 retro_tapping_counter = 0;
             } else {
                 if (retro_tapping_counter == 2) {
-#        ifdef RETRO_SHIFT
-                    if(!(RETRO_SHIFT + 0) || TIMER_DIFF_16(event.time, retro_shift_start_time) < (RETRO_SHIFT + 0)){
-
-                        switch (action.layer_tap.code) {
-#            ifndef NO_AUTO_SHIFT_ALPHA
-                            case KC_A ... KC_Z:
-#            endif
-#            ifndef NO_AUTO_SHIFT_NUMERIC
-                            case KC_1 ... KC_0:
-#            endif
-#            ifndef NO_AUTO_SHIFT_SPECIAL
-                            case KC_TAB:
-                            case KC_MINUS ... KC_SLASH:
-                            case KC_NONUS_BSLASH:
-#            endif
-#            ifndef AUTO_SHIFT_MODIFIERS
-                                if (get_mods()) {
-                                    tap_code(action.layer_tap.code);
-                                    break;
-                                }
-#            endif
-                                tap_code16(LSFT(action.layer_tap.code));
-                                break;
-                            default:
-#            ifdef RETRO_TAPPING
-                                tap_code(action.layer_tap.code);
-#            endif
-                                ;
-                        }
-                    }
-#        else
                     tap_code(action.layer_tap.code);
-#        endif
                 }
                 retro_tapping_counter = 0;
             }
