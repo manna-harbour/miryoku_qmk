@@ -490,9 +490,9 @@ for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
   symbol_names_dict[symbol] = name
   symbol_names_dict[shifted_symbol] = shifted_name
 results = '  [' + layer_name + '] = LAYOUT_miryoku(\n'
-for tap_row, hold_row in map(None, tap_table, hold_table):
+for tap_row, hold_row in zip(tap_table, hold_table):
   results += '    '
-  for tap, hold in map(None, tap_row, hold_row):
+  for tap, hold in zip(tap_row, hold_row):
     if tap == '':
       code = 'U_NU'
     elif tap in symbol_names_dict:
@@ -540,7 +540,7 @@ for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
 length = len(half_table[0])
 mode = layer_name[-1:].lower()
 results = '  [' + layer_name + '] = LAYOUT_miryoku(\n'
-for half_row, hold_row in map(None, half_table, hold_table):
+for half_row, hold_row in zip(half_table, hold_table):
   results += '    '
   hold_row_l, hold_row_r = hold_row[:length], hold_row[length:]
   for lr, hold_row_lr in ('l', hold_row_l), ('r', hold_row_r):
