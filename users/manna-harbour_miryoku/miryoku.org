@@ -75,6 +75,7 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#moonlander][moonlander]]
     - [[#redox_w][redox_w]]
   - [[#customisation][Customisation]]
+    - [[#examples][Examples]]
 - [[#experimental-features][Experimental Features]]
   - [[#bilateral-combinations][Bilateral Combinations]]
   - [[#retro-shift][Retro Shift]]
@@ -1752,6 +1753,16 @@ For an unsupported keyboard or layout, do as above with a similar keyboard or
 layout and modify ~LAYOUT_miryoku~ in ~config.h~ referring to the keyboard or
 layout's ~LAYOUT~ macro.
 
+*** Examples
+
+To use any of the examples, create a new branch from the miryoku development
+branch and follow the same steps as seen in the commit messages and code changes
+in the examples, making the appropriate changes for your keyboard and desired
+customisations.
+
+**** Add Layers
+
+- https://github.com/manna-harbour/qmk_firmware/commits/miryoku-examples-add-layers/keyboards/crkbd/keymaps/miryoku-examples-add-layers
 
 * Experimental Features
 
