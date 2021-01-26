@@ -16,7 +16,8 @@ Please see the [[https://github.com/manna-harbour/qmk_firmware/blob/miryoku/user
 
 To checkout the development branch in your existing QMK build environment:
 #+BEGIN_SRC sh :tangle no
-git remote add manna-harbour git@github.com:manna-harbour/qmk_firmware.git
+git remote add manna-harbour git@github.com:manna-harbour/qmk_firmware.git # ssh
+git remote add manna-harbour https://github.com/manna-harbour/qmk_firmware.git # https
 git fetch manna-harbour
 git checkout --track manna-harbour/miryoku
 #+END_SRC
