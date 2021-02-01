@@ -1010,14 +1010,22 @@ building.
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ortho_4x12-split.png]]
 
+An alternative with extended thumb position but without pinkie column stagger is
+also provided.  To select this mapping, append ~MIRYOKU_MAPPING=EXTENDED_THUMBS~
+to the ~make~ command line when building.
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ortho_4x12-extended_thumbs.png]]
+
 To build for any keyboard using this layout (4x12, 4x4, chimera_ls, contra,
 efreet, eon40, jj40, jnao, kbd4x, lets_split, lets_split_eh, levinson, meira,
 niu_mini, nori, nyquist, ortho48, pancake, plaid, planck, rebound, shark,
-split_blackpill, telophase, vitamins_included, wavelet, zlant, zv48, zygomorph):
+split_blackpill, telophase, vitamins_included, wavelet, zlant, zv48, zygomorph,
+zygote):
 
 #+BEGIN_SRC sh :tangle no
 make planck/rev6:manna-harbour_miryoku:flash # planck
 make keebio/levinson:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SPLIT # levinson
+make keebio/levinson:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # levinson, no pinkie column stagger
 #+END_SRC
 
 
@@ -1042,6 +1050,19 @@ KC_NO, K01,   K02,   K03,   K04,   KC_NO, KC_NO, K05,   K06,   K07,   K08,   KC_
 K00,   K11,   K12,   K13,   K14,   KC_NO, KC_NO, K15,   K16,   K17,   K18,   K09,\
 K10,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K19,\
 K20,   KC_NO, KC_NO, K32,   K33,   K34,   K35,   K36,   K37,   KC_NO, KC_NO, K29\
+)
+#elif defined MIRYOKU_MAPPING_EXTENDED_THUMBS
+#define LAYOUT_miryoku(\
+K00,   K01,   K02,   K03,   K04,                 K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,                 K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,                 K25,   K26,   K27,   K28,   K29,\
+N30,   N31,   K32,   K33,   K34,                 K35,   K36,   K37,   N38,   N39\
+)\
+LAYOUT_ortho_4x12(\
+K00,   K01,   K02,   K03,   K04,   KC_NO, KC_NO, K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,   KC_NO, KC_NO, K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K29,\
+KC_NO, KC_NO, KC_NO, K32,   K33,   K34,   K35,   K36,   K37,   KC_NO, KC_NO, KC_NO\
 )
 #else
 #define LAYOUT_miryoku(\
@@ -1764,6 +1785,7 @@ customisations.
 **** Add Layers
 
 - https://github.com/manna-harbour/qmk_firmware/commits/miryoku-examples-add-layers/keyboards/crkbd/keymaps/miryoku-examples-add-layers
+
 
 * Experimental Features
 
