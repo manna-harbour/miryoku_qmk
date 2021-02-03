@@ -146,15 +146,15 @@ into the corresponding tap-hold keycodes for mods and layer change.  Mods (and
 reset) will be available on sub layers on the same hand as the layer change
 thumb key.  Unknown names are considered to be layer names.
 
-Base layer alphas are Colemak-DHm.  Thumb keys are backspace, enter, delete on
-the right and space, tab, escape on the left.  Dot, comma and apostrophe are
+Base layer alphas are Colemak Mod-DH.  Thumb keys are backspace, enter, delete
+on the right and space, tab, escape on the left.  Dot, comma and apostrophe are
 included for prose, dot and slash for file and directory names.
 
 Alternative alpha arrangements are available.
 
 **** Tap
 
-#+NAME: colemakdhm
+#+NAME: colemakdh
 | Q     | W     | F     | P     | B     | J     | L     | U     | Y     | '     |
 | A     | R     | S     | T     | G     | M     | N     | E     | I     | O     |
 | Z     | X     | C     | D     | V     | K     | H     | ,     | DOT   | /     |
@@ -291,11 +291,11 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | U_NP | U_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | U_NP | U_NP |
 
 
-***** Colemak Mod-DH
+***** Colemak Mod-DHk
 
-~MIRYOKU_ALPHAS=COLEMAKDH~
+~MIRYOKU_ALPHAS=COLEMAKDHK~
 
-#+NAME: colemakdh
+#+NAME: colemakdhk
 | Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | G    | K    | N    | E    | I    | O    |
 | Z    | X    | C    | D    | V    | M    | H    | ,    | DOT  | /    |
@@ -478,7 +478,7 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 Produce base layer from separate tap and hold tables.
 
 #+NAME: table-layout-taphold
-#+BEGIN_SRC python :var layer_name="BASE" :var tap_table=colemakdhm :var hold_table=hold :var symbol_names_table=symbol-names :var mods_table=mods :var nonkc_table=nonkc :tangle no :results verbatim
+#+BEGIN_SRC python :var layer_name="BASE" :var tap_table=colemakdh :var hold_table=hold :var symbol_names_table=symbol-names :var mods_table=mods :var nonkc_table=nonkc :tangle no :results verbatim
 width = 19
 mods_dict = dict.fromkeys(mods_table[0])
 nonkc_tuple = tuple(nonkc_table[0])
@@ -858,8 +858,8 @@ Contains the keymap.  Added from ~rules.mk~.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #if defined MIRYOKU_ALPHAS_COLEMAK
 <<table-layout-taphold(layer_name="BASE", tap_table=colemak, hold_table=hold)>>,
-#elif defined MIRYOKU_ALPHAS_COLEMAKDH
-<<table-layout-taphold(layer_name="BASE", tap_table=colemakdh, hold_table=hold)>>,
+#elif defined MIRYOKU_ALPHAS_COLEMAKDHK
+<<table-layout-taphold(layer_name="BASE", tap_table=colemakdhk, hold_table=hold)>>,
 #elif defined MIRYOKU_ALPHAS_DVORAK
 <<table-layout-taphold(layer_name="BASE", tap_table=dvorak, hold_table=hold)>>,
 #elif defined MIRYOKU_ALPHAS_HALMAK
@@ -869,7 +869,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #elif defined MIRYOKU_ALPHAS_QWERTY
 <<table-layout-taphold(layer_name="BASE", tap_table=qwerty, hold_table=hold)>>,
 #else
-<<table-layout-taphold(layer_name="BASE", tap_table=colemakdhm, hold_table=hold)>>,
+<<table-layout-taphold(layer_name="BASE", tap_table=colemakdh, hold_table=hold)>>,
 #endif
 #if defined MIRYOKU_NAV_VI
 <<table-layout-half(layer_name="NAVR", half_table=navr-vi)>>,
