@@ -895,6 +895,16 @@ To use the keymap on a keyboard supporting the layouts feature, ~LAYOUT_miryoku~
 is defined as a macro mapping onto the layout's own ~LAYOUT~ macro, leaving the
 unused keys as ~KC_NO~.
 
+For keyboards supporting multiple layouts for which subset mappings are
+available, select the layout with ~FORCE_LAYOUT~ in the ~make~ command line when
+building.  E.g.:
+
+#+BEGIN_SRC sh :tangle no
+make planck/rev6:manna-harbour_miryoku:flash FORCE_LAYOUT=planck_mit # planck_mit
+make planck/rev6:manna-harbour_miryoku:flash FORCE_LAYOUT=ortho_4x12 # ortho_4x12
+#+END_SRC
+
+
 *** 60_ansi
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-60_ansi.png]]
@@ -1024,9 +1034,10 @@ split_blackpill, telophase, vitamins_included, wavelet, zlant, zv48, zygomorph,
 zygote):
 
 #+BEGIN_SRC sh :tangle no
-make planck/rev6:manna-harbour_miryoku:flash # planck
+make planck/rev6:manna-harbour_miryoku:flash FORCE_LAYOUT=ortho_4x12 # planck, ortho_4x12
+make planck/rev6:manna-harbour_miryoku:flash FORCE_LAYOUT=ortho_4x12 MIRYOKU_MAPPING=EXTENDED_THUMBS # planck, ortho_4x12, extended thumbs
 make keebio/levinson:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SPLIT # levinson
-make keebio/levinson:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # levinson, no pinkie column stagger
+make keebio/levinson:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # levinson, extended thumbs
 #+END_SRC
 
 
@@ -1178,7 +1189,9 @@ To build for any keyboard using this layout (bm40hsrgb, contra, efreet, eon40,
 jj40, kbd4x, mt40, niu_mini, pancake, plaid, planck, zlant), e.g. planck/ez:
 
 #+BEGIN_SRC sh :tangle no
-make planck/ez:manna-harbour_miryoku:flash
+make planck/ez:manna-harbour_miryoku:flash # planck ez
+make planck/rev6:manna-harbour_miryoku:flash FORCE_LAYOUT=planck_mit # planck rev6, mit
+
 #+END_SRC
 
 **** [[../../layouts/community/planck_mit/manna-harbour_miryoku/config.h][layouts/community/planck_mit/manna-harbour_miryoku/config.h]]
