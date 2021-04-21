@@ -31,13 +31,14 @@ Additional implementations and visualisations are provided outside QMK in the
   - [[#general-principles][General Principles]]
   - [[#details][Details]]
   - [[#layers][Layers]]
-    - [[#base-base][Base (~BASE~)]]
-    - [[#navigation-navr][Navigation (~NAVR~)]]
-    - [[#mouse-mour][Mouse (~MOUR~)]]
-    - [[#media-medr][Media (~MEDR~)]]
-    - [[#numerals-and-symbols-nsl][Numerals and Symbols (~NSL~)]]
-    - [[#shifted-numerals-and-symbols-nssl][Shifted Numerals and Symbols (~NSSL~)]]
-    - [[#function-and-system-funl][Function and System (~FUNL~)]]
+    - [[#base][Base]]
+    - [[#nav][Nav]]
+    - [[#mouse][Mouse]]
+    - [[#mouse-buttons-overlay][Mouse Buttons Overlay]]
+    - [[#media][Media]]
+    - [[#num][Num]]
+    - [[#sym][Sym]]
+    - [[#fun][Fun]]
     - [[#alternative-layouts][Alternative Layouts]]
 - [[#code-generation][Code Generation]]
   - [[#table-conversion-scripts][Table Conversion Scripts]]
@@ -92,7 +93,6 @@ Additional implementations and visualisations are provided outside QMK in the
 
 * Layout
 
-
 ** General Principles
 
 - Use layers instead of reaching.
@@ -134,39 +134,45 @@ Additional implementations and visualisations are provided outside QMK in the
 
 ** Layers
 
-The layers are maintained in tables, with the thumb keys on the bottom row.
-~U_NP~ indicates the key is not present and is used to fill in the table around
-the thumb keys.  The grid arrangement of the tables does not imply a particular
-physical layout.
+The layers are maintained in tables.  ~U_NP~ indicates the key is not present
+and is used to fill in the table around the thumb keys.  The grid arrangement of
+the tables does not imply a particular physical layout.
 
 Basic keycodes are entered without the ~KC_~ prefix.  Symbols can be entered
 as-is, except for '-' (~MINS~), '.' (~DOT~), '|' (~PIPE~), and '"' (~DQUO~).
 Empty cells are unused.
 
-The base layer has both halves of the layout joined for convenience.  Other
-layers are specified as a single hand.
+The base layer is maintained as separate tables for tap alphas, tap thumbs, and
+hold.  Other layers are specified as a single hand including thumbs.  Tables are
+combined to produce the keymap for each layer.
+
+Mods (and reset) will be available on sub layers on the same hand as the layer
+change thumb key.  Unknown names are considered to be layer names.
 
 
-*** Base (~BASE~)
+*** Base
 
-The base layer is maintained as separate tap and hold tables and are combined
-into the corresponding tap-hold keycodes for mods and layer change.  Mods (and
-reset) will be available on sub layers on the same hand as the layer change
-thumb key.  Unknown names are considered to be layer names.
+The base layer alphas are Colemak Mod-DH.  Dot, comma, slash, and apostrophe are
+included with the alphas.  The primary, secondary, and tertiary thumb keys are
+backspace, enter, delete on the right and space, tab, escape on the left.
 
-Base layer alphas are Colemak Mod-DH.  Thumb keys are backspace, enter, delete
-on the right and space, tab, escape on the left.  Dot, comma and apostrophe are
-included for prose, dot and slash for file and directory names.
-
-Alternative alpha arrangements are available.
+Alternative alpha arrangements are also available.
 
 
 **** Tap
+
+
+***** Alphas
 
 #+NAME: colemakdh
 | Q     | W     | F     | P     | B     | J     | L     | U     | Y     | '     |
 | A     | R     | S     | T     | G     | M     | N     | E     | I     | O     |
 | Z     | X     | C     | D     | V     | K     | H     | ,     | DOT   | /     |
+
+
+***** Thumbs
+
+#+NAME: thumbs
 | U_NP  | U_NP  | ESC   | SPC   | TAB   | ENT   | BSPC  | DEL   | U_NP  | U_NP  |
 
 
@@ -176,10 +182,10 @@ Alternative alpha arrangements are available.
 | RESET |       |       |       |       |       |       |       |       | RESET |
 | LGUI  | LALT  | LCTL  | LSFT  |       |       | LSFT  | LCTL  | LALT  | LGUI  |
 |       | ALGR  |       |       |       |       |       |       | ALGR  |       |
-| U_NP  | U_NP  | MEDR  | NAVR  | MOUR  | NSSL  | NSL   | FUNL  | U_NP  | U_NP  |
+| U_NP  | U_NP  | MEDIA | NAV   | MOUSE | SYM   | NUM   | FUN   | U_NP  | U_NP  |
 
 
-*** Navigation (~NAVR~)
+*** Nav
 
 Primary right-hand layer (left home thumb) is navigation and editing.  Cursor
 keys are on the home position, line and page movement below, clipboard above,
@@ -189,81 +195,81 @@ base layer to avoid having to layer change mid edit and to enable auto-repeat.
 Alternative clipboard key mappings and navigation key arrangements are
 available.
 
-#+NAME: navr
+#+NAME: nav-r
 | U_RDO | U_PST | U_CPY | U_CUT | U_UND |
 | CAPS  | LEFT  | DOWN  | UP    | RGHT  |
 | INS   | HOME  | PGDN  | PGUP  | END   |
 | ENT   | BSPC  | DEL   | U_NP  | U_NP  |
 
 
-*** Mouse (~MOUR~)
+*** Mouse
 
 Secondary right-hand layer is mouse emulation.  Mouse movement mirrors cursor
 navigation on home and wheel mirrors line / page movement below.  Buttons are on
-the thumbs (L, M, R).  Mouse movement, click, and drag with modifiers can be
-performed from the home position.  Unused keys are available for other related
-functions.
+the thumbs (L, M, R).  Mouse movement, click, and drag, with modifiers, can be
+performed from the home position.  Clipboard keys are duplicated from the Nav
+layer.
 
-#+NAME: mour
-|      |      |      |      |      |
-|      | MS_L | MS_D | MS_U | MS_R |
-|      | WH_L | WH_D | WH_U | WH_R |
-| BTN1 | BTN3 | BTN2 | U_NP | U_NP |
+#+NAME: mouse-r
+| U_RDO | U_PST | U_CPY | U_CUT | U_UND |
+|       | MS_L  | MS_D  | MS_U  | MS_R  |
+|       | WH_L  | WH_D  | WH_U  | WH_R  |
+| BTN1  | BTN3  | BTN2  | U_NP  | U_NP  |
 
 
-**** Mouse Buttons Overlay (~MBO~)
+*** Mouse Buttons Overlay
 
 Available for automatic activation depending on keyboard hardware and
 configuration.  Not activated manually.
 
 #+NAME: mbo
-|      |      |      |      |      |      |      |      |      |      |
-|      |      |      |      |      |      |      |      |      |      |
-|      |      |      |      |      |      |      |      |      |      |
-| U_NP | U_NP |      |      |      | BTN1 | BTN3 | BTN2 | U_NP | U_NP |
+| U_RDO | U_PST | U_CPY | U_CUT | U_UND | U_RDO | U_PST | U_CPY | U_CUT | U_UND |
+| LGUI  | LALT  | LCTL  | LSFT  |       |       | LSFT  | LCTL  | LALT  | LGUI  |
+|       |       |       |       |       |       |       |       |       |       |
+| U_NP  | U_NP  | BTN2  | BTN3  | BTN1  | BTN1  | BTN3  | BTN2  | U_NP  | U_NP  |
 
 
-*** Media (~MEDR~)
+*** Media
 
 Tertiary right-hand layer is media control, with volume up / down and next /
 prev mirroring the navigation keys.  Pause, stop and mute are on thumbs.  RGB
 control is on the top row (combine with shift to invert).  Unused keys are
 available for other related functions.
 
-#+NAME: medr
+#+NAME: media-r
 | RGB_TOG | RGB_MOD | RGB_HUI | RGB_SAI | RGB_VAI |
 |         | MPRV    | VOLD    | VOLU    | MNXT    |
 |         |         |         |         |         |
 | MSTP    | MPLY    | MUTE    | U_NP    | U_NP    |
 
 
-*** Numerals and Symbols (~NSL~)
+*** Num
 
 Primary left-hand layer (right home thumb) is numerals and symbols.  Numerals
 are in the standard numpad locations with symbols in the remaining positions.
 Dot is duplicated from the base layer.
 
-#+NAME: nsl
+#+NAME: num-l
 | [    | 7    | 8    | 9    | ]    |
 | ;    | 4    | 5    | 6    | =    |
 | `    | 1    | 2    | 3    | \    |
 | U_NP | U_NP | DOT  | 0    | MINS |
 
 
-*** Shifted Numerals and Symbols (~NSSL~)
+*** Sym
 
 Secondary left-hand layer has shifted symbols in the same locations to reduce
 chording when using mods with shifted symbols.  Open parenthesis is duplicated
 next to close parenthesis.
 
-#+NAME: nssl
+#+NAME: sym-l
 | {    | &    | *    | (    | }    |
 | :    | $    | %    | ^    | +    |
 | ~    | !    | @    | #    | PIPE |
 | U_NP | U_NP | (    | )    | _    |
 
 
-*** Function and System (~FUNL~)
+*** Fun
 
 Tertiary left-hand layer has function keys mirroring the numerals on the primary
 layer with extras on the pinkie column, plus system keys on the inner column.
@@ -271,7 +277,7 @@ App (menu) is on the tertiary thumb key and other thumb keys are duplicated from
 the base layer to enable auto-repeat.
 
 
-#+NAME: funl
+#+NAME: fun-l
 | F12  | F7   | F8   | F9   | PSCR |
 | F11  | F4   | F5   | F6   | SLCK |
 | F10  | F1   | F2   | F3   | PAUS |
@@ -284,7 +290,7 @@ The defaults are recommended, but alternative layouts are provided to
 accommodate existing muscle memory and platform differences.
 
 
-**** Base Layer Alphas
+**** Alphas
 
 To select, append the corresponding option to the ~make~ command line when
 building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
@@ -298,7 +304,6 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | Q    | W    | F    | P    | G    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | D    | H    | N    | E    | I    | O    |
 | Z    | X    | C    | V    | B    | K    | M    | ,    | DOT  | /    |
-| U_NP | U_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | U_NP | U_NP |
 
 
 ***** Colemak Mod-DHk
@@ -309,7 +314,6 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | Q    | W    | F    | P    | B    | J    | L    | U    | Y    | '    |
 | A    | R    | S    | T    | G    | K    | N    | E    | I    | O    |
 | Z    | X    | C    | D    | V    | M    | H    | ,    | DOT  | /    |
-| U_NP | U_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | U_NP | U_NP |
 
 
 ***** Dvorak
@@ -320,7 +324,6 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | '    | ,    | DOT  | P    | Y    | F    | G    | C    | R    | L    |
 | A    | O    | E    | U    | I    | D    | H    | T    | N    | S    |
 | /    | Q    | J    | K    | X    | B    | M    | W    | V    | Z    |
-| U_NP | U_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | U_NP | U_NP |
 
 
 ***** Halmak
@@ -331,7 +334,6 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | W    | L    | R    | B    | Z    | '    | Q    | U    | D    | J    |
 | S    | H    | N    | T    | ,    | DOT  | A    | E    | O    | I    |
 | F    | M    | V    | C    | /    | G    | P    | X    | K    | Y    |
-| U_NP | U_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | U_NP | U_NP |
 
 
 ***** Workman
@@ -342,7 +344,6 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | Q    | D    | R    | W    | B    | J    | F    | U    | P    | '    |
 | A    | S    | H    | T    | G    | Y    | N    | E    | O    | I    |
 | Z    | X    | M    | C    | V    | K    | L    | ,    | DOT  | /    |
-| U_NP | U_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | U_NP | U_NP |
 
 
 ***** QWERTY
@@ -353,50 +354,85 @@ building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 | Q    | W    | E    | R    | T    | Y    | U    | I    | O    | P    |
 | A    | S    | D    | F    | G    | H    | J    | K    | L    | '    |
 | Z    | X    | C    | V    | B    | N    | M    | ,    | DOT  | /    |
-| U_NP | U_NP | ESC  | SPC  | TAB  | ENT  | BSPC | DEL  | U_NP | U_NP |
 
 
-**** vi-Style Navigation
+**** Nav
+
+
+***** vi-Style
 
 To select, append ~MIRYOKU_NAV=VI~ to the ~make~ command line when building.
+Not available with ~MIRYOKU_LAYERS=FLIP~.
 
 
-***** Navigation
+****** Nav
 
-#+NAME: navr-vi
+#+NAME: nav-r-vi
 | U_RDO | U_PST | U_CPY | U_CUT | U_UND |
 | LEFT  | DOWN  | UP    | RGHT  | CAPS  |
 | HOME  | PGDN  | PGUP  | END   | INS   |
 | ENT   | BSPC  | DEL   | U_NP  | U_NP  |
 
 
-***** Mouse
+****** Mouse
 
-#+NAME: mour-vi
-|      |      |      |      |      |
-| MS_L | MS_D | MS_U | MS_R |      |
-| WH_L | WH_D | WH_U | WH_R |      |
-| BTN1 | BTN3 | BTN2 | U_NP | U_NP |
+#+NAME: mouse-r-vi
+| U_RDO | U_PST | U_CPY | U_CUT | U_UND |
+| MS_L  | MS_D  | MS_U  | MS_R  |       |
+| WH_L  | WH_D  | WH_U  | WH_R  |       |
+| BTN1  | BTN3  | BTN2  | U_NP  | U_NP  |
 
 
-***** Media
+****** Media
 
-#+NAME: medr-vi
+#+NAME: media-r-vi
 | RGB_TOG | RGB_MOD | RGB_HUI | RGB_SAI | RGB_VAI |
 | MPRV    | VOLD    | VOLU    | MNXT    |         |
 |         |         |         |         |         |
 | MSTP    | MPLY    | MUTE    | U_NP    | U_NP    |
 
 
-**** Navigation Layer Clipboard Keys
+***** Inverted-T
 
-Keycodes are translated from those used in the Navigation layer tables according
-to the following tables.
+To select, append ~MIRYOKU_NAV=INVERTEDT~ to the ~make~ command line when
+building.  Only available with ~MIRYOKU_LAYERS=FLIP~.
+
+
+****** Nav
+
+#+NAME: nav-l-invertedt
+| PGUP  | HOME  | UP    | END   | INS   |
+| PGDN  | LEFT  | DOWN  | RGHT  | CAPS  |
+| U_UND | U_CUT | U_CPY | U_PST | U_RDO |
+| U_NP  | U_NP  | DEL   | BSPC  | ENT   |
+
+
+****** Mouse
+
+#+NAME: mouse-l-invertedt
+| WH_U  | WH_L  | MS_U  | WH_R  |       |
+| WH_D  | MS_L  | MS_D  | MS_R  |       |
+| U_UND | U_CUT | U_CPY | U_PST | U_RDO |
+| U_NP  | U_NP  | BTN2  | BTN3  | BTN1  |
+
+
+****** Media
+
+#+NAME: media-l-invertedt
+|         |         | VOLU    |         |         |
+|         | MPRV    | VOLD    | MNXT    |         |
+| RGB_MOD | RGB_HUI | RGB_SAI | RGB_VAI | RGB_TOG |
+| U_NP    | U_NP    | MUTE    | MPLY    | MSTP    |
+
+
+**** Clipboard
+
+Keycodes are translated according to the following tables.
 
 By default, the main clipboard keys (cut, copy, and paste) use the CUA bindings
 and should work in general unix and windows applications, emacs, and terminal
-emulators (paste only).  The additional keys (undo, redo) usually require
-rebinding in the application.
+emulators.  The additional keys (undo, redo) usually require rebinding in the
+application.
 
 To select, append the corresponding option to the ~make~ command line when
 building, e.g. ~MIRYOKU_CLIPBOARD=WIN~.
@@ -448,6 +484,94 @@ building, e.g. ~MIRYOKU_CLIPBOARD=WIN~.
 | U_UND | C(KC_Z) |
 
 
+**** Layers
+
+
+***** Flip
+
+Flip base layer thumb keys and sub layers between right and left hands.
+
+To select, append ~MIRYOKU_LAYERS=FLIP~ to the ~make~ command line when building.
+
+
+****** Thumbs
+
+#+NAME: thumbs-flip
+| U_NP | U_NP | DEL  | BSPC | ENT  | TAB  | SPC  | ESC  | U_NP | U_NP |
+
+
+****** Hold
+
+#+NAME: hold-flip
+| RESET |       |       |       |       |       |       |       |       | RESET |
+| LGUI  | LALT  | LCTL  | LSFT  |       |       | LSFT  | LCTL  | LALT  | LGUI  |
+|       | ALGR  |       |       |       |       |       |       | ALGR  |       |
+| U_NP  | U_NP  | FUN   | NUM   | SYM   | MOUSE | NAV   | MEDIA | U_NP  | U_NP  |
+
+
+****** Nav
+
+#+NAME: nav-l
+| HOME  | PGDN  | PGUP  | END   | INS   |
+| LEFT  | DOWN  | UP    | RGHT  | CAPS  |
+| U_UND | U_CUT | U_CPY | U_PST | U_RDO |
+| U_NP  | U_NP  | DEL   | BSPC  | ENT   |
+
+
+****** Mouse
+
+#+NAME: mouse-l
+| WH_L  | WH_D  | WH_U  | WH_R  |       |
+| MS_L  | MS_D  | MS_U  | MS_R  |       |
+| U_UND | U_CUT | U_CPY | U_PST | U_RDO |
+| U_NP  | U_NP  | BTN2  | BTN3  | BTN1  |
+
+
+****** Mouse Buttons Overlay
+
+#+NAME: mbo-flip
+|       |       |       |       |       |       |       |       |       |       |
+| LGUI  | LALT  | LCTL  | LSFT  |       |       | LSFT  | LCTL  | LALT  | LGUI  |
+| U_RDO | U_PST | U_CPY | U_CUT | U_UND | U_RDO | U_PST | U_CPY | U_CUT | U_UND |
+| U_NP  | U_NP  | BTN2  | BTN3  | BTN1  | BTN1  | BTN3  | BTN2  | U_NP  | U_NP  |
+
+
+****** Media
+
+#+NAME: media-l
+| RGB_MOD | RGB_HUI | RGB_SAI | RGB_VAI | RGB_TOG |
+| MPRV    | VOLD    | VOLU    | MNXT    |         |
+|         |         |         |         |         |
+| U_NP    | U_NP    | MUTE    | MPLY    | MSTP    |
+
+
+****** Num
+
+#+NAME: num-r
+| [    | 7    | 8    | 9    | ]    |
+| =    | 4    | 5    | 6    | ;    |
+| \    | 1    | 2    | 3    | `    |
+| MINS | 0    | DOT  | U_NP | U_NP |
+
+
+****** Sym
+
+#+NAME: sym-r
+| {    | &    | *    | (    | }    |
+| +    | $    | %    | ^    | :    |
+| PIPE | !    | @    | #    | ~    |
+| _    | (    | )    | U_NP | U_NP |
+
+
+****** Fun
+
+#+NAME: fun-r
+| PSCR | F7   | F8   | F9   | F12  |
+| SLCK | F4   | F5   | F6   | F11  |
+| PAUS | F1   | F2   | F3   | F10  |
+| TAB  | SPC  | APP  | U_NP | U_NP |
+
+
 *** COMMENT Templates
 
 #+NAME: tem
@@ -461,7 +585,7 @@ building, e.g. ~MIRYOKU_CLIPBOARD=WIN~.
 
 Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 
-#+NAME: temr
+#+NAME: tem-r
 | <l4> | <l4> | <l4> | <l4> | <l4> |
 |------+------+------+------+------|
 |      |      |      |      |      |
@@ -469,7 +593,7 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 |      |      |      |      |      |
 | ENT  | BSPC | DEL  | U_NP | U_NP |
 
-#+NAME: teml
+#+NAME: tem-l
 | <l4> | <l4> | <l4> | <l4> | <l4> |
 |------+------+------+------+------|
 |      |      |      |      |      |
@@ -489,7 +613,7 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 Produce base layer from separate tap and hold tables.
 
 #+NAME: table-layout-taphold
-#+BEGIN_SRC python :var layer_name="BASE" :var tap_table=colemakdh :var hold_table=hold :var symbol_names_table=symbol-names :var mods_table=mods :var nonkc_table=nonkc :tangle no :results verbatim
+#+BEGIN_SRC python :var alphas_table=colemakdh :var thumbs_table=thumbs :var hold_table=hold :var symbol_names_table=symbol-names :var mods_table=mods :var nonkc_table=nonkc :tangle no :results verbatim
 width = 19
 mods_dict = dict.fromkeys(mods_table[0])
 nonkc_tuple = tuple(nonkc_table[0])
@@ -497,8 +621,8 @@ symbol_names_dict = {}
 for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
   symbol_names_dict[symbol] = name
   symbol_names_dict[shifted_symbol] = shifted_name
-results = '  [' + layer_name + '] = LAYOUT_miryoku(\n'
-for tap_row, hold_row in zip(tap_table, hold_table):
+results = ''
+for tap_row, hold_row in zip(alphas_table + thumbs_table, hold_table):
   results += '    '
   for tap, hold in zip(tap_row, hold_row):
     if tap == '':
@@ -515,17 +639,15 @@ for tap_row, hold_row in zip(tap_table, hold_table):
       code = 'LT(' + str(hold) + ', ' + code + ')'
     results += (code + ', ').ljust(width)
   results = results.rstrip(' ') + '\n'
-results = results.rstrip('\n, ') + '\n  )'
+results = results.rstrip('\n, ')
 return results
 #+END_SRC
 
 #+RESULTS: table-layout-taphold
-:   [BASE] = LAYOUT_miryoku(
 :     KC_Q,              KC_W,              KC_F,              KC_P,              KC_B,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,
 :     LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_G,              KC_M,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),
 :     KC_Z,              ALGR_T(KC_X),      KC_C,              KC_D,              KC_V,              KC_K,              KC_H,              KC_COMM,           ALGR_T(KC_DOT),    KC_SLSH,
-:     U_NP,              U_NP,              LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  U_NP,              U_NP
-:   )
+:     U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB), LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),  LT(FUN, KC_DEL),   U_NP,              U_NP
 
 
 *** table-layout-half
@@ -535,7 +657,7 @@ incorporating mods and reset from base layer.  Layer names must end with 'R' or
 'L'.  A layer with shifted symbols can also be generated.
 
 #+NAME: table-layout-half
-#+BEGIN_SRC python :var hold_table=hold :var layer_name="NSL" :var half_table=nsl :var symbol_names_table=symbol-names :var mods_table=mods :var nonkc_table=nonkc :var shift="false" :tangle no :results verbatim
+#+BEGIN_SRC python :var hold_table=hold :var mode="r" :var half_table=nav-r :var symbol_names_table=symbol-names :var mods_table=mods :var nonkc_table=nonkc :var shift="false" :tangle no :results verbatim
 width = 9
 mods_dict = dict.fromkeys(mods_table[0])
 nonkc_tuple = tuple(nonkc_table[0])
@@ -546,8 +668,7 @@ for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
   symbol_names_dict[shifted_symbol] = shifted_name
   shifted_symbol_names_dict[symbol] = shifted_name
 length = len(half_table[0])
-mode = layer_name[-1:].lower()
-results = '  [' + layer_name + '] = LAYOUT_miryoku(\n'
+results = ''
 for half_row, hold_row in zip(half_table, hold_table):
   results += '    '
   hold_row_l, hold_row_r = hold_row[:length], hold_row[length:]
@@ -575,17 +696,15 @@ for half_row, hold_row in zip(half_table, hold_table):
           code = 'KC_' + str(code)
         results += (str(code) + ', ').ljust(width)
   results = results.rstrip(' ') + '\n'
-results = results.rstrip('\n, ') + '\n  )'
+results = results.rstrip('\n, ')
 return results
 #+END_SRC
 
 #+RESULTS: table-layout-half
-:   [NSL] = LAYOUT_miryoku(
-:     KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, U_NA,    U_NA,    U_NA,    U_NA,    RESET,
-:     KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  U_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-:     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, U_NA,    U_NA,    U_NA,    KC_ALGR, U_NA,
-:     U_NP,    U_NP,    KC_DOT,  KC_0,    KC_MINS, U_NA,    U_NA,    U_NA,    U_NP,    U_NP
-:   )
+:     RESET,   U_NA,    U_NA,    U_NA,    U_NA,    U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,
+:     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,    KC_CAPS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+:     U_NA,    KC_ALGR, U_NA,    U_NA,    U_NA,    KC_INS,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,
+:     U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
 
 
 *** table-layout-full
@@ -593,14 +712,14 @@ return results
 Produce full layer from single table.  Fill for unused keys is configurable.
 
 #+NAME: table-layout-full
-#+BEGIN_SRC python :var table=mbo :var layer_name="MBO" :var fill="TRNS" :var symbol_names_table=symbol-names :var nonkc_table=nonkc :tangle no :results verbatim
+#+BEGIN_SRC python :var table=mbo :var fill="TRNS" :var symbol_names_table=symbol-names :var nonkc_table=nonkc :tangle no :results verbatim
 width = 9
 symbol_names_dict = {}
 nonkc_tuple = tuple(nonkc_table[0])
 for symbol, name, shifted_symbol, shifted_name in symbol_names_table:
   symbol_names_dict[symbol] = name
   symbol_names_dict[shifted_symbol] = shifted_name
-results = '  [' + layer_name + '] = LAYOUT_miryoku(\n'
+results = ''
 for row in table:
   results += '    '
   for key in row:
@@ -614,17 +733,15 @@ for row in table:
       code = 'KC_' + str(code)
     results += (code + ', ').ljust(width)
   results = results.rstrip(' ') + '\n'
-results = results.rstrip('\n, ') + '\n  )'
+results = results.rstrip('\n, ')
 return results
 #+END_SRC
 
 #+RESULTS: table-layout-full
-:   [MBO] = LAYOUT_miryoku(
+:     U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,   U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,
+:     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_TRNS, KC_TRNS, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
 :     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-:     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-:     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-:     U_NP,    U_NP,    KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN3, KC_BTN2, U_NP,    U_NP
-:   )
+:     U_NP,    U_NP,    KC_BTN2, KC_BTN3, KC_BTN1, KC_BTN1, KC_BTN3, KC_BTN2, U_NP,    U_NP
 
 
 *** table-enums
@@ -644,7 +761,7 @@ return results
 #+END_SRC
 
 #+RESULTS: table-enums
-: enum layers { BASE, MBO, MEDR, NAVR, MOUR, NSSL, NSL, FUNL };
+: enum layers { BASE, MBO, MEDIA, NAV, MOUSE, SYM, NUM, FUN };
 
 
 *** table-keycode-mappings
@@ -780,24 +897,31 @@ AUTO_SHIFT_ENABLE = yes # Auto Shift
 
 SRC += manna-harbour_miryoku.c # keymap
 
-# select alternative base layer alphas
+# alternative layouts:
+
+# alphas
 ifneq ($(strip $(MIRYOKU_ALPHAS)),)
   OPT_DEFS += -DMIRYOKU_ALPHAS_$(MIRYOKU_ALPHAS)
 endif
 
-# select alternative nav
+# nav
 ifneq ($(strip $(MIRYOKU_NAV)),)
   OPT_DEFS += -DMIRYOKU_NAV_$(MIRYOKU_NAV)
 endif
 
-# select alternative subset mappings
-ifneq ($(strip $(MIRYOKU_MAPPING)),)
-  OPT_DEFS += -DMIRYOKU_MAPPING_$(MIRYOKU_MAPPING)
-endif
-
-# select alternative clipboard
+# clipboard
 ifneq ($(strip $(MIRYOKU_CLIPBOARD)),)
   OPT_DEFS += -DMIRYOKU_CLIPBOARD_$(MIRYOKU_CLIPBOARD)
+endif
+
+# layers
+ifneq ($(strip $(MIRYOKU_LAYERS)),)
+  OPT_DEFS += -DMIRYOKU_LAYERS_$(MIRYOKU_LAYERS)
+endif
+
+# subset mappings
+ifneq ($(strip $(MIRYOKU_MAPPING)),)
+  OPT_DEFS += -DMIRYOKU_MAPPING_$(MIRYOKU_MAPPING)
 endif
 #+END_SRC
 
@@ -885,34 +1009,110 @@ Contains the keymap.  Added from ~rules.mk~.
 #include "manna-harbour_miryoku.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-#if defined MIRYOKU_ALPHAS_COLEMAK
-<<table-layout-taphold(layer_name="BASE", tap_table=colemak, hold_table=hold)>>,
-#elif defined MIRYOKU_ALPHAS_COLEMAKDHK
-<<table-layout-taphold(layer_name="BASE", tap_table=colemakdhk, hold_table=hold)>>,
-#elif defined MIRYOKU_ALPHAS_DVORAK
-<<table-layout-taphold(layer_name="BASE", tap_table=dvorak, hold_table=hold)>>,
-#elif defined MIRYOKU_ALPHAS_HALMAK
-<<table-layout-taphold(layer_name="BASE", tap_table=halmak, hold_table=hold)>>,
-#elif defined MIRYOKU_ALPHAS_WORKMAN
-<<table-layout-taphold(layer_name="BASE", tap_table=workman, hold_table=hold)>>,
-#elif defined MIRYOKU_ALPHAS_QWERTY
-<<table-layout-taphold(layer_name="BASE", tap_table=qwerty, hold_table=hold)>>,
+#if defined MIRYOKU_LAYERS_FLIP
+  [BASE] = LAYOUT_miryoku(
+  #if defined MIRYOKU_ALPHAS_COLEMAK
+<<table-layout-taphold(alphas_table=colemak, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
+  #elif defined MIRYOKU_ALPHAS_COLEMAKDHK
+<<table-layout-taphold(alphas_table=colemakdhk, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
+  #elif defined MIRYOKU_ALPHAS_DVORAK
+<<table-layout-taphold(alphas_table=dvorak, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
+  #elif defined MIRYOKU_ALPHAS_HALMAK
+<<table-layout-taphold(alphas_table=halmak, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
+  #elif defined MIRYOKU_ALPHAS_WORKMAN
+<<table-layout-taphold(alphas_table=workman, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
+  #elif defined MIRYOKU_ALPHAS_QWERTY
+<<table-layout-taphold(alphas_table=qwerty, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
+  #else
+<<table-layout-taphold(alphas_table=colemakdh, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
+  #endif
+  ),
+  #if defined MIRYOKU_NAV_INVERTEDT
+  [NAV] = LAYOUT_miryoku(
+<<table-layout-half(half_table=nav-l-invertedt, mode="l", hold_table=hold-flip)>>
+  ),
+  [MOUSE] = LAYOUT_miryoku(
+<<table-layout-half(half_table=mouse-l-invertedt, mode="l", hold_table=hold-flip)>>
+  ),
+  [MEDIA] = LAYOUT_miryoku(
+<<table-layout-half(half_table=media-l-invertedt, mode="l", hold_table=hold-flip)>>
+  ),
+  #else
+  [NAV] = LAYOUT_miryoku(
+<<table-layout-half(half_table=nav-l, mode="l", hold_table=hold-flip)>>
+  ),
+  [MOUSE] = LAYOUT_miryoku(
+<<table-layout-half(half_table=mouse-l, mode="l", hold_table=hold-flip)>>
+  ),
+  [MEDIA] = LAYOUT_miryoku(
+<<table-layout-half(half_table=media-l, mode="l", hold_table=hold-flip)>>
+  ),
+  #endif
+  [MBO] = LAYOUT_miryoku(
+<<table-layout-full(table=mbo, fill="TRNS")>>
+  ),
+  [NUM] = LAYOUT_miryoku(
+<<table-layout-half(half_table=num-r, mode="r", hold_table=hold-flip)>>
+  ),
+  [SYM] = LAYOUT_miryoku(
+<<table-layout-half(half_table=sym-r, mode="r", hold_table=hold-flip)>>
+  ),
+  [FUN] = LAYOUT_miryoku(
+<<table-layout-half(half_table=fun-r, mode="r", hold_table=hold-flip)>>
+  )
+,
 #else
-<<table-layout-taphold(layer_name="BASE", tap_table=colemakdh, hold_table=hold)>>,
+  [BASE] = LAYOUT_miryoku(
+  #if defined MIRYOKU_ALPHAS_COLEMAK
+<<table-layout-taphold(alphas_table=colemak)>>
+  #elif defined MIRYOKU_ALPHAS_COLEMAKDHK
+<<table-layout-taphold(alphas_table=colemakdhk)>>
+  #elif defined MIRYOKU_ALPHAS_DVORAK
+<<table-layout-taphold(alphas_table=dvorak)>>
+  #elif defined MIRYOKU_ALPHAS_HALMAK
+<<table-layout-taphold(alphas_table=halmak)>>
+  #elif defined MIRYOKU_ALPHAS_WORKMAN
+<<table-layout-taphold(alphas_table=workman)>>
+  #elif defined MIRYOKU_ALPHAS_QWERTY
+<<table-layout-taphold(alphas_table=qwerty)>>
+  #else
+<<table-layout-taphold(alphas_table=colemakdh)>>
+  #endif
+  ),
+  #if defined MIRYOKU_NAV_VI
+  [NAV] = LAYOUT_miryoku(
+<<table-layout-half(half_table=nav-r-vi, mode="r")>>
+  ),
+  [MOUSE] = LAYOUT_miryoku(
+<<table-layout-half(half_table=mouse-r-vi, mode="r")>>
+  ),
+  [MEDIA] = LAYOUT_miryoku(
+<<table-layout-half(half_table=media-r-vi, mode="r")>>
+  ),
+  #else
+  [NAV] = LAYOUT_miryoku(
+<<table-layout-half(half_table=nav-r, mode="r")>>
+  ),
+  [MOUSE] = LAYOUT_miryoku(
+<<table-layout-half(half_table=mouse-r, mode="r")>>
+  ),
+  [MEDIA] = LAYOUT_miryoku(
+<<table-layout-half(half_table=media-r, mode="r")>>
+  ),
+  #endif
+  [MBO] = LAYOUT_miryoku(
+<<table-layout-full(table=mbo-flip, fill="TRNS")>>
+  ),
+  [NUM] = LAYOUT_miryoku(
+<<table-layout-half(half_table=num-l, mode="l")>>
+  ),
+  [SYM] = LAYOUT_miryoku(
+<<table-layout-half(half_table=sym-l, mode="l")>>
+  ),
+  [FUN] = LAYOUT_miryoku(
+<<table-layout-half(half_table=fun-l, mode="l")>>
+  )
 #endif
-#if defined MIRYOKU_NAV_VI
-<<table-layout-half(layer_name="NAVR", half_table=navr-vi)>>,
-<<table-layout-half(layer_name="MOUR", half_table=mour-vi)>>,
-<<table-layout-half(layer_name="MEDR", half_table=medr-vi)>>,
-#else
-<<table-layout-half(layer_name="NAVR", half_table=navr)>>,
-<<table-layout-half(layer_name="MOUR", half_table=mour)>>,
-<<table-layout-half(layer_name="MEDR", half_table=medr)>>,
-#endif
-<<table-layout-full(layer_name="MBO", table=mbo, fill="TRNS")>>,
-<<table-layout-half(layer_name="FUNL", half_table=funl)>>,
-<<table-layout-half(layer_name="NSL", half_table=nsl)>>,
-<<table-layout-half(layer_name="NSSL", half_table=nssl)>>
 };
 #+END_SRC
 
