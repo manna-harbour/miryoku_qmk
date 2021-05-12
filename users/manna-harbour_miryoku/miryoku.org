@@ -672,6 +672,21 @@ return results
 : #define U_UND KC_UNDO
 
 
+*** COMMENT python-version
+
+C-c C-c in code block to update
+
+#+NAME: python-version
+#+BEGIN_SRC python :tangle no
+import sys
+return sys.version
+#+END_SRC
+
+#+RESULTS: python-version
+: 3.9.4 (default, Apr  9 2021, 01:15:05) 
+: [GCC 5.4.0 20160609]
+
+
 ** Data
 
 *** symbol-names
