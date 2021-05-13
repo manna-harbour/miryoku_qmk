@@ -3,6 +3,7 @@
 #pragma once
 
 // default but used in macros
+#undef TAPPING_TERM
 #define TAPPING_TERM 200
 
 // Prevent normal rollover on alphas from accidentally triggering mods.

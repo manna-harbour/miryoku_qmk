@@ -77,6 +77,7 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#lily58][lily58]]
     - [[#moonlander][moonlander]]
     - [[#redox_w][redox_w]]
+    - [[#sofle][sofle]]
     - [[#torn][torn]]
   - [[#customisation][Customisation]]
     - [[#examples][Examples]]
@@ -87,6 +88,7 @@ Additional implementations and visualisations are provided outside QMK in the
 - [[#contact][Contact]]
 
 * Layout
+
 
 ** General Principles
 
@@ -154,6 +156,7 @@ on the right and space, tab, escape on the left.  Dot, comma and apostrophe are
 included for prose, dot and slash for file and directory names.
 
 Alternative alpha arrangements are available.
+
 
 **** Tap
 
@@ -276,6 +279,7 @@ the base layer to enable auto-repeat.
 
 The defaults are recommended, but alternative layouts are provided to
 accommodate existing muscle memory and platform differences.
+
 
 **** Base Layer Alphas
 
@@ -472,6 +476,7 @@ Duplicate base layer tap keys on thumbs rather than trans to enable auto-repeat.
 
 
 * Code Generation
+
 
 ** Table Conversion Scripts
 
@@ -689,6 +694,7 @@ return sys.version
 
 ** Data
 
+
 *** symbol-names
 
 Symbol, name, and shifted symbol mappings for use in tables.
@@ -750,6 +756,7 @@ generated from users/manna-harbour_miryoku/miryoku.org  -*- buffer-read-only: t 
 The keymap, build options, and configuration are shared between keyboards.  The
 layout is mapped onto keyboards with different physical layouts as a subset.
 
+
 ** Userspace
 
 The keymap is defined for ~LAYOUT_miryoku~ which is 10x4, with the outer 2
@@ -802,6 +809,7 @@ Config options.  Automatically included.
 #pragma once
 
 // default but used in macros
+#undef TAPPING_TERM
 #define TAPPING_TERM 200
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
@@ -1578,9 +1586,6 @@ Required by the build system.
 #+END_SRC
 
 
-
-
-
 *** keebio/iris
 
 Only the main 5x3 alphas and the bottom 3 thumb keys are used.
@@ -1889,6 +1894,51 @@ Required by the build system.
 #+END_SRC
 
 
+*** sofle
+
+To build for this keyboard,
+
+#+BEGIN_SRC sh :tangle no
+make sofle:manna-harbour_miryoku:flash
+#+END_SRC
+
+
+**** [[../../keyboards/sofle/keymaps/manna-harbour_miryoku/config.h][keyboards/sofle/keymaps/manna-harbour_miryoku/config.h]]
+
+Contains subset mapping.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/sofle/keymaps/manna-harbour_miryoku/config.h
+// <<header>>
+
+#pragma once
+
+#define XXX KC_NO
+
+#define LAYOUT_miryoku(\
+     K00, K01, K02, K03, K04,                K05, K06, K07, K08, K09,\
+     K10, K11, K12, K13, K14,                K15, K16, K17, K18, K19,\
+     K20, K21, K22, K23, K24,                K25, K26, K27, K28, K29,\
+     N30, N31, K32, K33, K34,                K35, K36, K37, N38, N39\
+)\
+LAYOUT(\
+XXX, XXX, XXX, XXX, XXX, XXX,                XXX, XXX, XXX, XXX, XXX, XXX,\
+XXX, K00, K01, K02, K03, K04,                K05, K06, K07, K08, K09, XXX,\
+XXX, K10, K11, K12, K13, K14,                K15, K16, K17, K18, K19, XXX,\
+XXX, K20, K21, K22, K23, K24, XXX,      XXX, K25, K26, K27, K28, K29, XXX,\
+          XXX, XXX, K32, K33, K34,      K35, K36, K37, XXX, XXX\
+)
+#+END_SRC
+
+
+**** [[../../keyboards/sofle/keymaps/manna-harbour_miryoku/keymap.c][keyboards/sofle/keymaps/manna-harbour_miryoku/keymap.c]]
+
+Required by the build system.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/sofle/keymaps/manna-harbour_miryoku/keymap.c
+// <<header>>
+#+END_SRC
+
+
 *** torn
 
 To build for this keyboard,
@@ -1946,6 +1996,7 @@ For an unsupported keyboard or layout, do as above with a similar keyboard or
 layout and modify ~LAYOUT_miryoku~ in ~config.h~ referring to the keyboard or
 layout's ~LAYOUT~ macro.
 
+
 *** Examples
 
 To use any of the examples, create a new branch from the miryoku development
@@ -1953,12 +2004,14 @@ branch and follow the same steps as seen in the commit messages and code changes
 in the examples, making the appropriate changes for your keyboard and desired
 customisations.
 
+
 **** Add Layers
 
 - https://github.com/manna-harbour/qmk_firmware/commits/miryoku-examples-add-layers/keyboards/crkbd/keymaps/miryoku-examples-add-layers
 
 
 * Experimental Features
+
 
 ** Bilateral Combinations
 
@@ -1980,6 +2033,7 @@ To enable, merge the following branches:
 
 
 * Documentation                                                  :noexport_1:
+
 
 ** QMK
 
