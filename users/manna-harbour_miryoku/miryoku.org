@@ -61,6 +61,7 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#60_ansi][60_ansi]]
     - [[#ergodox][ergodox]]
     - [[#ortho_4x12][ortho_4x12]]
+    - [[#ortho_5x12][ortho_5x12]]
     - [[#ortho_5x15][ortho_5x15]]
     - [[#planck_mit][planck_mit]]
     - [[#split_3x5_3][split_3x5_3]]
@@ -1124,6 +1125,87 @@ KC_NO, KC_NO, K32,   K33,   K34,   KC_NO, KC_NO, K35,   K36,   K37,   KC_NO, KC_
 Required by the build system.
 
 #+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c
+// <<header>>
+#+END_SRC
+
+
+*** ortho_5x12
+
+As per ortho_4x12 but the top row is unused.
+
+To build for any keyboard using this layout (boardsource/5x12,
+cannonkeys/ortho60, fractal, jj50, jnao, keebio/nyquist, keycapsss/o4l_5x12,
+preonic, rgbkb/zygomorph),
+
+#+BEGIN_SRC sh :tangle no
+make preonic/rev3:manna-harbour_miryoku:flash # preonic/rev3
+make preonic/rev3:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # preonic/rev3, extended thumbs
+make keebio/nyquist/rev3:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SPLIT # nyquist/rev3, split
+make keebio/nyquist/rev3:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # nyquist/rev3, extended thumbs
+
+#+END_SRC
+
+
+**** [[../../layouts/community/ortho_5x12/manna-harbour_miryoku/config.h][layouts/community/ortho_5x12/manna-harbour_miryoku/config.h]]
+
+Contains subset mapping.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_5x12/manna-harbour_miryoku/config.h
+// <<header>>
+
+#pragma once
+
+#if defined MIRYOKU_MAPPING_SPLIT
+#define LAYOUT_miryoku(\
+K00,   K01,   K02,   K03,   K04,                 K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,                 K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,                 K25,   K26,   K27,   K28,   K29,\
+N30,   N31,   K32,   K33,   K34,                 K35,   K36,   K37,   N38,   N39\
+)\
+LAYOUT_ortho_5x12(\
+KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
+KC_NO, K01,   K02,   K03,   K04,   KC_NO, KC_NO, K05,   K06,   K07,   K08,   KC_NO,\
+K00,   K11,   K12,   K13,   K14,   KC_NO, KC_NO, K15,   K16,   K17,   K18,   K09,\
+K10,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K19,\
+K20,   KC_NO, KC_NO, K32,   K33,   K34,   K35,   K36,   K37,   KC_NO, KC_NO, K29\
+)
+#elif defined MIRYOKU_MAPPING_EXTENDED_THUMBS
+#define LAYOUT_miryoku(\
+K00,   K01,   K02,   K03,   K04,                 K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,                 K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,                 K25,   K26,   K27,   K28,   K29,\
+N30,   N31,   K32,   K33,   K34,                 K35,   K36,   K37,   N38,   N39\
+)\
+LAYOUT_ortho_5x12(\
+KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
+K00,   K01,   K02,   K03,   K04,   KC_NO, KC_NO, K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,   KC_NO, KC_NO, K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K29,\
+KC_NO, KC_NO, KC_NO, K32,   K33,   K34,   K35,   K36,   K37,   KC_NO, KC_NO, KC_NO\
+)
+#else
+#define LAYOUT_miryoku(\
+K00,   K01,   K02,   K03,   K04,                 K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,                 K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,                 K25,   K26,   K27,   K28,   K29,\
+N30,   N31,   K32,   K33,   K34,                 K35,   K36,   K37,   N38,   N39\
+)\
+LAYOUT_ortho_5x12(\
+KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,\
+K00,   K01,   K02,   K03,   K04,   KC_NO, KC_NO, K05,   K06,   K07,   K08,   K09,\
+K10,   K11,   K12,   K13,   K14,   KC_NO, KC_NO, K15,   K16,   K17,   K18,   K19,\
+K20,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K29,\
+KC_NO, KC_NO, K32,   K33,   K34,   KC_NO, KC_NO, K35,   K36,   K37,   KC_NO, KC_NO\
+)
+#endif
+#+END_SRC
+
+
+**** [[../../layouts/community/ortho_5x12/manna-harbour_miryoku/keymap.c][layouts/community/ortho_5x12/manna-harbour_miryoku/keymap.c]]
+
+Required by the build system.
+
+#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_5x12/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
