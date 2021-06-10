@@ -749,7 +749,7 @@ prepended.
 Header for tangled source files.
 
 #+NAME: header
-#+BEGIN_SRC C :tangle no
+#+BEGIN_SRC C :main no :tangle no
 generated from users/manna-harbour_miryoku/miryoku.org  -*- buffer-read-only: t -*-
 #+END_SRC
 
@@ -806,7 +806,7 @@ endif
 
 Config options.  Automatically included.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle config.h
 // <<header>>
 
 #pragma once
@@ -848,7 +848,7 @@ Config options.  Automatically included.
 Keymap-related definitions.  Included from ~manna-harbour_miryoku.c~.  Can be
 included from keymap or layout ~keymap.c~ if needed.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle manna-harbour_miryoku.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle manna-harbour_miryoku.h
 // <<header>>
 
 #pragma once
@@ -879,7 +879,7 @@ included from keymap or layout ~keymap.c~ if needed.
 
 Contains the keymap.  Added from ~rules.mk~.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle manna-harbour_miryoku.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle manna-harbour_miryoku.c
 // <<header>>
 
 #include "manna-harbour_miryoku.h"
@@ -942,7 +942,7 @@ make planck/rev6:manna-harbour_miryoku:flash FORCE_LAYOUT=ortho_4x12 # ortho_4x1
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/60_ansi/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/60_ansi/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -969,7 +969,7 @@ XXX,  XXX,  K00,  K01,  K02,  K03,  K04,  XXX,  K05,  K06,  K07,  K08,  K09,  XX
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/60_ansi/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/60_ansi/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -995,7 +995,7 @@ make ergodox_ez:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ergodox/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ergodox/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1025,7 +1025,7 @@ XXX, XXX, XXX, XXX, K32,                          K37, XXX, XXX, XXX, XXX,\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ergodox/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ergodox/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1044,7 +1044,7 @@ make marksard/rhymestone:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x10/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_4x10/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1068,7 +1068,7 @@ KC_NO, KC_NO, K32,   K33,   K34,   K35,   K36,   K37,   KC_NO, KC_NO\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x10/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_4x10/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1116,7 +1116,7 @@ make keebio/levinson:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1168,7 +1168,7 @@ KC_NO, KC_NO, K32,   K33,   K34,   KC_NO, KC_NO, K35,   K36,   K37,   KC_NO, KC_
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1194,7 +1194,7 @@ make keebio/nyquist/rev3:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_TH
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_5x12/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_5x12/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1249,7 +1249,7 @@ KC_NO, KC_NO, K32,   K33,   K34,   KC_NO, KC_NO, K35,   K36,   K37,   KC_NO, KC_
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_5x12/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_5x12/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1282,7 +1282,7 @@ make idobo:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # extende
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_5x15/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_5x15/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1327,7 +1327,7 @@ XXX, XXX, K32, K33, K34, XXX, XXX, XXX, XXX, XXX, K35, K36, K37, XXX, XXX\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/ortho_5x15/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_5x15/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1350,7 +1350,7 @@ make planck/rev6:manna-harbour_miryoku:flash FORCE_LAYOUT=planck_mit # planck re
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/planck_mit/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/planck_mit/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1374,7 +1374,7 @@ KC_NO, KC_NO, K32,   K33,   K34,      KC_NO,     K35,   K36,   K37,   KC_NO, KC_
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/planck_mit/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/planck_mit/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1393,7 +1393,7 @@ make minidox:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/split_3x5_3/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/split_3x5_3/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1417,7 +1417,7 @@ K20,   K21,   K22,   K23,   K24,          K25,   K26,   K27,   K28,   K29,\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/split_3x5_3/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/split_3x5_3/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1438,7 +1438,7 @@ make crkbd:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/split_3x6_3/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/split_3x6_3/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1462,7 +1462,7 @@ KC_NO, K20,   K21,   K22,   K23,   K24,          K25,   K26,   K27,   K28,   K29
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../layouts/community/split_3x6_3/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/split_3x6_3/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1489,7 +1489,7 @@ make atreus:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/atreus/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/atreus/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1515,7 +1515,7 @@ XXX, XXX, XXX, K32, K33, K34,      K35, K36, K37, XXX, XXX, XXX\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/atreus/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/atreus/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1533,7 +1533,7 @@ make ergotravel:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/ergotravel/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/ergotravel/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1559,7 +1559,7 @@ XXX, XXX, XXX, K32,      K33, K34,       K35, K36,      K37, XXX, XXX, XXX  \
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/ergotravel/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/ergotravel/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1579,7 +1579,7 @@ make for_science:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/for_science/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/for_science/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1606,7 +1606,7 @@ K20, K21, K22, K23, K24,     K25, K26, K27, K28, K29,\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/for_science/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/for_science/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1626,7 +1626,7 @@ make gergo:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/gergo/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/gergo/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1652,7 +1652,7 @@ XXX, K20, K21, K22, K23, K24, XXX, XXX,      XXX, XXX, K25, K26, K27, K28, K29, 
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/gergo/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/gergo/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1672,7 +1672,7 @@ make handwired/dactyl_manuform/4x5:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/4x5/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/4x5/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1701,7 +1701,7 @@ K20, K21, K22, K23, K24,                         K25, K26, K27, K28, K29,\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/4x5/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/4x5/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1721,7 +1721,7 @@ make handwired/dactyl_manuform/5x6:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/5x6/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/5x6/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1751,7 +1751,7 @@ XXX, K20, K21, K22, K23, K24,                         K25, K26, K27, K28, K29, X
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/5x6/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/5x6/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1771,7 +1771,7 @@ make keebio/iris/rev4:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/keebio/iris/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/keebio/iris/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1798,7 +1798,7 @@ XXX, K20, K21, K22, K23, K24, XXX,      XXX, K25, K26, K27, K28, K29, XXX,\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/keebio/iris/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/keebio/iris/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1818,7 +1818,7 @@ make keyboardio/atreus:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/keyboardio/atreus/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/keyboardio/atreus/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1844,7 +1844,7 @@ XXX, XXX, XXX, K32, K33, K34,      K35, K36, K37, XXX, XXX, XXX \
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/keyboardio/atreus/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/keyboardio/atreus/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1874,7 +1874,7 @@ make kyria:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # extende
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/kyria/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/kyria/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1915,7 +1915,7 @@ XXX, K20, K21, K22, K23, K24, XXX, XXX,      XXX, XXX, K25, K26, K27, K28, K29, 
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/kyria/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/kyria/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1935,7 +1935,7 @@ make lily58:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/lily58/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/lily58/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -1962,7 +1962,7 @@ XXX, K20, K21, K22, K23, K24, XXX,      XXX, K25, K26, K27, K28, K29, XXX,\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/lily58/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/lily58/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -1982,7 +1982,7 @@ make moonlander:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/moonlander/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/moonlander/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -2010,7 +2010,7 @@ XXX, XXX, XXX, XXX, XXX,      XXX,     XXX,      XXX, XXX, XXX, XXX, XXX,\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/moonlander/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/moonlander/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -2030,7 +2030,7 @@ make redox_w:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/redox_w/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/redox_w/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -2059,7 +2059,7 @@ XXX, XXX, XXX, XXX,    K32,   K33, K34,      K35, K36,    K37,   XXX, XXX, XXX, 
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/redox_w/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/redox_w/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -2077,7 +2077,7 @@ make sofle:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/sofle/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/sofle/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -2104,7 +2104,7 @@ XXX, K20, K21, K22, K23, K24, XXX,      XXX, K25, K26, K27, K28, K29, XXX,\
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/sofle/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/sofle/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
@@ -2122,7 +2122,7 @@ make torn:manna-harbour_miryoku:flash
 
 Contains subset mapping.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/torn/keymaps/manna-harbour_miryoku/config.h
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/torn/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
 #pragma once
@@ -2148,7 +2148,7 @@ KC_NO, K20,   K21,   K22,   K23,   K24,          K25,   K26,   K27,   K28,   K29
 
 Required by the build system.
 
-#+BEGIN_SRC C :noweb yes :padline no :tangle ../../keyboards/torn/keymaps/manna-harbour_miryoku/keymap.c
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/torn/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 #+END_SRC
 
