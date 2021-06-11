@@ -134,6 +134,8 @@ Additional implementations and visualisations are provided outside QMK in the
 
 ** Layers
 
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/layers/miryoku-kle-reference.png]]
+
 The layers are maintained in tables.  ~U_NP~ indicates the key is not present
 and is used to fill in the table around the thumb keys.  The grid arrangement of
 the tables does not imply a particular physical layout.
@@ -151,6 +153,8 @@ change thumb key.  Unknown names are considered to be layer names.
 
 
 *** Base
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/layers/miryoku-kle-base.png]]
 
 The base layer alphas are Colemak Mod-DH.  Dot, comma, slash, and apostrophe are
 included with the alphas.  The primary, secondary, and tertiary thumb keys are
@@ -187,6 +191,8 @@ Alternative alpha arrangements are also available.
 
 *** Nav
 
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/layers/miryoku-kle-nav.png]]
+
 Primary right-hand layer (left home thumb) is navigation and editing.  Cursor
 keys are on the home position, line and page movement below, clipboard above,
 caps lock and insert on the inner column.  Thumb keys are duplicated from the
@@ -203,6 +209,8 @@ available.
 
 
 *** Mouse
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/layers/miryoku-kle-mouse.png]]
 
 Secondary right-hand layer is mouse emulation.  Mouse movement mirrors cursor
 navigation on home and wheel mirrors line / page movement below.  Buttons are on
@@ -231,6 +239,8 @@ configuration.  Not activated manually.
 
 *** Media
 
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/layers/miryoku-kle-media.png]]
+
 Tertiary right-hand layer is media control, with volume up / down and next /
 prev mirroring the navigation keys.  Pause, stop and mute are on thumbs.  RGB
 control is on the top row (combine with shift to invert).  Unused keys are
@@ -245,6 +255,8 @@ available for other related functions.
 
 *** Num
 
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/layers/miryoku-kle-num.png]]
+
 Primary left-hand layer (right home thumb) is numerals and symbols.  Numerals
 are in the standard numpad locations with symbols in the remaining positions.
 Dot is duplicated from the base layer.
@@ -258,6 +270,8 @@ Dot is duplicated from the base layer.
 
 *** Sym
 
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/layers/miryoku-kle-sym.png]]
+
 Secondary left-hand layer has shifted symbols in the same locations to reduce
 chording when using mods with shifted symbols.  Open parenthesis is duplicated
 next to close parenthesis.
@@ -270,6 +284,8 @@ next to close parenthesis.
 
 
 *** Fun
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/layers/miryoku-kle-fun.png]]
 
 Tertiary left-hand layer has function keys mirroring the numerals on the primary
 layer with extras on the pinkie column, plus system keys on the inner column.
@@ -393,6 +409,8 @@ Not available with ~MIRYOKU_LAYERS=FLIP~.
 
 
 ***** Inverted-T
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/layers/miryoku-kle-reference-flip-invertedt.png]]
 
 To select, append ~MIRYOKU_NAV=INVERTEDT~ to the ~make~ command line when
 building.  Only available with ~MIRYOKU_LAYERS=FLIP~.
