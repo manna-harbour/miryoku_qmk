@@ -2449,9 +2449,9 @@ To enable, merge the following branches:
 
 * Contact
 
-For issues with this branch, or to request support for additional base layer
-alphas, layouts, or keyboards, please [[https://github.com/manna-harbour/qmk_firmware/issues/new][open an issue]].
+For feature requests or issues with code or documentation please
+[[https://github.com/manna-harbour/qmk_firmware/issues/new][open an issue]].
 
-For more general discussion, please join a recent relevant [[https://www.reddit.com/user/manna_harbour/][thread]] or [[https://www.reddit.com/message/compose/?to=manna_harbour][send a PM]].
+For more general discussion please [[https://github.com/manna-harbour/manna-harbour/tree/main/contact][contact Manna Harbour]].
 
 [[https://github.com/manna-harbour][https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/logos/manna-harbour-boa-32.png]]
