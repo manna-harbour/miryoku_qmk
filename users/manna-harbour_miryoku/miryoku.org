@@ -2403,21 +2403,12 @@ customisations.
 
 ** Bilateral Combinations
 
-- [[https://github.com/manna-harbour/qmk_firmware/blob/bilateral-combinations/docs/tap_hold.md#bilateral-combinations][Bilateral Combinations documentation]]
-
-To enable, merge the following branch:
-
-- https://github.com/manna-harbour/qmk_firmware/tree/bilateral-combinations/
+- [[https://github.com/manna-harbour/qmk_firmware/issues/29][Bilateral Combinations]]
 
 
 ** Retro Shift
 
-- [[https://github.com/manna-harbour/qmk_firmware/blob/retro-shift/docs/tap_hold.md#retro-shift][Retro Shift documentation]]
-
-To enable, merge the following branches:
-
-- https://github.com/manna-harbour/qmk_firmware/tree/retro-shift
-- https://github.com/manna-harbour/qmk_firmware/tree/miryoku-retro-shift-test
+- [[https://github.com/manna-harbour/qmk_firmware/issues/33][Retro Shift]]
 
 
 * Documentation                                                  :noexport_1:
