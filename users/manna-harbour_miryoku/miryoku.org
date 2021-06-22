@@ -52,6 +52,7 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#mods][mods]]
     - [[#nonkc][nonkc]]
     - [[#header][header]]
+    - [[#license-qmk][license-qmk]]
 - [[#subset-mapping][Subset Mapping]]
   - [[#userspace][Userspace]]
     - [[#usersmanna-harbour_miryokurulesmk][users/manna-harbour_miryoku/rules.mk]]
@@ -881,11 +882,23 @@ prepended.
 
 *** header
 
-Header for tangled source files.
+Header for tangled files.
 
 #+NAME: header
 #+BEGIN_SRC C :main no :tangle no
+Copyright 2019 Manna Harbour
+https://github.com/manna-harbour/miryoku
 generated from users/manna-harbour_miryoku/miryoku.org  -*- buffer-read-only: t -*-
+#+END_SRC
+
+
+*** license-qmk
+
+License for tangled QMK C source files.
+
+#+NAME: license-qmk
+#+BEGIN_SRC C :main no :tangle no
+// This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
 #+END_SRC
 
 
@@ -951,6 +964,8 @@ Config options.  Automatically included.
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle config.h
 // <<header>>
 
+<<license-qmk>>
+
 #pragma once
 
 // default but used in macros
@@ -993,6 +1008,8 @@ included from keymap or layout ~keymap.c~ if needed.
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle manna-harbour_miryoku.h
 // <<header>>
 
+<<license-qmk>>
+
 #pragma once
 
 #include QMK_KEYBOARD_H
@@ -1023,6 +1040,8 @@ Contains the keymap.  Added from ~rules.mk~.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle manna-harbour_miryoku.c
 // <<header>>
+
+<<license-qmk>>
 
 #include "manna-harbour_miryoku.h"
 
@@ -1183,6 +1202,8 @@ Contains subset mapping.
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/60_ansi/manna-harbour_miryoku/config.h
 // <<header>>
 
+<<license-qmk>>
+
 #pragma once
 
 #define XXX KC_NO
@@ -1225,6 +1246,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/60_ansi/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1253,6 +1276,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ergodox/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1283,6 +1308,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ergodox/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1303,6 +1330,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_4x10/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1327,6 +1356,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_4x10/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1373,6 +1404,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1425,6 +1458,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_4x12/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1451,6 +1486,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_5x12/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1506,6 +1543,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_5x12/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1541,6 +1580,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_5x15/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1586,6 +1627,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/ortho_5x15/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1611,6 +1654,8 @@ Contains subset mapping.
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/planck_mit/manna-harbour_miryoku/config.h
 // <<header>>
 
+<<license-qmk>>
+
 #pragma once
 
 #define LAYOUT_miryoku(\
@@ -1634,6 +1679,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/planck_mit/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1655,6 +1702,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/split_3x5_3/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1679,6 +1728,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/split_3x5_3/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1703,6 +1754,8 @@ Contains subset mapping.
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/split_3x6_3/manna-harbour_miryoku/config.h
 // <<header>>
 
+<<license-qmk>>
+
 #pragma once
 
 #define LAYOUT_miryoku(\
@@ -1726,6 +1779,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../layouts/community/split_3x6_3/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1754,6 +1809,8 @@ Contains subset mapping.
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/atreus/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
 
+<<license-qmk>>
+
 #pragma once
 
 #define XXX KC_NO
@@ -1779,6 +1836,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/atreus/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1797,6 +1856,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/ergotravel/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1823,6 +1884,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/ergotravel/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1843,6 +1906,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/for_science/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1870,6 +1935,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/for_science/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1890,6 +1957,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/gergo/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1916,6 +1985,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/gergo/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1936,6 +2007,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/4x5/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -1965,6 +2038,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/4x5/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -1985,6 +2060,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/5x6/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -2015,6 +2092,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/handwired/dactyl_manuform/5x6/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -2035,6 +2114,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/keebio/iris/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -2062,6 +2143,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/keebio/iris/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -2082,6 +2165,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/keyboardio/atreus/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -2108,6 +2193,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/keyboardio/atreus/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -2138,6 +2225,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/kyria/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -2179,6 +2268,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/kyria/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -2199,6 +2290,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/lily58/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -2226,6 +2319,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/lily58/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -2248,6 +2343,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/moonlander/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -2276,6 +2373,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/moonlander/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -2296,6 +2395,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/redox_w/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -2325,6 +2426,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/redox_w/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -2343,6 +2446,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/sofle/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -2370,6 +2475,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/sofle/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
@@ -2388,6 +2495,8 @@ Contains subset mapping.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/torn/keymaps/manna-harbour_miryoku/config.h
 // <<header>>
+
+<<license-qmk>>
 
 #pragma once
 
@@ -2414,6 +2523,8 @@ Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/torn/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
+
+<<license-qmk>>
 #+END_SRC
 
 
