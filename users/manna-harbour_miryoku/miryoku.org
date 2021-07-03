@@ -1639,7 +1639,7 @@ Required by the build system.
 
 *** split_3x5_3
 
-Keyboards supporting this layout: arch_36, centromere, crkbd, eek, miniaxe, minidox/rev1, squiggle/rev1, suihankey/split/rev1.
+Keyboards supporting this layout: arch_36, boardsource/microdox, centromere, crkbd, eek, miniaxe, minidox/rev1, pteron36, squiggle/rev1, suihankey/split/rev1.
 
 Example build command lines:
 
