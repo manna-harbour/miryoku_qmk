@@ -1308,12 +1308,15 @@ Required by the build system.
 
 *** ortho_4x10
 
+An alternative with 180 degree rotation is also provided to enable the USB cable to be relocated for use with laptops.  To select this mapping, append ~MIRYOKU_MAPPING=ROTATE~ to the ~make~ command line when building.
+
 Keyboards supporting this layout: newgame40, nimrod, marksard/rhymestone, pabile/p40.
 
 Example build command lines:
 
 #+BEGIN_SRC sh :tangle no
 make marksard/rhymestone:manna-harbour_miryoku:flash # marksard/rhymestone
+make pabile/p40:manna-harbour_miryoku:flash MIRYOKU_MAPPING=ROTATE # pabile/p40, rotate
 #+END_SRC
 
 
@@ -1328,18 +1331,35 @@ Contains subset mapping.
 
 #pragma once
 
-#define LAYOUT_miryoku(\
-K00,   K01,   K02,   K03,   K04,   K05,   K06,   K07,   K08,   K09,\
-K10,   K11,   K12,   K13,   K14,   K15,   K16,   K17,   K18,   K19,\
-K20,   K21,   K22,   K23,   K24,   K25,   K26,   K27,   K28,   K29,\
-N30,   N31,   K32,   K33,   K34,   K35,   K36,   K37,   N38,   N39\
-)\
-LAYOUT_ortho_4x10(\
-K00,   K01,   K02,   K03,   K04,   K05,   K06,   K07,   K08,   K09,\
-K10,   K11,   K12,   K13,   K14,   K15,   K16,   K17,   K18,   K19,\
-K20,   K21,   K22,   K23,   K24,   K25,   K26,   K27,   K28,   K29,\
-KC_NO, KC_NO, K32,   K33,   K34,   K35,   K36,   K37,   KC_NO, KC_NO\
+#define XXX KC_NO
+
+#if defined MIRYOKU_MAPPING_ROTATE
+#define LAYOUT_miryoku( \
+K00, K01, K02, K03, K04, K05, K06, K07, K08, K09, \
+K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, \
+K20, K21, K22, K23, K24, K25, K26, K27, K28, K29, \
+N30, N31, K32, K33, K34, K35, K36, K37, N38, N39 \
+) \
+LAYOUT_ortho_4x10( \
+XXX, XXX, K37, K36, K35, K34, K33, K32, XXX, XXX, \
+K29, K28, K27, K26, K25, K24, K23, K22, K21, K20, \
+K19, K18, K17, K16, K15, K14, K13, K12, K11, K10, \
+K09, K08, K07, K06, K05, K04, K03, K02, K01, K00 \
 )
+#else
+#define LAYOUT_miryoku(\
+K00, K01, K02, K03, K04, K05, K06, K07, K08, K09, \
+K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, \
+K20, K21, K22, K23, K24, K25, K26, K27, K28, K29, \
+N30, N31, K32, K33, K34, K35, K36, K37, N38, N39 \
+) \
+LAYOUT_ortho_4x10( \
+K00, K01, K02, K03, K04, K05, K06, K07, K08, K09, \
+K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, \
+K20, K21, K22, K23, K24, K25, K26, K27, K28, K29, \
+XXX, XXX, K32, K33, K34, K35, K36, K37, XXX, XXX \
+)
+#endif
 #+END_SRC
 
 
