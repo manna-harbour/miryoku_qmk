@@ -9,7 +9,12 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #if defined MIRYOKU_LAYERS_FLIP
   [BASE] = LAYOUT_miryoku(
-  #if defined MIRYOKU_ALPHAS_COLEMAK
+  #if defined MIRYOKU_ALPHAS_AZERTY
+    KC_A,              KC_Z,              KC_E,              KC_R,              KC_T,              KC_Y,              KC_U,              KC_I,              KC_O,              KC_P,
+    LGUI_T(KC_Q),      LALT_T(KC_S),      LCTL_T(KC_D),      LSFT_T(KC_F),      KC_G,              KC_H,              LSFT_T(KC_J),      LCTL_T(KC_K),      LALT_T(KC_L),      LGUI_T(KC_M),
+    LT(BUTTON, KC_W),  ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_N,              KC_COMM,           KC_DOT,            ALGR_T(KC_SLSH),   LT(BUTTON, KC_QUOT),
+    U_NP,              U_NP,              LT(FUN, KC_DEL),   LT(NUM, KC_BSPC),  LT(SYM, KC_ENT),   LT(MOUSE, KC_TAB), LT(NAV, KC_SPC),   LT(MEDIA, KC_ESC), U_NP,              U_NP
+  #elif defined MIRYOKU_ALPHAS_COLEMAK
     KC_Q,              KC_W,              KC_F,              KC_P,              KC_G,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,
     LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_D,              KC_H,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),
     LT(BUTTON, KC_Z),  ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_K,              KC_M,              KC_COMM,           ALGR_T(KC_DOT),    LT(BUTTON, KC_SLSH),
@@ -110,7 +115,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 #else
   [BASE] = LAYOUT_miryoku(
-  #if defined MIRYOKU_ALPHAS_COLEMAK
+  #if defined MIRYOKU_ALPHAS_AZERTY
+    KC_A,              KC_Z,              KC_E,              KC_R,              KC_T,              KC_Y,              KC_U,              KC_I,              KC_O,              KC_P,
+    LGUI_T(KC_Q),      LALT_T(KC_S),      LCTL_T(KC_D),      LSFT_T(KC_F),      KC_G,              KC_H,              LSFT_T(KC_J),      LCTL_T(KC_K),      LALT_T(KC_L),      LGUI_T(KC_M),
+    LT(BUTTON, KC_W),  ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_N,              KC_COMM,           KC_DOT,            ALGR_T(KC_SLSH),   LT(BUTTON, KC_QUOT),
+    U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB), LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),  LT(FUN, KC_DEL),   U_NP,              U_NP
+  #elif defined MIRYOKU_ALPHAS_COLEMAK
     KC_Q,              KC_W,              KC_F,              KC_P,              KC_G,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,
     LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_D,              KC_H,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),
     LT(BUTTON, KC_Z),  ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_K,              KC_M,              KC_COMM,           ALGR_T(KC_DOT),    LT(BUTTON, KC_SLSH),

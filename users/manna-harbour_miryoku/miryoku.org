@@ -319,6 +319,16 @@ To select, append the corresponding option to the ~make~ command line when
 building, e.g. ~MIRYOKU_ALPHAS=QWERTY~.
 
 
+***** AZERTY
+
+~MIRYOKU_ALPHAS=AZERTY~
+
+#+NAME: azerty
+| A    | Z    | E    | R    | T    | Y    | U    | I    | O    | P    |
+| Q    | S    | D    | F    | G    | H    | J    | K    | L    | M    |
+| W    | X    | C    | V    | B    | N    | ,    | DOT  | /    | '    |
+
+
 ***** Colemak
 
 ~MIRYOKU_ALPHAS=COLEMAK~
@@ -1055,7 +1065,9 @@ Contains the keymap.  Added from ~rules.mk~.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #if defined MIRYOKU_LAYERS_FLIP
   [BASE] = LAYOUT_miryoku(
-  #if defined MIRYOKU_ALPHAS_COLEMAK
+  #if defined MIRYOKU_ALPHAS_AZERTY
+<<table-layout-taphold(alphas_table=azerty, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
+  #elif defined MIRYOKU_ALPHAS_COLEMAK
 <<table-layout-taphold(alphas_table=colemak, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
   #elif defined MIRYOKU_ALPHAS_COLEMAKDHK
 <<table-layout-taphold(alphas_table=colemakdhk, thumbs_table=thumbs-flip, hold_table=hold-flip)>>
@@ -1105,7 +1117,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 #else
   [BASE] = LAYOUT_miryoku(
-  #if defined MIRYOKU_ALPHAS_COLEMAK
+  #if defined MIRYOKU_ALPHAS_AZERTY
+<<table-layout-taphold(alphas_table=azerty)>>
+  #elif defined MIRYOKU_ALPHAS_COLEMAK
 <<table-layout-taphold(alphas_table=colemak)>>
   #elif defined MIRYOKU_ALPHAS_COLEMAKDHK
 <<table-layout-taphold(alphas_table=colemakdhk)>>
