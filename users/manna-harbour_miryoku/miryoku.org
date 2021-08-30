@@ -79,11 +79,11 @@ Additional implementations and visualisations are provided outside QMK in the
     - [[#handwireddactyl_manuform5x6][handwired/dactyl_manuform/5x6]]
     - [[#keebioiris][keebio/iris]]
     - [[#keyboardioatreus][keyboardio/atreus]]
-    - [[#kyria][kyria]]
     - [[#lily58][lily58]]
     - [[#moonlander][moonlander]]
     - [[#redox_w][redox_w]]
     - [[#sofle][sofle]]
+    - [[#splitkbkyria][splitkb/kyria]]
     - [[#torn][torn]]
   - [[#customisation][Customisation]]
     - [[#examples][Examples]]
@@ -2261,81 +2261,6 @@ Required by the build system.
 #+END_SRC
 
 
-*** kyria
-
-Only the main 5x3 alphas and the middle 3 lower thumb keys are used.
-
-[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-kyria.png]]
-
-An alternative subset mapping is also provided with the thumb keys shifted one
-position in the direction of thumb extension.  To select this mapping, append
-~MIRYOKU_MAPPING=EXTENDED_THUMBS~ to the ~make~ command line when building.
-
-[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-kyria-extended_thumbs.png]]
-
-
-To build for this keyboard,
-
-#+BEGIN_SRC sh :tangle no
-make kyria:manna-harbour_miryoku:flash
-make kyria:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # extended thumb position
-#+END_SRC
-
-
-**** [[../../keyboards/kyria/keymaps/manna-harbour_miryoku/config.h][keyboards/kyria/keymaps/manna-harbour_miryoku/config.h]]
-
-Contains subset mapping.
-
-#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/kyria/keymaps/manna-harbour_miryoku/config.h
-// <<header>>
-
-<<license-qmk>>
-
-#pragma once
-
-#define XXX KC_NO
-
-#if defined MIRYOKU_MAPPING_EXTENDED_THUMBS
-#define LAYOUT_miryoku( \
-     K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09, \
-     K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19, \
-     K20, K21, K22, K23, K24,                          K25, K26, K27, K28, K29, \
-     N30, N31, K32, K33, K34,                          K35, K36, K37, N38, N39 \
-) \
-LAYOUT( \
-XXX, K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09, XXX, \
-XXX, K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19, XXX, \
-XXX, K20, K21, K22, K23, K24, XXX, XXX,      XXX, XXX, K25, K26, K27, K28, K29, XXX, \
-               XXX, XXX, K32, K33, K34,      K35, K36, K37, XXX, XXX \
-)
-#else
-#define LAYOUT_miryoku( \
-     K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09, \
-     K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19, \
-     K20, K21, K22, K23, K24,                          K25, K26, K27, K28, K29, \
-     N30, N31, K32, K33, K34,                          K35, K36, K37, N38, N39 \
-) \
-LAYOUT( \
-XXX, K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09, XXX, \
-XXX, K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19, XXX, \
-XXX, K20, K21, K22, K23, K24, XXX, XXX,      XXX, XXX, K25, K26, K27, K28, K29, XXX, \
-               XXX, K32, K33, K34, XXX,      XXX, K35, K36, K37, XXX \
-)
-#endif
-#+END_SRC
-
-
-**** [[../../keyboards/kyria/keymaps/manna-harbour_miryoku/keymap.c][keyboards/kyria/keymaps/manna-harbour_miryoku/keymap.c]]
-
-Required by the build system.
-
-#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/kyria/keymaps/manna-harbour_miryoku/keymap.c
-// <<header>>
-
-<<license-qmk>>
-#+END_SRC
-
-
 *** lily58
 
 Only the main 5x3 alphas and the inner 3 thumb keys are used.
@@ -2537,6 +2462,81 @@ XXX, K20, K21, K22, K23, K24, XXX,      XXX, K25, K26, K27, K28, K29, XXX,\
 Required by the build system.
 
 #+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/sofle/keymaps/manna-harbour_miryoku/keymap.c
+// <<header>>
+
+<<license-qmk>>
+#+END_SRC
+
+
+*** splitkb/kyria
+
+Only the main 5x3 alphas and the middle 3 lower thumb keys are used.
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-kyria.png]]
+
+An alternative subset mapping is also provided with the thumb keys shifted one
+position in the direction of thumb extension.  To select this mapping, append
+~MIRYOKU_MAPPING=EXTENDED_THUMBS~ to the ~make~ command line when building.
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-kyria-extended_thumbs.png]]
+
+
+To build for this keyboard,
+
+#+BEGIN_SRC sh :tangle no
+make splitkb/kyria:manna-harbour_miryoku:flash
+make splitkb/kyria:manna-harbour_miryoku:flash MIRYOKU_MAPPING=EXTENDED_THUMBS # extended thumb position
+#+END_SRC
+
+
+**** [[../../keyboards/splitkb/kyria/keymaps/manna-harbour_miryoku/config.h][keyboards/splitkb/kyria/keymaps/manna-harbour_miryoku/config.h]]
+
+Contains subset mapping.
+
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/splitkb/kyria/keymaps/manna-harbour_miryoku/config.h
+// <<header>>
+
+<<license-qmk>>
+
+#pragma once
+
+#define XXX KC_NO
+
+#if defined MIRYOKU_MAPPING_EXTENDED_THUMBS
+#define LAYOUT_miryoku( \
+     K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09, \
+     K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19, \
+     K20, K21, K22, K23, K24,                          K25, K26, K27, K28, K29, \
+     N30, N31, K32, K33, K34,                          K35, K36, K37, N38, N39 \
+) \
+LAYOUT( \
+XXX, K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09, XXX, \
+XXX, K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19, XXX, \
+XXX, K20, K21, K22, K23, K24, XXX, XXX,      XXX, XXX, K25, K26, K27, K28, K29, XXX, \
+               XXX, XXX, K32, K33, K34,      K35, K36, K37, XXX, XXX \
+)
+#else
+#define LAYOUT_miryoku( \
+     K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09, \
+     K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19, \
+     K20, K21, K22, K23, K24,                          K25, K26, K27, K28, K29, \
+     N30, N31, K32, K33, K34,                          K35, K36, K37, N38, N39 \
+) \
+LAYOUT( \
+XXX, K00, K01, K02, K03, K04,                          K05, K06, K07, K08, K09, XXX, \
+XXX, K10, K11, K12, K13, K14,                          K15, K16, K17, K18, K19, XXX, \
+XXX, K20, K21, K22, K23, K24, XXX, XXX,      XXX, XXX, K25, K26, K27, K28, K29, XXX, \
+               XXX, K32, K33, K34, XXX,      XXX, K35, K36, K37, XXX \
+)
+#endif
+#+END_SRC
+
+
+**** [[../../keyboards/splitkb/kyria/keymaps/manna-harbour_miryoku/keymap.c][keyboards/splitkb/kyria/keymaps/manna-harbour_miryoku/keymap.c]]
+
+Required by the build system.
+
+#+BEGIN_SRC C :main no :noweb yes :padline no :tangle ../../keyboards/splitkb/kyria/keymaps/manna-harbour_miryoku/keymap.c
 // <<header>>
 
 <<license-qmk>>
