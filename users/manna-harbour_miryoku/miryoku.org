@@ -1206,6 +1206,11 @@ command line when building.
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-60_ansi-noreverseangle.png]]
 
+Another alternative subset mapping is provided mapping only the 3x10 alphas,
+plus spacebar for space / Nav, with the remainder being the default 60_ansi
+keymap with semicolon in place of quote. To select this mapping, append
+~MIRYOKU_MAPPING=LITE~ to the ~make~ command line when building.
+
 Keyboards supporting this layout: alps64, amj60, bakeneko60, bm60poker, bm60rgb, do60, dp60, dz60, facew, gskt00, infinity60, jm60, kc60, kc60se, ok60, org60, paladin64, panc60, reviung61, smk60, v60_type_r, yd60mq, 1upkeyboards/1up60hse, 1upkeyboards/1up60rgb, 40percentclub/luddite, acheron/keebspcb, acheron/lasgweloth, ai03/polaris, akegata_denki/device_one, atxkb/1894, bioi/g60ble, bt66tech/bt66tech60, cannonkeys/an_c, cannonkeys/instant60, cannonkeys/practice60, clawsome/coupe, dm9records/tartan, duck/eagle_viper, evyd13/plain60, exclusive/e6_rgb, gh60/revc, gh60/satan, gh60/v1p3, handwired/xealousbrown, hineybush/h60, hs60/v1, keebio/wtf60, noxary/260, playkbtw/pk60, ryloo_studio/m0110, thevankeyboards/bananasplit, wilba_tech/zeal60, xd60/rev2, xd60/rev3, cannonkeys/db60/hotswap, cannonkeys/db60/j02, cannonkeys/db60/rev2, exclusive/e6v2/le, exclusive/e6v2/oe, foxlab/leaf60/universal, handwired/co60/rev1, handwired/co60/rev7, handwired/swiftrax/nodu, hs60/v2/ansi, inett_studio/sqx/universal, melgeek/mj61/rev1, melgeek/mj61/rev2, melgeek/mj63/rev1, melgeek/mj63/rev2, sentraq/s60_x/default, sentraq/s60_x/rgb.
 
 Example build command lines:
@@ -1213,6 +1218,7 @@ Example build command lines:
 #+BEGIN_SRC sh :tangle no
 make dz60:manna-harbour_miryoku:flash # dz60
 make dz60:manna-harbour_miryoku:flash MIRYOKU_MAPPING=NOREVERSEANGLE  # dz60, without reverse column angle
+make dz60:manna-harbour_miryoku:flash MIRYOKU_MAPPING=LITE  # dz60, with lite mapping
 #+END_SRC
 
 
@@ -1230,7 +1236,7 @@ Contains subset mapping.
 #define XXX KC_NO
 
 #if defined MIRYOKU_MAPPING_NOREVERSEANGLE
-#define LAYOUT_miryoku(\
+  #define LAYOUT_miryoku(\
 K00,  K01,  K02,  K03,  K04,                    K05,  K06,  K07,  K08,  K09,\
 K10,  K11,  K12,  K13,  K14,                    K15,  K16,  K17,  K18,  K19,\
 K20,  K21,  K22,  K23,  K24,                    K25,  K26,  K27,  K28,  K29,\
@@ -1243,8 +1249,38 @@ K00,  K01,  K02,  K03,  K04,  XXX,  XXX,  XXX,  K05,  K06,  K07,  K08,  K09,  XX
   XXX,        K32,  K33,  K34,  XXX,  XXX,  XXX,  XXX,  K35,  K36,  K37,  XXX,\
   XXX,  XXX,  XXX,              XXX,              XXX,  XXX,        XXX,  XXX\
 )
+#elif defined MIRYOKU_MAPPING_LITE
+  #if defined MIRYOKU_LAYERS_FLIP
+    #define LAYOUT_miryoku( \
+         K00,     K01,     K02,     K03,     K04,     K05,     K06,     K07,     K08,     K09, \
+         K10,     K11,     K12,     K13,     K14,     K15,     K16,     K17,     K18,     K19, \
+         K20,     K21,     K22,     K23,     K24,     K25,     K26,     K27,     K28,     K29, \
+         N30,     N31,     K32,     K33,     K34,     K35,     K36,     K37,     N38,     N39 \
+) \
+LAYOUT_60_ansi( \
+KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC, \
+KC_TAB,  K00,     K01,     K02,     K03,     K04,     K05,     K06,     K07,     K08,     K09,     KC_LBRC, KC_RBRC, KC_BSLS, \
+KC_CAPS, K10,     K11,     K12,     K13,     K14,     K15,     K16,     K17,     K18,     K19,     KC_SCLN, KC_ENT, \
+KC_LSFT, K20,     K21,     K22,     K23,     K24,     K25,     K26,     K27,     K28,     K29,     KC_RSFT, \
+KC_LCTL, KC_LGUI, KC_LALT,                            K36,                                KC_RALT, KC_RGUI, KC_APP,  KC_RCTL \
+)
+  #else
+    #define LAYOUT_miryoku( \
+         K00,     K01,     K02,     K03,     K04,     K05,     K06,     K07,     K08,     K09, \
+         K10,     K11,     K12,     K13,     K14,     K15,     K16,     K17,     K18,     K19, \
+         K20,     K21,     K22,     K23,     K24,     K25,     K26,     K27,     K28,     K29, \
+         N30,     N31,     K32,     K33,     K34,     K35,     K36,     K37,     N38,     N39 \
+) \
+LAYOUT_60_ansi( \
+KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC, \
+KC_TAB,  K00,     K01,     K02,     K03,     K04,     K05,     K06,     K07,     K08,     K09,     KC_LBRC, KC_RBRC, KC_BSLS, \
+KC_CAPS, K10,     K11,     K12,     K13,     K14,     K15,     K16,     K17,     K18,     K19,     KC_SCLN, KC_ENT, \
+KC_LSFT, K20,     K21,     K22,     K23,     K24,     K25,     K26,     K27,     K28,     K29,     KC_RSFT, \
+KC_LCTL, KC_LGUI, KC_LALT,                            K33,                                         KC_RALT, KC_RGUI, KC_APP,  KC_RCTL \
+)
+  #endif
 #else
-#define LAYOUT_miryoku(\
+  #define LAYOUT_miryoku(\
             K00,  K01,  K02,  K03,  K04,        K05,  K06,  K07,  K08,  K09,\
             K10,  K11,  K12,  K13,  K14,        K15,  K16,  K17,  K18,  K19,\
             K20,  K21,  K22,  K23,  K24,        K25,  K26,  K27,  K28,  K29,\
