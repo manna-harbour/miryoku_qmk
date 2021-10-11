@@ -1,0 +1,13 @@
+# Copyright 2022 Manna Harbour
+# https://github.com/manna-harbour/miryoku
+
+name: 'Test Merge'
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    if: github.repository_owner == 'manna-harbour'
+    uses: manna-harbour/miryoku_qmk/.github/workflows/main.yml@miryoku
+    with:
+      keyboard: '["crkbd"]'
+      merge: '["qmk/qmk_firmware/master","qmk/qmk_firmware/develop"]'
