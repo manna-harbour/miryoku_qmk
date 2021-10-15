@@ -848,7 +848,7 @@ Header for tangled files.
 #+BEGIN_SRC C :main no :tangle no
 Copyright 2019 Manna Harbour
 https://github.com/manna-harbour/miryoku
-generated from users/manna-harbour_miryoku/miryoku.org  -*- buffer-read-only: t -*-
+generated -*- buffer-read-only: t -*-
 #+END_SRC
 
 
