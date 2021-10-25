@@ -5,13 +5,10 @@
 
 #pragma once
 
-#include QMK_KEYBOARD_H
-
 #include "miryoku_babel/miryoku_layer_names.h"
+#include "miryoku_babel/miryoku_layer.h"
 
-#include "miryoku_layer.h"
-
-#define U_EXPAND(macro, ...) macro(__VA_ARGS__)
+#define U_MACRO_VA_ARGS(macro, ...) macro(__VA_ARGS__)
 
 #define U_NP KC_NO // key is not present
 #define U_NA KC_NO // present but not available for use
@@ -42,5 +39,3 @@
 #define U_CUT S(KC_DEL)
 #define U_UND KC_UNDO
 #endif
-
-enum layers { MIRYOKU_LAYER_NAMES };
