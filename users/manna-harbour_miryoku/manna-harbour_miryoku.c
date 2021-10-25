@@ -5,4 +5,13 @@
 
 #include "manna-harbour_miryoku.h"
 
-#include "babel/keymaps.h"
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  [BASE]   = U_EXPAND(LAYOUT_miryoku, MIRYOKU_LAYER_BASE),
+  [NAV]    = U_EXPAND(LAYOUT_miryoku, MIRYOKU_LAYER_NAV),
+  [MOUSE]  = U_EXPAND(LAYOUT_miryoku, MIRYOKU_LAYER_MOUSE),
+  [MEDIA]  = U_EXPAND(LAYOUT_miryoku, MIRYOKU_LAYER_MEDIA),
+  [NUM]    = U_EXPAND(LAYOUT_miryoku, MIRYOKU_LAYER_NUM),
+  [SYM]    = U_EXPAND(LAYOUT_miryoku, MIRYOKU_LAYER_SYM),
+  [FUN]    = U_EXPAND(LAYOUT_miryoku, MIRYOKU_LAYER_FUN),
+  [BUTTON] = U_EXPAND(LAYOUT_miryoku, MIRYOKU_LAYER_BUTTON)
+};
