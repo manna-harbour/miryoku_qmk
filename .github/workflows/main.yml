@@ -1,0 +1,105 @@
+# Copyright 2021 Manna Harbour
+# https://github.com/manna-harbour/miryoku
+
+name: 'Main'
+on:
+  workflow_call:
+    inputs:
+      keyboard:
+        type: string
+        default: '["default"]'
+      alphas:
+        type: string
+        default: '["default"]'
+      nav:
+        type: string
+        default: '["default"]'
+      clipboard:
+        type: string
+        default: '["default"]'
+      layers:
+        type: string
+        default: '["default"]'
+      mapping:
+        type: string
+        default: '["default"]'
+      rules:
+        type: string
+        default: '["default"]'
+      config:
+        type: string
+        default: '["default"]'
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli
+    strategy:
+      fail-fast: false
+      matrix:
+        keyboard: ${{ fromJSON(inputs.keyboard) }}
+        alphas: ${{ fromJSON(inputs.alphas) }}
+        nav: ${{ fromJSON(inputs.nav) }}
+        clipboard: ${{ fromJSON(inputs.clipboard) }}
+        layers: ${{ fromJSON(inputs.layers) }}
+        mapping: ${{ fromJSON(inputs.mapping) }}
+        rules: ${{ fromJSON(inputs.rules) }}
+        config: ${{ fromJSON(inputs.config) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Process inputs
+        id: inputs
+        run: |
+          artifacts_dir="artifacts"
+          mkdir "$artifacts_dir"
+          rules="$artifacts_dir/rules.mk"
+          config="$artifacts_dir/config.h"
+          user='users/manna-harbour_miryoku'
+          artifact_build_name=`echo "miryoku_qmk ${{ matrix.keyboard }}" | tr '/' '_'`
+          for option in "alphas=${{ matrix.alphas }}" "nav=${{ matrix.nav }}" "clipboard=${{ matrix.clipboard }}" "layers=${{ matrix.layers }}" "mapping=${{ matrix.mapping }}"
+          do
+            case "$option" in
+              *= ) ;;
+              *=default ) ;;
+              * )
+                artifact_build_name="$artifact_build_name "`echo "$option" | tr '=' '_'`
+                option=`echo "MIRYOKU_$option" | tr 'a-z' 'A-Z'`
+                echo "$option" >> "$rules"
+                echo "$option" >> "$user/rules.mk"
+                ;;
+            esac
+          done
+          if [ -n "${{ matrix.rules }}" -a "${{ matrix.rules }}" != 'default' ]
+          then
+            artifact_build_name="$artifact_build_name rules_"`echo "${{ matrix.rules }}" | md5sum | cut -d ' ' -f 1`
+            echo "${{ matrix.rules }}" >> "$rules"
+            echo "${{ matrix.rules }}" >> "$user/rules.mk"
+          fi
+          if [ -n "${{ matrix.config }}" -a "${{ matrix.config }}" != 'default' ]
+          then
+            artifact_build_name="$artifact_build_name config_"`echo "${{ matrix.config }}" | md5sum | cut -d ' ' -f 1`
+            echo "${{ matrix.config }}" >> "$config"
+            echo "${{ matrix.config }}" >> "$user/config.h"
+          fi
+          artifact_build_name=`echo $artifact_build_name | tr ' ' '-'`
+          echo "::set-output name=artifact-dir::$artifacts_dir"
+          echo "::set-output name=artifact-build-name::$artifact_build_name"
+      - name: Build
+        run: qmk compile -kb ${{ matrix.keyboard }} -km manna-harbour_miryoku
+      - name: Copy firmware
+        run: |
+          for file in *.hex *.bin
+          do
+            if [ -f "$file" ]
+            then
+              cp "$file" "${{ steps.inputs.outputs.artifact-dir }}"
+            fi
+          done
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.inputs.outputs.artifact-build-name }}
+          path: ${{ steps.inputs.outputs.artifact-dir }}
+        continue-on-error: true
