@@ -128,6 +128,12 @@ KC_LEFT,           KC_DOWN,           KC_UP,             KC_RGHT,           KC_C
 U_UND,             U_CUT,             U_CPY,             U_PST,             U_RDO,             U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
 U_NP,              U_NP,              KC_DEL,            KC_BSPC,           KC_ENT,            U_NA,              U_NA,              U_NA,              U_NP,              U_NP
 
+#define MIRYOKU_ALTERNATIVES_NAV_INVERTEDT \
+RESET,             U_NA,              U_NA,              U_NA,              U_NA,              KC_INS,            KC_HOME,           KC_UP,             KC_END,            KC_PGUP,           \
+KC_LGUI,           KC_LALT,           KC_LCTL,           KC_LSFT,           U_NA,              KC_CAPS,           KC_LEFT,           KC_DOWN,           KC_RGHT,           KC_PGDN,           \
+U_NA,              KC_ALGR,           U_NA,              U_NA,              U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
+U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              KC_ENT,            KC_BSPC,           KC_DEL,            U_NP,              U_NP
+
 #define MIRYOKU_ALTERNATIVES_NAV_VI \
 RESET,             U_NA,              U_NA,              U_NA,              U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
 KC_LGUI,           KC_LALT,           KC_LCTL,           KC_LSFT,           U_NA,              KC_LEFT,           KC_DOWN,           KC_UP,             KC_RGHT,           KC_CAPS,           \
@@ -153,6 +159,12 @@ KC_MS_L,           KC_MS_D,           KC_MS_U,           KC_MS_R,           U_NU
 U_UND,             U_CUT,             U_CPY,             U_PST,             U_RDO,             U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
 U_NP,              U_NP,              KC_BTN2,           KC_BTN3,           KC_BTN1,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP
 
+#define MIRYOKU_ALTERNATIVES_MOUSE_INVERTEDT \
+RESET,             U_NA,              U_NA,              U_NA,              U_NA,              U_NU,              KC_WH_L,           KC_MS_U,           KC_WH_R,           KC_WH_U,           \
+KC_LGUI,           KC_LALT,           KC_LCTL,           KC_LSFT,           U_NA,              U_NU,              KC_MS_L,           KC_MS_D,           KC_MS_R,           KC_WH_D,           \
+U_NA,              KC_ALGR,           U_NA,              U_NA,              U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
+U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              KC_BTN1,           KC_BTN3,           KC_BTN2,           U_NP,              U_NP
+
 #define MIRYOKU_ALTERNATIVES_MOUSE_VI \
 RESET,             U_NA,              U_NA,              U_NA,              U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
 KC_LGUI,           KC_LALT,           KC_LCTL,           KC_LSFT,           U_NA,              KC_MS_L,           KC_MS_D,           KC_MS_U,           KC_MS_R,           U_NU,              \
@@ -167,9 +179,9 @@ U_NP,              U_NP,              U_NA,              U_NA,              U_NA
 
 
 #define MIRYOKU_ALTERNATIVES_MEDIA_INVERTEDT_FLIP \
-U_NU,              U_NU,              KC_VOLU,           U_NU,              U_NU,              U_NA,              U_NA,              U_NA,              U_NA,              RESET,             \
-U_NU,              KC_MPRV,           KC_VOLD,           KC_MNXT,           OUT_AUTO,          U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
-RGB_MOD,           RGB_HUI,           RGB_SAI,           RGB_VAI,           RGB_TOG,           U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
+RGB_SAI,           RGB_HUI,           KC_VOLU,           RGB_MOD,           RGB_TOG,           U_NA,              U_NA,              U_NA,              U_NA,              RESET,             \
+RGB_VAI,           KC_MPRV,           KC_VOLD,           KC_MNXT,           OUT_AUTO,          U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
+U_NU,              U_NU,              U_NU,              U_NU,              U_NU,              U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
 U_NP,              U_NP,              KC_MUTE,           KC_MPLY,           KC_MSTP,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP
 
 #define MIRYOKU_ALTERNATIVES_MEDIA_FLIP \
@@ -177,6 +189,12 @@ RGB_MOD,           RGB_HUI,           RGB_SAI,           RGB_VAI,           RGB_
 KC_MPRV,           KC_VOLD,           KC_VOLU,           KC_MNXT,           OUT_AUTO,          U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
 U_NU,              U_NU,              U_NU,              U_NU,              U_NU,              U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
 U_NP,              U_NP,              KC_MUTE,           KC_MPLY,           KC_MSTP,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP
+
+#define MIRYOKU_ALTERNATIVES_MEDIA_INVERTEDT \
+RESET,             U_NA,              U_NA,              U_NA,              U_NA,              RGB_TOG,           RGB_MOD,           KC_VOLU,           RGB_HUI,           RGB_SAI,           \
+KC_LGUI,           KC_LALT,           KC_LCTL,           KC_LSFT,           U_NA,              OUT_AUTO,          KC_MPRV,           KC_VOLD,           KC_MNXT,           RGB_VAI,           \
+U_NA,              KC_ALGR,           U_NA,              U_NA,              U_NA,              U_NU,              U_NU,              U_NU,              U_NU,              U_NU,              \
+U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              KC_MSTP,           KC_MPLY,           KC_MUTE,           U_NP,              U_NP
 
 #define MIRYOKU_ALTERNATIVES_MEDIA_VI \
 RESET,             U_NA,              U_NA,              U_NA,              U_NA,              RGB_TOG,           RGB_MOD,           RGB_HUI,           RGB_SAI,           RGB_VAI,           \
