@@ -8,6 +8,7 @@ on:
       keyboard:
         description: 'Keyboard'
         required: true
+        default: 'crkbd/rev1'
       alphas:
         description: 'Miryoku Alphas'
         required: false
