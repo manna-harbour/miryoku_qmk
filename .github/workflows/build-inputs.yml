@@ -11,7 +11,7 @@ on:
       alphas:
         description: 'Miryoku Alphas'
         required: false
-        default: 'default'
+        default: 'qwerty'
       nav:
         description: 'Miryoku Nav'
         required: false
@@ -19,7 +19,7 @@ on:
       clipboard:
         description: 'Miryoku Clipboard'
         required: false
-        default: 'default'
+        default: 'win'
       layers:
         description: 'Miryoku Layers'
         required: false
