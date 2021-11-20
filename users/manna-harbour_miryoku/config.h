@@ -5,6 +5,11 @@
 
 #pragma once
 
+/* Select hand configuration */
+#define MASTER_LEFT
+
+#define SPLIT_LAYER_STATE_ENABLE
+
 // default but used in macros
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
