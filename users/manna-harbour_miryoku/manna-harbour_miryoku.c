@@ -34,6 +34,10 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 #define L_Nav 4
 #define L_Mouse 8
 #define L_Media 16
+#define L_Num 32
+#define L_Sym 64
+#define L_Fun 128
+
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
@@ -45,7 +49,7 @@ void oled_render_layer_state(void) {
             oled_write_ln_P(PSTR("Lower"), false);
             break;
         case L_Nav:
-            oled_write_ln_P(PSTR("Nav"), false);
+            oled_write_ln_P(PSTR("Navigation"), false);
             break;
         case L_Mouse:
             oled_write_ln_P(PSTR("Mouse"), false);
@@ -53,11 +57,14 @@ void oled_render_layer_state(void) {
         case L_Media:
             oled_write_ln_P(PSTR("Media"), false);
             break;
-            case 32:
-            oled_write_ln_P(PSTR("32"), false);
+        case L_Num:
+            oled_write_ln_P(PSTR("Numbers"), false);
             break;
-            case 64:
-            oled_write_ln_P(PSTR("64"), false);
+        case L_Sym:
+            oled_write_ln_P(PSTR("Synmbol"), false);
+            break;
+        case L_Fun:
+            oled_write_ln_P(PSTR("Function"), false);
             break;
     }
     oled_write_P(PSTR("Caspar Boekhoudt"), false);
