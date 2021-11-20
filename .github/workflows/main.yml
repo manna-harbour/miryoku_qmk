@@ -7,16 +7,16 @@ on:
     inputs:
       keyboard:
         type: string
-        default: '["default"]'
+        default: '["crkbd/rev1"]'
       alphas:
         type: string
-        default: '["default"]'
+        default: '["qwerty"]'
       nav:
         type: string
         default: '["default"]'
       clipboard:
         type: string
-        default: '["default"]'
+        default: '["win"]'
       layers:
         type: string
         default: '["default"]'
