@@ -31,29 +31,26 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 #define L_BASE 0
 #define L_LOWER 2
-#define L_RAISE 4
-#define L_ADJUST 8
+#define L_Nav 4
+#define L_Mouse 8
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
-    switch (layer_state) {
-        case L_BASE:
+    switch (get_highest_layer(layer_state)) {
+        case MIRYOKU_LAYER_BASE:
             oled_write_ln_P(PSTR("Default"), false);
             break;
         case L_LOWER:
             oled_write_ln_P(PSTR("Lower"), false);
             break;
-        case L_RAISE:
-            oled_write_ln_P(PSTR("Raise"), false);
+        case MIRYOKU_LAYER_NAV:
+            oled_write_ln_P(PSTR("Nav"), false);
             break;
-        case L_ADJUST:
-        case L_ADJUST|L_LOWER:
-        case L_ADJUST|L_RAISE:
-        case L_ADJUST|L_LOWER|L_RAISE:
-            oled_write_ln_P(PSTR("Adjust"), false);
+        case MIRYOKU_LAYER_MOUSE:
+            oled_write_ln_P(PSTR("Mouse"), false);
             break;
     }
-    oled_write_P(PSTR("I love Marce"), false);
+    oled_write_P(PSTR("Caspar Boekhoudt"), false);
 }
 
 void render_bootmagic_status(bool status) {
