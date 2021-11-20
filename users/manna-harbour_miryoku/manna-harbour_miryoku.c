@@ -36,18 +36,21 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
-    switch (get_highest_layer(layer_state)) {
-        case MIRYOKU_LAYER_BASE:
+    switch (layer_state) {
+        case L_BASE:
             oled_write_ln_P(PSTR("Default"), false);
             break;
         case L_LOWER:
             oled_write_ln_P(PSTR("Lower"), false);
             break;
-        case MIRYOKU_LAYER_NAV:
+        case L_Nav:
             oled_write_ln_P(PSTR("Nav"), false);
             break;
-        case MIRYOKU_LAYER_MOUSE:
+        case L_Mouse:
             oled_write_ln_P(PSTR("Mouse"), false);
+            break;
+        case 16:
+            oled_write_ln_P(PSTR("16"), false);
             break;
     }
     oled_write_P(PSTR("Caspar Boekhoudt"), false);
