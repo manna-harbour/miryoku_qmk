@@ -1,7 +1,7 @@
 # Copyright 2021 Manna Harbour
 # https://github.com/manna-harbour/miryoku
 
-name: 'Build Example crkbd'
+name: 'Build crkbd'
 on:
   - workflow_dispatch
 jobs:
