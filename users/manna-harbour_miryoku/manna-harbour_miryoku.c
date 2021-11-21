@@ -24,14 +24,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 #ifdef OLED_ENABLE
-uint16_t        oled_timer;
-
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-  if (!is_keyboard_left()) {
-    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
-  }
-  return rotation;
-}
 
 #define L_BASE 0
 #define L_LOWER 2
