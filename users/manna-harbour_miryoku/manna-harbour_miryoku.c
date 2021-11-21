@@ -9,6 +9,8 @@
 
 enum layers { MIRYOKU_LAYER_NAMES };
 
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE]   = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_BASE),
   [NAV]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_NAV),
@@ -22,6 +24,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 #ifdef OLED_ENABLE
+uint16_t        oled_timer;
+
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (!is_keyboard_left()) {
     return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
@@ -106,6 +110,10 @@ void oled_task_user(void) {
 #endif // OLED_ENABLE
 
 #ifdef OLED_ENABLE
+
+
+
+
 void render_logo(void) {
     static const char PROGMEM logo[] = {
         0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94,
@@ -113,6 +121,52 @@ void render_logo(void) {
         0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4,
         0};
     oled_write_P(logo, false);
+}
+
+
+
+__attribute__((weak))
+void matrix_scan_keymap(void) {}
+
+extern bool oled_initialized;
+void matrix_scan_user(void) {
+  if(!oled_initialized) {
+    wait_ms(200);
+    oled_init(0);
+    return;
+  }
+  matrix_scan_keymap();
+  }
+__attribute__ ((weak))
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+  return true;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  #ifdef CONSOLE_ENABLE
+      uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
+  #endif
+
+    if (record->event.pressed) {
+      #ifdef OLED_ENABLE
+        oled_timer = timer_read();
+        oled_on();
+        #endif // OLED_ENABLE
+    switch (keycode) {
+            case KC_BBB:
+                if (record->event.pressed) {
+                    SEND_STRING(":b:");
+                } else {}
+                break;
+            case KC_BEPIS:
+                if (record->event.pressed) {
+                    SEND_STRING("BEPIS");
+                } else {}
+                break;
+        }
+    }
+    return true;
+
 }
 
 void render_status_main(void) {
