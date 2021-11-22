@@ -29,11 +29,11 @@ on:
         required: false
         default: 'default'
       rules:
-        description: 'rules.mk'
+        description: 'custom_rules.mk'
         required: false
         default: 'default'
       config:
-        description: 'config.h'
+        description: 'custom_config.h'
         required: false
         default: 'default'
 jobs:
