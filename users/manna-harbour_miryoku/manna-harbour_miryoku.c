@@ -6,7 +6,7 @@
 #include QMK_KEYBOARD_H
 
 #include "manna-harbour_miryoku.h"
-
+#include "features/caps_word.h"
 enum layers { MIRYOKU_LAYER_NAMES };
 
 
