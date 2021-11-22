@@ -54,9 +54,9 @@ jobs:
         run: |
           artifacts_dir="artifacts"
           mkdir "$artifacts_dir"
-          rules="$artifacts_dir/rules.mk"
-          config="$artifacts_dir/config.h"
           user='users/manna-harbour_miryoku'
+          rules="$user/custom_rules.mk"
+          config="$user/custom_config.h"
           artifact_build_name=`echo "miryoku_qmk ${{ matrix.keyboard }}" | tr '/' '_'`
           for option in "alphas=${{ matrix.alphas }}" "nav=${{ matrix.nav }}" "clipboard=${{ matrix.clipboard }}" "layers=${{ matrix.layers }}" "mapping=${{ matrix.mapping }}"
           do
@@ -67,7 +67,6 @@ jobs:
                 artifact_build_name="$artifact_build_name "`echo "$option" | tr '=' '_'`
                 option=`echo "MIRYOKU_$option" | tr 'a-z' 'A-Z'`
                 echo "$option" >> "$rules"
-                echo "$option" >> "$user/rules.mk"
                 ;;
             esac
           done
@@ -75,14 +74,13 @@ jobs:
           then
             artifact_build_name="$artifact_build_name rules_"`echo "${{ matrix.rules }}" | md5sum | cut -d ' ' -f 1`
             echo "${{ matrix.rules }}" >> "$rules"
-            echo "${{ matrix.rules }}" >> "$user/rules.mk"
           fi
           if [ -n "${{ matrix.config }}" -a "${{ matrix.config }}" != 'default' ]
           then
             artifact_build_name="$artifact_build_name config_"`echo "${{ matrix.config }}" | md5sum | cut -d ' ' -f 1`
             echo "${{ matrix.config }}" >> "$config"
-            echo "${{ matrix.config }}" >> "$user/config.h"
           fi
+          cp "$rules" "$config" "$artifacts_dir"
           artifact_build_name=`echo $artifact_build_name | tr ' ' '-'`
           echo "::set-output name=artifact-dir::$artifacts_dir"
           echo "::set-output name=artifact-build-name::$artifact_build_name"
