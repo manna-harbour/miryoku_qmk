@@ -85,7 +85,7 @@ jobs:
           echo "::set-output name=artifact-dir::$artifacts_dir"
           echo "::set-output name=artifact-build-name::$artifact_build_name"
       - name: Build
-        run: qmk compile -kb ${{ matrix.keyboard }} -km manna-harbour_miryoku #-e MIRYOKU_ALPHAS=QWERTY -e MIRYOKU_CLIPBOARD=WIN
+        run: qmk compile -kb ${{ matrix.keyboard }} -km manna-harbour_miryoku 
       - name: Copy firmware
         run: |
           for file in *.hex *.bin
