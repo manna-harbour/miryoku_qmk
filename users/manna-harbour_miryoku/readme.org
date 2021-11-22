@@ -99,7 +99,7 @@ The ~keyboard~ option specifies the keyboard and is required.  All other options
 
 The ~alphas~, ~nav~, ~clipboard~, and ~layers~ options correspond to the [[https://github.com/manna-harbour/miryoku/tree/master/docs/reference#alternative-layouts][alternative layout]] options.  The ~mapping~ option corresponds to the alternative [[#subset-mapping][mapping]] options.  Alternative layout and mapping options are given in the documentation in the form ~MIRYOKU_OPTION=VALUE~.  To use here, convert to the form specified above.  Use ~default~ to represent the default value.  Values for these five options are case-insensitive.  See the [[../../.github/workflows/test-all-configs.yml][Test All Configs workflow file]] for all supported values.
 
-The ~rules~ and ~config~ options can be used to specify values to be appended to ~rules.mk~ and ~config.h~, respectively.  Separate multiple lines with ~\n~.
+The ~rules~ and ~config~ options can be used to specify values to be appended to ~custom_rules.mk~ and ~custom_config.h~, respectively.  Separate multiple lines with ~\n~.
 
 
 **** Build Inputs
@@ -112,7 +112,7 @@ The ~Keyboard~ option specifies the keyboard and is required.  All other options
 
 The ~Miryoku Alphas~, ~Miryoku Nav~, ~Miryoku Clipboard~, and ~Miryoku Layers~ options correspond to the [[https://github.com/manna-harbour/miryoku/tree/master/docs/reference#alternative-layouts][alternative layout]] options.  The ~Miryoku Mapping~ option corresponds to the alternative [[#subset-mapping][mapping]] options.  Alternative layout and mapping options are given in the documentation in the form ~MIRYOKU_OPTION=VALUE~.  To use here, enter the ~value~ in the corresponding ~Miryoku Option~ field.  Use ~default~ to represent the default value.  Values for these five options are case-insensitive.
 
-The ~rules.mk~ and ~config.h~ options can be used to specify values to be appended to the corresponding files.  Join multiple lines with ~\n~.
+The ~custom_rules.mk~ and ~custom_config.h~ options can be used to specify values to be appended to the corresponding files.  Join multiple lines with ~\n~.
 
 
 ** Subset Mapping
@@ -130,7 +130,13 @@ thumb keys.
 
 - [[./rules.mk]] :: Build options.  Automatically included.
 
+- [[./custom_rules.mk]] :: Add Miryoku ~make~ options here to set defaults for all builds.  Included from ~rules.mk~.
+
+- [[./post_rules.mk]] :: Handles Miryoku ~make~ options.  Included from ~rules.mk~.
+
 - [[./config.h]] :: Config options.  Automatically included.
+
+- [[./custom_config.h]] :: Add custom config options here.  Included from ~config.h~.
 
 - [[./manna-harbour_miryoku.h]] :: Keymap-related definitions.  Included from ~manna-harbour_miryoku.c~.
 
