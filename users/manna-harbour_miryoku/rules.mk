@@ -9,6 +9,7 @@ OLED_ENABLE = yes
 OLED_DRIVER = SSD1306
 
 SRC += manna-harbour_miryoku.c # keymaps
+SRC += features/caps_word.c
 
 include users/manna-harbour_miryoku/custom_rules.mk
 
