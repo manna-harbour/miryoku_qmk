@@ -184,6 +184,20 @@ make dz60:manna-harbour_miryoku:flash MIRYOKU_MAPPING=LITE  # dz60, with lite ma
 #+END_SRC
 
 
+**** alice
+
+This is a hybrid mapping.  Only the 3x10 alphas plus spacebars as primary thumb keys are mapped.  The remaining keys are the same as the default keymap but with semicolon in place of quote.  The keys adjacent to the spacebars are also mapped as corresponding thumb keys but may not be usable as such.
+
+Keyboards supporting this layout: cheshire/curiosity, handwired/owlet60, mechlovin/adelais, projectkb/alice, sck/osa, axolstudio/yeti, coarse/cordillera, edda, evyd13/wonderland, fallacy, kb_elmo/sesame, keebsforall/coarse60, ramonimbao/aelith, sneakbox/aliceclone, tkc/osav2, zoo/wampus.
+
+
+**** alice_split_bs
+
+This is a hybrid mapping.  Only the 3x10 alphas plus spacebars as primary thumb keys are mapped.  The remaining keys are the same as the default keymap but with semicolon in place of quote.  The keys adjacent to the spacebars are also mapped as corresponding thumb keys but may not be usable as such.
+
+Keyboards supporting this layout: cheshire/curiosity, ergosaurus, handwired/colorlice, handwired/owlet60, mechlovin/adelais, projectkb/alice, sck/osa, tgr/alice, xelus/valor/rev1, xelus/valor/rev2, axolstudio/yeti, coarse/cordillera, edda, evyd13/wonderland, fallacy, kb_elmo/sesame, keebsforall/coarse60, nightly_boards/alter/rev1, ramonimbao/aelith, seigaiha, sneakbox/aliceclone, tkc/osav2, zoo/wampus.
+
+
 **** ergodox
 
 For the ergodox layout, the main 5x3 alphas are used as usual. The primary and
