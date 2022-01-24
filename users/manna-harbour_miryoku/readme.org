@@ -207,11 +207,16 @@ are unused.
 
 Keyboards supporting this layout: ergodone, ergodox_ez, ergodox_infinity, hotdox.
 
+An alternative subset mapping is provided with all keys shifted up one row creating thumb keys on the original bottom row.  To select this mapping, append ~MIRYOKU_MAPPING=SHIFTED_ROWS~ to the ~make~ command line when building.
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ergodox-shifted_rows.png]]
+
 Example build command lines:
 
 #+BEGIN_SRC sh :tangle no
 make ergodox_infinity:manna-harbour_miryoku:flash # ergodox_infinity
 make ergodox_ez:manna-harbour_miryoku:flash # ergodox_ez
+make ergodox_ez:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SHIFTED_ROWS # ergodox_ez, shifted rows
 #+END_SRC
 
 
