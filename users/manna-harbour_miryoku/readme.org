@@ -214,6 +214,17 @@ make ergodox_infinity:manna-harbour_miryoku:flash # ergodox_infinity
 make ergodox_ez:manna-harbour_miryoku:flash # ergodox_ez
 #+END_SRC
 
+An alternative configuration is provided where all the keys are shifted up by
+one key.  This eliminates the use of the Ergodox thumb keys, and instead
+provides a more Planck-like experience.  Append ~MIRYOKU_MAPPING=ERGODOX_UP_ONE~
+to the ~make~ command when building.
+
+#+BEGIN_SRC sh :tangle no
+make ergodox_ez:manna-harbour_miryoku:flash MIRYOKU_MAPPING=ERGODOX_UP_ONE
+#+END_SRC
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ergodox-up-one.png]]
+
 
 **** ortho_4x10
 
