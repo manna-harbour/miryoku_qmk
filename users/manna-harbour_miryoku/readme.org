@@ -211,12 +211,18 @@ An alternative subset mapping is provided with all keys shifted up one row creat
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ergodox-shifted_rows.png]]
 
+An alternative subset mapping is provided as for ~MIRYOKU_MAPPING=SHIFTED_ROWS~ but with the thumb keys shifted one position in the direction of thumb extension.  To select this mapping, append ~MIRYOKU_MAPPING=SHIFTED_ROWS_EXTENDED_THUMBS~ to the ~make~ command line when building.
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ergodox-shifted_rows-extended_thumbs.png]]
+
 Example build command lines:
 
 #+BEGIN_SRC sh :tangle no
 make ergodox_infinity:manna-harbour_miryoku:flash # ergodox_infinity
 make ergodox_ez:manna-harbour_miryoku:flash # ergodox_ez
 make ergodox_ez:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SHIFTED_ROWS # ergodox_ez, shifted rows
+make ergodox_ez:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SHIFTED_ROWS_EXTENDED_THUMBS # ergodox_ez, shifted rows, extended thumbs
+
 #+END_SRC
 
 
