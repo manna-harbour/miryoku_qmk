@@ -13,6 +13,12 @@ LGUI_T(KC_Q),      LALT_T(KC_S),      LCTL_T(KC_D),      LSFT_T(KC_F),      KC_G
 LT(BUTTON, KC_W),  ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_N,              KC_COMM,           KC_DOT,            ALGR_T(KC_SLSH),   LT(BUTTON, KC_QUOT), \
 U_NP,              U_NP,              LT(FUN, KC_DEL),   LT(NUM, KC_BSPC),  LT(SYM, KC_ENT),   LT(MOUSE, KC_TAB), LT(NAV, KC_SPC),   LT(MEDIA, KC_ESC), U_NP,              U_NP
 
+#define MIRYOKU_ALTERNATIVES_BASE_BEAKL15_FLIP \
+KC_Q,              KC_H,              KC_O,              KC_U,              KC_X,              KC_G,              KC_C,              KC_R,              KC_F,              KC_Z,              \
+LGUI_T(KC_Y),      LALT_T(KC_I),      LCTL_T(KC_E),      LSFT_T(KC_A),      KC_DOT,            KC_D,              LSFT_T(KC_S),      LCTL_T(KC_T),      LALT_T(KC_N),      LGUI_T(KC_B),      \
+LT(BUTTON, KC_J),  ALGR_T(KC_SLSH),   KC_COMM,           KC_K,              KC_QUOT,           KC_W,              KC_M,              KC_L,              ALGR_T(KC_P),      LT(BUTTON, KC_V),  \
+U_NP,              U_NP,              LT(FUN, KC_DEL),   LT(NUM, KC_BSPC),  LT(SYM, KC_ENT),   LT(MOUSE, KC_TAB), LT(NAV, KC_SPC),   LT(MEDIA, KC_ESC), U_NP,              U_NP
+
 #define MIRYOKU_ALTERNATIVES_BASE_COLEMAK_FLIP \
 KC_Q,              KC_W,              KC_F,              KC_P,              KC_G,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,           \
 LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_D,              KC_H,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),      \
@@ -65,6 +71,12 @@ U_NP,              U_NP,              LT(FUN, KC_DEL),   LT(NUM, KC_BSPC),  LT(S
 KC_A,              KC_Z,              KC_E,              KC_R,              KC_T,              KC_Y,              KC_U,              KC_I,              KC_O,              KC_P,              \
 LGUI_T(KC_Q),      LALT_T(KC_S),      LCTL_T(KC_D),      LSFT_T(KC_F),      KC_G,              KC_H,              LSFT_T(KC_J),      LCTL_T(KC_K),      LALT_T(KC_L),      LGUI_T(KC_M),      \
 LT(BUTTON, KC_W),  ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_N,              KC_COMM,           KC_DOT,            ALGR_T(KC_SLSH),   LT(BUTTON, KC_QUOT), \
+U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB), LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),  LT(FUN, KC_DEL),   U_NP,              U_NP
+
+#define MIRYOKU_ALTERNATIVES_BASE_BEAKL15 \
+KC_Q,              KC_H,              KC_O,              KC_U,              KC_X,              KC_G,              KC_C,              KC_R,              KC_F,              KC_Z,              \
+LGUI_T(KC_Y),      LALT_T(KC_I),      LCTL_T(KC_E),      LSFT_T(KC_A),      KC_DOT,            KC_D,              LSFT_T(KC_S),      LCTL_T(KC_T),      LALT_T(KC_N),      LGUI_T(KC_B),      \
+LT(BUTTON, KC_J),  ALGR_T(KC_SLSH),   KC_COMM,           KC_K,              KC_QUOT,           KC_W,              KC_M,              KC_L,              ALGR_T(KC_P),      LT(BUTTON, KC_V),  \
 U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB), LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),  LT(FUN, KC_DEL),   U_NP,              U_NP
 
 #define MIRYOKU_ALTERNATIVES_BASE_COLEMAK \
