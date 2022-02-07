@@ -205,15 +205,19 @@ are unused.
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ergodox.png]]
 
-Keyboards supporting this layout: ergodone, ergodox_ez, ergodox_infinity, hotdox.
-
-An alternative subset mapping is provided with all keys shifted up one row creating thumb keys on the original bottom row.  To select this mapping, append ~MIRYOKU_MAPPING=SHIFTED_ROWS~ to the ~make~ command line when building.
+An alternative subset mapping is provided with all keys shifted up one row creating thumb keys in the original alpha area.  To select this mapping, append ~MIRYOKU_MAPPING=SHIFTED_ROWS~ to the ~make~ command line when building.
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ergodox-shifted_rows.png]]
 
-An alternative subset mapping is provided as for ~MIRYOKU_MAPPING=SHIFTED_ROWS~ but with the thumb keys shifted one position in the direction of thumb extension.  To select this mapping, append ~MIRYOKU_MAPPING=SHIFTED_ROWS_EXTENDED_THUMBS~ to the ~make~ command line when building.
+Another alternative subset mapping is provided as for ~MIRYOKU_MAPPING=SHIFTED_ROWS~ but with the thumb keys shifted one position in the direction of thumb extension.  To select this mapping, append ~MIRYOKU_MAPPING=SHIFTED_ROWS_EXTENDED_THUMBS~ to the ~make~ command line when building.
 
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ergodox-shifted_rows-extended_thumbs.png]]
+
+Another alternative subset mapping is provided as for ~MIRYOKU_MAPPING=SHIFTED_ROWS_EXTENDED_THUMBS~ but with the pinkie column moved down one row.  To select this mapping, append ~MIRYOKU_MAPPING=SHIFTED_ROWS_EXTENDED_THUMBS_PINKIE_STAGGER~ to the ~make~ command line when building.
+
+[[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/mapping/miryoku-kle-mapping-ergodox-shifted_rows-extended_thumbs-pinkie_stagger.png]]
+
+Keyboards supporting this layout: ergodone, ergodox_ez, ergodox_infinity, hotdox.
 
 Example build command lines:
 
@@ -222,6 +226,7 @@ make ergodox_infinity:manna-harbour_miryoku:flash # ergodox_infinity
 make ergodox_ez:manna-harbour_miryoku:flash # ergodox_ez
 make ergodox_ez:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SHIFTED_ROWS # ergodox_ez, shifted rows
 make ergodox_ez:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SHIFTED_ROWS_EXTENDED_THUMBS # ergodox_ez, shifted rows, extended thumbs
+make ergodox_ez:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SHIFTED_ROWS_EXTENDED_THUMBS_PINKIE_STAGGER # ergodox_ez, shifted rows, extended thumbs, pinkie stagger
 
 #+END_SRC
 
