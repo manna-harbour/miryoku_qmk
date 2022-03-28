@@ -454,7 +454,25 @@ To build for this keyboard,
 
 #+BEGIN_SRC sh :tangle no
 make ferris/0_2:manna-harbour_miryoku:flash # 0_2
-make ferris/sweep:manna-harbour_miryoku:flash # sweep
+#+END_SRC
+
+
+**** ferris sweep
+
+[[#thumb-combos][Thumb combos]] are enabled automatically for this keyboard.
+
+Firmware uses [handedness by EEPROM](https://docs.qmk.fm/#/feature_split_keyboard?id=handedness-by-eeprom) as default and it must be *configured once* on each side.
+
+Pro-Micro Instructions:
+#+BEGIN_SRC sh :tangle no
+make ferris/sweep:manna-harbour_miryoku:avrdude-split-left
+make ferris/sweep:manna-harbour_miryoku:avrdude-split-right
+#+END_SRC
+
+Elite-C or compatible Instructions:
+#+BEGIN_SRC sh :tangle no
+make ferris/sweep:manna-harbour_miryoku:dfu-split-left
+make ferris/sweep:manna-harbour_miryoku:dfu-split-right
 #+END_SRC
 
 
@@ -647,6 +665,6 @@ Combo the primary and secondary thumb keys to emulate the tertiary thumb key.  C
 - [[https://github.com/manna-harbour/qmk_firmware/issues/33][Retro Shift]]
 
 
-** 
+**
 
 [[https://github.com/manna-harbour][https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/logos/manna-harbour-boa-32.png]]
