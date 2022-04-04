@@ -29,6 +29,9 @@ on:
       config:
         type: string
         default: '["default"]'
+      merge:
+        type: string
+        default: '["default"]'
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -44,11 +47,32 @@ jobs:
         mapping: ${{ fromJSON(inputs.mapping) }}
         rules: ${{ fromJSON(inputs.rules) }}
         config: ${{ fromJSON(inputs.config) }}
+        merge: ${{ fromJSON(inputs.merge) }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          submodules: recursive
+        uses: actions/checkout@v3
+      - name: Merge branches
+        if: ${{ matrix.merge != '' && matrix.merge != 'default' }}
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git fetch --unshallow
+          revert=`git log --committer='Manna Harbour <51143715+manna-harbour@users.noreply.github.com>' --grep='^\[local\]' --pretty='format:%H' | tr '\n' ' '`
+          git revert $revert
+          for merge in ${{ matrix.merge }}
+          do
+            user=`echo "$merge" | cut -f 1 -d '/'`
+            repo=`echo "$merge" | cut -f 2 -d '/'`
+            branch=`echo "$merge" | cut -f 3- -d '/'`
+            remote="$user-$repo"
+            git remote add "$remote" "https://github.com/$user/$repo.git"
+            git fetch "$remote" "$branch"
+            git merge "$remote/$branch"
+            git remote remove "$remote"
+            git status
+          done
+      - name: Submodules
+        run: make git-submodule
       - name: Process inputs
         id: inputs
         run: |
@@ -80,6 +104,10 @@ jobs:
             echo "${{ matrix.config }}" >> "$config"
           fi
           cp "$rules" "$config" "$artifacts_dir"
+          if [ -n "${{ matrix.merge }}" -a "${{ matrix.merge }}" != 'default' ]
+          then
+            artifact_build_name="$artifact_build_name merge_"`echo "${{ matrix.merge }}" | md5sum | cut -d ' ' -f 1`
+          fi
           artifact_build_name=`echo $artifact_build_name | tr ' ' '-'`
           echo "::set-output name=artifact-dir::$artifacts_dir"
           echo "::set-output name=artifact-build-name::$artifact_build_name"
