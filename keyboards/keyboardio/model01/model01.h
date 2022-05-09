@@ -45,6 +45,4 @@
 #define LEFT            0
 #define RIGHT           1
 
-#include "leds.h"
-
 /* vim: set ts=2 sw=2 et: */

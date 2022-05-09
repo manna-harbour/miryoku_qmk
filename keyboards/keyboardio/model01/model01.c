@@ -20,6 +20,5 @@
 
 void matrix_init_kb(void) {
   /* the bootloader can leave LEDs on, so */
-  set_all_leds_to(0, 0, 0);
   matrix_init_user();
 }

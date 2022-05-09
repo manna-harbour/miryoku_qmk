@@ -19,9 +19,6 @@ NKRO_ENABLE = no            # USB Nkey Rollover
 
 CUSTOM_MATRIX = yes
 QUANTUM_LIB_SRC += i2c_master.c
-SRC += leds.c \
-	   matrix.c
+SRC += matrix.c
 
 # You can set RGB_MATRIX_ENABLE = no in your rules.mk to disable this and save the Flash
-RGB_MATRIX_ENABLE = yes # Enable RGB matrix effects.
-RGB_MATRIX_DRIVER = custom
