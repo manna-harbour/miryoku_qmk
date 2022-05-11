@@ -26,7 +26,7 @@ on:
       rules:
         type: string
         default: '["default"]'
-      config:
+      custom_config:
         type: string
         default: '["default"]'
       merge:
@@ -46,7 +46,7 @@ jobs:
         layers: ${{ fromJSON(inputs.layers) }}
         mapping: ${{ fromJSON(inputs.mapping) }}
         rules: ${{ fromJSON(inputs.rules) }}
-        config: ${{ fromJSON(inputs.config) }}
+        custom_config: ${{ fromJSON(inputs.custom_config) }}
         merge: ${{ fromJSON(inputs.merge) }}
     steps:
       - name: Checkout
@@ -98,10 +98,10 @@ jobs:
             artifact_build_name="$artifact_build_name rules_"`echo "${{ matrix.rules }}" | md5sum | cut -d ' ' -f 1`
             echo "${{ matrix.rules }}" >> "$rules"
           fi
-          if [ -n "${{ matrix.config }}" -a "${{ matrix.config }}" != 'default' ]
+          if [ -n "${{ matrix.custom_config }}" -a "${{ matrix.custom_config }}" != 'default' ]
           then
-            artifact_build_name="$artifact_build_name config_"`echo "${{ matrix.config }}" | md5sum | cut -d ' ' -f 1`
-            echo "${{ matrix.config }}" >> "$config"
+            artifact_build_name="$artifact_build_name config_"`echo "${{ matrix.custom_config }}" | md5sum | cut -d ' ' -f 1`
+            echo "${{ matrix.custom_config }}" >> "$config"
           fi
           cp "$rules" "$config" "$artifacts_dir"
           if [ -n "${{ matrix.merge }}" -a "${{ matrix.merge }}" != 'default' ]
