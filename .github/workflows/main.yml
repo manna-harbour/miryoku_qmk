@@ -80,9 +80,8 @@ jobs:
           mkdir "$artifacts_dir"
           user='users/manna-harbour_miryoku'
           rules="$user/custom_rules.mk"
-          echo '# Copyright 2021 Manna Harbour\n# https://github.com/manna-harbour/miryoku\n' > "$rules"
           config="$user/custom_config.h"
-          echo '// Copyright 2021 Manna Harbour\n// https://github.com/manna-harbour/miryoku\n' > "$config"
+
           artifact_build_name=`echo "miryoku_qmk ${{ matrix.keyboard }}" | tr '/' '_'`
           for option in "alphas=${{ matrix.alphas }}" "nav=${{ matrix.nav }}" "clipboard=${{ matrix.clipboard }}" "layers=${{ matrix.layers }}" "mapping=${{ matrix.mapping }}"
           do
