@@ -32,7 +32,7 @@ on:
         description: 'custom_rules.mk'
         required: false
         default: 'default'
-      config:
+      custom_config:
         description: 'custom_config.h'
         required: false
         default: 'default'
@@ -51,7 +51,7 @@ jobs:
       layers: ${{ steps.process-inputs.outputs.layers }}
       mapping: ${{ steps.process-inputs.outputs.mapping }}
       rules: ${{ steps.process-inputs.outputs.rules }}
-      config: ${{ steps.process-inputs.outputs.config }}
+      custom_config: ${{ steps.process-inputs.outputs.custom_config }}
       merge: ${{ steps.process-inputs.outputs.merge }}
     steps:
       - name: Process inputs
@@ -69,7 +69,7 @@ jobs:
           set-output "layers" "${{ github.event.inputs.layers }}"
           set-output "mapping" "${{ github.event.inputs.mapping }}"
           set-output "rules" "${{ github.event.inputs.rules }}"
-          set-output "config" "${{ github.event.inputs.config }}"
+          set-output "custom_config" "${{ github.event.inputs.custom_config }}"
           set-output "merge" "${{ github.event.inputs.merge }}"
   build:
     uses: manna-harbour/miryoku_qmk/.github/workflows/main.yml@miryoku
@@ -82,5 +82,5 @@ jobs:
       layers: ${{ needs.process-inputs.outputs.layers }}
       mapping: ${{ needs.process-inputs.outputs.mapping }}
       rules: ${{ needs.process-inputs.outputs.rules }}
-      config: ${{ needs.process-inputs.outputs.config }}
+      custom_config: ${{ needs.process-inputs.outputs.custom_config }}
       merge: ${{ needs.process-inputs.outputs.merge }}
