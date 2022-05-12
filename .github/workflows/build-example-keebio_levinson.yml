@@ -6,6 +6,6 @@ on:
   - workflow_dispatch
 jobs:
   build:
-    uses: manna-harbour/miryoku_qmk/.github/workflows/main.yml@miryoku
+    uses: ./.github/workflows/main.yml
     with:
       keyboard: '["keebio/levinson"]'
