@@ -72,7 +72,7 @@ jobs:
           set-output "custom_config" "${{ github.event.inputs.custom_config }}"
           set-output "merge" "${{ github.event.inputs.merge }}"
   build:
-    uses: manna-harbour/miryoku_qmk/.github/workflows/main.yml@miryoku
+    uses: ./.github/workflows/main.yml
     needs: process-inputs
     with:
       keyboard: ${{ needs.process-inputs.outputs.keyboard }}

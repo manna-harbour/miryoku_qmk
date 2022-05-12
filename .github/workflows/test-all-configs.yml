@@ -7,10 +7,32 @@ on:
 jobs:
   build:
     if: github.repository_owner == 'manna-harbour'
-    uses: manna-harbour/miryoku_qmk/.github/workflows/main.yml@miryoku
+    uses: ./.github/workflows/main.yml
     with:
       keyboard: '["crkbd"]'
-      alphas: '["default","azerty","colemak","colemakdhk","dvorak","halmak","workman","qwerty","qwertz"]'
-      nav: '["default","vi","invertedt"]'
-      clipboard: '["default","fun","mac","win"]'
-      layers: '["default","flip"]'
+      alphas: '[
+        "default",
+        "azerty",
+        "colemak",
+        "colemakdhk",
+        "dvorak",
+        "halmak",
+        "workman",
+        "qwerty",
+        "qwertz"
+      ]'
+      nav: '[
+        "default",
+        "vi",
+        "invertedt"
+      ]'
+      clipboard: '[
+        "default",
+        "fun",
+        "mac",
+        "win"
+      ]'
+      layers: '[
+        "default",
+        "flip"
+      ]'
