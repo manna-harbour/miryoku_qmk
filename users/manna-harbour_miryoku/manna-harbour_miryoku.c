@@ -48,3 +48,15 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(thumbcombos_fun, KC_APP)
 };
 #endif
+
+bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(1, KC_LSHIFT):
+        case LT(1, KC_LCTRL):
+        case LT(1, KC_LALT):
+        case LT(1, KC_LGUI):
+            return true;
+        default:
+            return false;
+    }
+}

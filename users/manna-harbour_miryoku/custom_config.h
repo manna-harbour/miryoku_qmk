@@ -5,3 +5,5 @@
 
 #pragma once
 
+#define TAPPING_FORCE_HOLD_PER_KEY
+
