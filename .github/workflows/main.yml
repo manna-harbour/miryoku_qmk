@@ -57,7 +57,7 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git fetch --unshallow
-          revert=`git log --committer='Manna Harbour <51143715+manna-harbour@users.noreply.github.com>' --grep='^\[local\]' --pretty='format:%H' | tr '\n' ' '`
+          revert=`git log --grep='^\[miryoku-github\]' --pretty='format:%H' | tr '\n' ' '`
           git revert $revert
           for merge in ${{ matrix.merge }}
           do
