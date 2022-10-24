@@ -76,8 +76,8 @@ jobs:
       - name: Process inputs
         id: inputs
         run: |
-          artifacts_dir="artifacts"
-          mkdir "$artifacts_dir"
+          artifact_dir="artifacts"
+          mkdir "$artifact_dir"
           user='users/manna-harbour_miryoku'
           rules="$user/custom_rules.mk"
           config="$user/custom_config.h"
@@ -102,22 +102,22 @@ jobs:
             artifact_build_name="$artifact_build_name config_"`echo "${{ matrix.custom_config }}" | md5sum | cut -d ' ' -f 1`
             echo "${{ matrix.custom_config }}" >> "$config"
           fi
-          cp "$rules" "$config" "$artifacts_dir"
+          cp "$rules" "$config" "$artifact_dir"
           if [ -n "${{ matrix.merge }}" -a "${{ matrix.merge }}" != 'default' ]
           then
             artifact_build_name="$artifact_build_name merge_"`echo "${{ matrix.merge }}" | md5sum | cut -d ' ' -f 1`
           fi
           artifact_build_name=`echo $artifact_build_name | tr ' ' '-'`
-          echo "::set-output name=artifact-dir::$artifacts_dir"
-          echo "::set-output name=artifact-build-name::$artifact_build_name"
+          echo "artifact_build_name=$artifact_build_name" >> $GITHUB_OUTPUT
+          echo "artifact_dir=$artifact_dir" >> $GITHUB_OUTPUT
       - name: Build
         run: qmk compile -kb ${{ matrix.keyboard }} -km manna-harbour_miryoku
       - name: Copy firmware
         run: |
-          cp *manna-harbour_miryoku* "${{ steps.inputs.outputs.artifact-dir }}"
+          cp *manna-harbour_miryoku* "${{ steps.inputs.outputs.artifact_dir }}"
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.inputs.outputs.artifact-build-name }}
-          path: ${{ steps.inputs.outputs.artifact-dir }}
+          name: ${{ steps.inputs.outputs.artifact_build_name }}
+          path: ${{ steps.inputs.outputs.artifact_dir }}
         continue-on-error: true
