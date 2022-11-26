@@ -7,6 +7,7 @@
 
 #include "manna-harbour_miryoku.h"
 
+#include "custom_keymap.c"
 
 // Additional Features double tap guard
 
@@ -74,7 +75,13 @@ const uint16_t PROGMEM thumbcombos_sym[] = {KC_UNDS, KC_LPRN, COMBO_END};
 const uint16_t PROGMEM thumbcombos_sym[] = {KC_RPRN, KC_UNDS, COMBO_END};
   #endif
 const uint16_t PROGMEM thumbcombos_fun[] = {KC_SPC, KC_TAB, COMBO_END};
+#endif
+
+// combos
+
+#if defined (MIRYOKU_KLUDGE_THUMBCOMBOS) || defined (MIRYOKU_REPEAT)
 combo_t key_combos[COMBO_COUNT] = {
+  #if defined (MIRYOKU_KLUDGE_THUMBCOMBOS)
   COMBO(thumbcombos_base_right, LT(U_FUN, KC_DEL)),
   COMBO(thumbcombos_base_left, LT(U_MEDIA, KC_ESC)),
   COMBO(thumbcombos_nav, KC_DEL),
@@ -86,6 +93,13 @@ combo_t key_combos[COMBO_COUNT] = {
   #else
   COMBO(thumbcombos_sym, KC_LPRN),
   #endif
-  COMBO(thumbcombos_fun, KC_APP)
+  COMBO(thumbcombos_fun, KC_APP),
+  #endif
+  #if defined (MIRYOKU_REPEAT)
+  COMBO(repeat_home, KC_CUSTOM_REP),
+  #endif
+  #if defined (MIRYOKU_CUSTOM_COMBOS)
+  MIRYOKU_CUSTOM_COMBOS,
+  #endif
 };
 #endif
