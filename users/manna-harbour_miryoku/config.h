@@ -41,3 +41,104 @@
   #define EXTRA_SHORT_COMBOS
 #endif
 
+// Thumb Keys
+#if !defined (MIRYOKU_THUMBKEY_LO_LAYER)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_LO_LAYER FUN
+  #else
+    #define MIRYOKU_THUMBKEY_LO_LAYER MEDIA
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_LM_LAYER)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_LM_LAYER NUM
+  #else
+    #define MIRYOKU_THUMBKEY_LM_LAYER NAV
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_LI_LAYER)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_LI_LAYER SYM
+  #else
+    #define MIRYOKU_THUMBKEY_LI_LAYER MOUSE
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_RI_LAYER)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_RI_LAYER MOUSE
+  #else
+    #define MIRYOKU_THUMBKEY_RI_LAYER SYM
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_RM_LAYER)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_RM_LAYER NAV
+  #else
+    #define MIRYOKU_THUMBKEY_RM_LAYER NUM
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_RO_LAYER)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_RO_LAYER MEDIA
+  #else
+    #define MIRYOKU_THUMBKEY_RO_LAYER FUN
+  #endif
+#endif
+
+#if !defined (MIRYOKU_THUMBKEY_LO_KC)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_LO_KC KC_DEL
+  #else
+    #define MIRYOKU_THUMBKEY_LO_KC KC_ESC
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_LM_KC)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_LM_KC KC_BSPC
+  #else
+    #define MIRYOKU_THUMBKEY_LM_KC KC_SPC
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_LI_KC)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_LI_KC KC_ENT
+  #else
+    #define MIRYOKU_THUMBKEY_LI_KC KC_TAB
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_RI_KC)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_RI_KC KC_TAB
+  #else
+    #define MIRYOKU_THUMBKEY_RI_KC KC_ENT
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_RM_KC)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_RM_KC KC_SPC
+  #else
+    #define MIRYOKU_THUMBKEY_RM_KC KC_BSPC
+  #endif
+#endif
+#if !defined (MIRYOKU_THUMBKEY_RO_KC)
+  #if defined (MIRYOKU_LAYERS_FLIP)
+    #define MIRYOKU_THUMBKEY_RO_KC KC_ESC
+  #else
+    #define MIRYOKU_THUMBKEY_RO_KC KC_DEL
+  #endif
+#endif
+
+#define MIRYOKU_LAYER_NAME_(layer) U_##layer
+#define MIRYOKU_LAYER_NAME(layer) MIRYOKU_LAYER_NAME_(layer)
+#define MIRYOKU_THUMBKEY(position) \
+  LT(\
+    MIRYOKU_LAYER_NAME(MIRYOKU_THUMBKEY_##position##_LAYER),\
+    MIRYOKU_THUMBKEY_##position##_KC\
+  )
+
+#define MIRYOKU_THUMBKEY_LO MIRYOKU_THUMBKEY(LO)
+#define MIRYOKU_THUMBKEY_LM MIRYOKU_THUMBKEY(LM)
+#define MIRYOKU_THUMBKEY_LI MIRYOKU_THUMBKEY(LI)
+#define MIRYOKU_THUMBKEY_RI MIRYOKU_THUMBKEY(RI)
+#define MIRYOKU_THUMBKEY_RM MIRYOKU_THUMBKEY(RM)
+#define MIRYOKU_THUMBKEY_RO MIRYOKU_THUMBKEY(RO)

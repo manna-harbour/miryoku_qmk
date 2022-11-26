@@ -9,7 +9,7 @@
 #include "miryoku_layer_alternatives.h"
 
 #if !defined(MIRYOKU_LAYER_BASE)
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_BASE)
     #if defined (MIRYOKU_ALPHAS_AZERTY)
       #define MIRYOKU_LAYER_BASE MIRYOKU_ALTERNATIVES_BASE_AZERTY_FLIP
     #elif defined (MIRYOKU_ALPHAS_BEAKL15)
@@ -64,7 +64,7 @@
 #endif
 
 #if !defined(MIRYOKU_LAYER_EXTRA)
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_EXTRA)
     #if defined (MIRYOKU_EXTRA_AZERTY)
       #define MIRYOKU_LAYER_EXTRA MIRYOKU_ALTERNATIVES_BASE_AZERTY_FLIP
     #elif defined (MIRYOKU_EXTRA_BEAKL15)
@@ -119,7 +119,7 @@
 #endif
 
 #if !defined(MIRYOKU_LAYER_TAP)
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_TAP)
     #if defined (MIRYOKU_TAP_AZERTY)
       #define MIRYOKU_LAYER_TAP MIRYOKU_ALTERNATIVES_TAP_AZERTY_FLIP
     #elif defined (MIRYOKU_TAP_BEAKL15)
@@ -181,7 +181,7 @@
 #endif
 
 #if !defined(MIRYOKU_LAYER_NAV)
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_NAV)
     #if defined (MIRYOKU_NAV_INVERTEDT)
       #define MIRYOKU_LAYER_NAV MIRYOKU_ALTERNATIVES_NAV_INVERTEDT_FLIP
     #else
@@ -202,7 +202,7 @@
 #endif
 
 #if !defined(MIRYOKU_LAYER_MOUSE)
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_MOUSE)
     #if defined (MIRYOKU_NAV_INVERTEDT)
       #define MIRYOKU_LAYER_MOUSE MIRYOKU_ALTERNATIVES_MOUSE_INVERTEDT_FLIP
     #else
@@ -223,7 +223,7 @@
 #endif
 
 #if !defined(MIRYOKU_LAYER_MEDIA)
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_MEDIA)
     #if defined (MIRYOKU_NAV_INVERTEDT)
       #define MIRYOKU_LAYER_MEDIA MIRYOKU_ALTERNATIVES_MEDIA_INVERTEDT_FLIP
     #else
@@ -244,7 +244,7 @@
 #endif
 
 #if !defined(MIRYOKU_LAYER_NUM)
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_NUM)
     #define MIRYOKU_LAYER_NUM MIRYOKU_ALTERNATIVES_NUM_FLIP
   #else
     #define MIRYOKU_LAYER_NUM MIRYOKU_ALTERNATIVES_NUM
@@ -255,7 +255,7 @@
 #endif
 
 #if !defined(MIRYOKU_LAYER_SYM)
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_SYM)
     #define MIRYOKU_LAYER_SYM MIRYOKU_ALTERNATIVES_SYM_FLIP
   #else
     #define MIRYOKU_LAYER_SYM MIRYOKU_ALTERNATIVES_SYM
@@ -266,7 +266,7 @@
 #endif
 
 #if !defined(MIRYOKU_LAYER_FUN)
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_FUN)
     #define MIRYOKU_LAYER_FUN MIRYOKU_ALTERNATIVES_FUN_FLIP
   #else
     #define MIRYOKU_LAYER_FUN MIRYOKU_ALTERNATIVES_FUN

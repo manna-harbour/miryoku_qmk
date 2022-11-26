@@ -62,26 +62,26 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 // thumb combos
 
 #if defined (MIRYOKU_KLUDGE_THUMBCOMBOS)
-const uint16_t PROGMEM thumbcombos_base_right[] = {LT(U_SYM, KC_ENT), LT(U_NUM, KC_BSPC), COMBO_END};
-const uint16_t PROGMEM thumbcombos_base_left[] = {LT(U_NAV, KC_SPC), LT(U_MOUSE, KC_TAB), COMBO_END};
-const uint16_t PROGMEM thumbcombos_nav[] = {KC_ENT, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM thumbcombos_base_right[] = {MIRYOKU_THUMBKEY_RI, MIRYOKU_THUMBKEY_RM, COMBO_END};
+const uint16_t PROGMEM thumbcombos_base_left[] = {MIRYOKU_THUMBKEY_LM, MIRYOKU_THUMBKEY_LI, COMBO_END};
+const uint16_t PROGMEM thumbcombos_nav[] = {MIRYOKU_THUMBKEY_RI_KC, MIRYOKU_THUMBKEY_RM_KC, COMBO_END};
 const uint16_t PROGMEM thumbcombos_mouse[] = {KC_BTN2, KC_BTN1, COMBO_END};
 const uint16_t PROGMEM thumbcombos_media[] = {KC_MSTP, KC_MPLY, COMBO_END};
 const uint16_t PROGMEM thumbcombos_num[] = {KC_0, KC_MINS, COMBO_END};
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_SYM)
 const uint16_t PROGMEM thumbcombos_sym[] = {KC_UNDS, KC_LPRN, COMBO_END};
   #else
 const uint16_t PROGMEM thumbcombos_sym[] = {KC_RPRN, KC_UNDS, COMBO_END};
   #endif
-const uint16_t PROGMEM thumbcombos_fun[] = {KC_SPC, KC_TAB, COMBO_END};
+const uint16_t PROGMEM thumbcombos_fun[] = {MIRYOKU_THUMBKEY_LM_KC, MIRYOKU_THUMBKEY_LI_KC, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
-  COMBO(thumbcombos_base_right, LT(U_FUN, KC_DEL)),
-  COMBO(thumbcombos_base_left, LT(U_MEDIA, KC_ESC)),
-  COMBO(thumbcombos_nav, KC_DEL),
+  COMBO(thumbcombos_base_right, MIRYOKU_THUMBKEY_RO),
+  COMBO(thumbcombos_base_left, MIRYOKU_THUMBKEY_LO),
+  COMBO(thumbcombos_nav, MIRYOKU_THUMBKEY_RO_KC),
   COMBO(thumbcombos_mouse, KC_BTN3),
   COMBO(thumbcombos_media, KC_MUTE),
   COMBO(thumbcombos_num, KC_DOT),
-  #if defined (MIRYOKU_LAYERS_FLIP)
+  #if defined (MIRYOKU_LAYERS_FLIP) || defined (MIRYOKU_LAYERS_FLIP_SYM)
   COMBO(thumbcombos_sym, KC_RPRN),
   #else
   COMBO(thumbcombos_sym, KC_LPRN),
