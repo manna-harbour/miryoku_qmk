@@ -26,7 +26,7 @@ void u_td_fn_boot(qk_tap_dance_state_t *state, void *user_data) { \
 #define MIRYOKU_X(LAYER, STRING) \
 void u_td_fn_U_##LAYER(qk_tap_dance_state_t *state, void *user_data) { \
   if (state->count == 2) { \
-    default_layer_set((layer_state_t)1 << U_##LAYER); \
+    default_layer_set((layer_state_t)(1 << U_##LAYER)); \
   } \
 }
 MIRYOKU_LAYER_LIST

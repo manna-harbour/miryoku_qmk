@@ -17,7 +17,7 @@ uint8_t keymap_layer_count(void) {
     return NUM_KEYMAP_LAYERS;
 }
 
-_Static_assert(NUM_KEYMAP_LAYERS <= MAX_LAYER, "Number of keymap layers exceeds maximum set by LAYER_STATE_(8|16|32)BIT");
+// _Static_assert(NUM_KEYMAP_LAYERS <= MAX_LAYER, "Number of keymap layers exceeds maximum set by LAYER_STATE_(8|16|32)BIT");
 
 uint16_t keycode_at_keymap_location_raw(uint8_t layer_num, uint8_t row, uint8_t column) {
     if (layer_num < NUM_KEYMAP_LAYERS && row < MATRIX_ROWS && column < MATRIX_COLS) {
