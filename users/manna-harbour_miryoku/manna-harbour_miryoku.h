@@ -49,3 +49,13 @@ MIRYOKU_LAYER_LIST
   #define U_CUT S(KC_DEL)
   #define U_UND KC_UNDO
 #endif
+
+#if defined (MIRYOKU_MOUSEBUTTONS_STANDARD)
+  #define U_BTN1 KC_BTN3 // primary = middle
+  #define U_BTN2 KC_BTN1 // secondary = left
+  #define U_BTN3 KC_BTN2 // tertiary = right
+#else
+  #define U_BTN1 KC_BTN1 // primary = left
+  #define U_BTN2 KC_BTN2 // secondry = right
+  #define U_BTN3 KC_BTN3 // tertiary = middle
+#endif

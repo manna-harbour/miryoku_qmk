@@ -36,3 +36,7 @@ jobs:
         "default",
         "flip"
       ]'
+      mousebuttons: '[
+        "default",
+        "standard"
+      ]'

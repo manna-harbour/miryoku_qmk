@@ -27,6 +27,10 @@ ifneq ($(strip $(MIRYOKU_LAYERS)),)
   OPT_DEFS += -DMIRYOKU_LAYERS_$(MIRYOKU_LAYERS)
 endif
 
+ifneq ($(strip $(MIRYOKU_MOUSEBUTTONS)),)
+  OPT_DEFS += -DMIRYOKU_MOUSEBUTTONS_$(MIRYOKU_MOUSEBUTTONS)
+endif
+
 # subset mappings
 
 ifneq ($(strip $(MIRYOKU_MAPPING)),)

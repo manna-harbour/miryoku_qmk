@@ -20,6 +20,9 @@ on:
       layers:
         type: string
         default: '["default"]'
+      mousebuttons:
+        type: string
+        default: '["default"]'
       mapping:
         type: string
         default: '["default"]'
@@ -44,6 +47,7 @@ jobs:
         nav: ${{ fromJSON(inputs.nav) }}
         clipboard: ${{ fromJSON(inputs.clipboard) }}
         layers: ${{ fromJSON(inputs.layers) }}
+        mousebuttons: ${{ fromJSON(inputs.mousebuttons) }}
         mapping: ${{ fromJSON(inputs.mapping) }}
         rules: ${{ fromJSON(inputs.rules) }}
         custom_config: ${{ fromJSON(inputs.custom_config) }}
@@ -83,7 +87,7 @@ jobs:
           config="$user/custom_config.h"
 
           artifact_build_name=`echo "miryoku_qmk ${{ matrix.keyboard }}" | tr '/' '_'`
-          for option in "alphas=${{ matrix.alphas }}" "nav=${{ matrix.nav }}" "clipboard=${{ matrix.clipboard }}" "layers=${{ matrix.layers }}" "mapping=${{ matrix.mapping }}"
+          for option in "alphas=${{ matrix.alphas }}" "nav=${{ matrix.nav }}" "clipboard=${{ matrix.clipboard }}" "layers=${{ matrix.layers }}" "mousebuttons=${{ matrix.mousebuttons }}" "mapping=${{ matrix.mapping }}"
           do
             if ! expr "$option" : '.*=default$'
             then
