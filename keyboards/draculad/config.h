@@ -57,5 +57,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODER_RESOLUTIONS_RIGHT { 4, 1 }
 
 #define EE_HANDS
-
-#define LAYER_STATE_8BIT
