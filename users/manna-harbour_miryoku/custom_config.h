@@ -20,11 +20,11 @@ U_NP,              U_NP,              LT(U_MEDIA,KC_ESC),LT(U_NAV,KC_SPC),  LT(U
 #define MIRYOKU_ALTERNATIVES_TAP_ISRT_FLIP \
 KC_Y,              KC_C,              KC_L,              KC_M,              KC_K,              KC_Z,              KC_F,              KC_U,              KC_COMM,           KC_QUOT,           \
 KC_I,              KC_S,              KC_R,              KC_T,              KC_G,              KC_P,              KC_N,              KC_E,              KC_A,              KC_O,              \
-KC_Q,              KC_V,              KC_W,              KC_D,              KC_J,              KC_B,              KC_H,              KC_SLSH,           KC_DOT,            KC_X,           \
+KC_Q,              KC_V,              KC_W,              KC_D,              KC_J,              KC_B,              KC_H,              KC_SLSH,           KC_DOT,            KC_X,              \
 U_NP,              U_NP,              KC_DEL,            KC_BSPC,           KC_ENT,            KC_TAB,            KC_SPC,            KC_ESC,            U_NP,              U_NP
 
 #define MIRYOKU_ALTERNATIVES_TAP_ISRT \
-KC_Q,              KC_W,              KC_E,              KC_R,              KC_T,              KC_Y,              KC_U,              KC_I,              KC_O,              KC_P,              \
-KC_A,              KC_S,              KC_D,              KC_F,              KC_G,              KC_H,              KC_J,              KC_K,              KC_L,              KC_QUOT,           \
-KC_Z,              KC_X,              KC_C,              KC_V,              KC_B,              KC_N,              KC_M,              KC_COMM,           KC_DOT,            KC_SLSH,           \
+KC_Y,              KC_C,              KC_L,              KC_M,              KC_K,              KC_Z,              KC_F,              KC_U,              KC_COMM,           KC_QUOT,           \
+KC_I,              KC_S,              KC_R,              KC_T,              KC_G,              KC_P,              KC_N,              KC_E,              KC_A,              KC_O,              \
+KC_Q,              KC_V,              KC_W,              KC_D,              KC_J,              KC_B,              KC_H,              KC_SLSH,           KC_DOT,            KC_X,              \
 U_NP,              U_NP,              KC_ESC,            KC_SPC,            KC_TAB,            KC_ENT,            KC_BSPC,           KC_DEL,            U_NP,              U_NP
