@@ -759,6 +759,19 @@ make torn:manna-harbour_miryoku:flash
 #+END_SRC
 
 
+**** voyager
+
+[[#thumb-combos][Thumb combos]] are enabled automatically for this keyboard.
+
+An alternative subset mapping is provided with all keys shifted up one row creating thumb keys in the original alpha area.  To select this mapping, append ~MIRYOKU_MAPPING=SHIFTED_ROWS~ to the ~make~ command line when building.
+
+Example build command lines:
+
+#+BEGIN_SRC sh :tangle no
+make voyager:manna-harbour_miryoku:flash # default
+make voyager:manna-harbour_miryoku:flash MIRYOKU_MAPPING=SHIFTED_ROWS # shifted rows
+#+END_SRC
+
 ** Additional and Experimental Features
 
 
