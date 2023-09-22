@@ -6,6 +6,7 @@
 #include QMK_KEYBOARD_H
 
 #include "manna-harbour_miryoku.h"
+#include "features/achordion.h"
 
 
 // Additional Features double tap guard
@@ -89,3 +90,64 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(thumbcombos_fun, KC_APP)
 };
 #endif
+
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
+  switch (keycode) {
+    // Increase the tapping term a little for slower ring and pinky fingers.
+    case LGUI_T(KC_A):
+      return TAPPING_TERM + 100;
+    case LGUI_T(KC_QUOT):
+      return TAPPING_TERM + 100;
+    case LALT_T(KC_S):
+      return TAPPING_TERM - 100;
+    case LT(U_SYM,KC_ESC):
+      return TAPPING_TERM - 20;
+
+    default:
+      return TAPPING_TERM;
+  }
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
+  switch(tap_hold_keycode){
+    case LT(U_MOUSE,KC_TAB) :
+      if(other_record->event.pressed){return true;}
+      break;
+    case LT(U_SYM,KC_ESC):
+      if(other_record->event.pressed){return true;}
+      break;
+    case LT(U_NAV,KC_SPC):
+      if(other_record->event.pressed){return true;}
+      break;
+    case LT(U_FUN,KC_BSPC):
+      if(other_record->event.pressed){return true;}
+      break;
+    case LT(U_NUM,KC_DEL):
+      if(other_record->event.pressed){return true;}
+      break;
+    case LT(U_MEDIA,KC_ENT):
+      if(other_record->event.pressed){return true;}
+      break;
+  }
+
+  switch (other_keycode) {
+    case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+    case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+      other_keycode &= 0xff;  // Get base keycode.
+  }
+  // Allow same-hand holds with non-alpha keys.
+  if (other_keycode > KC_Z) { return true; }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (!process_achordion(keycode, record)) { return false; }
+  return true;
+}
+
+void matrix_scan_user(void) {
+  achordion_task();
+}
