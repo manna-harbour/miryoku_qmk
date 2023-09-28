@@ -100,10 +100,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
     case LGUI_T(KC_QUOT):
       return TAPPING_TERM + 100;
     case LALT_T(KC_S):
-      return TAPPING_TERM - 100;
+      return TAPPING_TERM + 100;
+    case LALT_T(KC_L):
+      return TAPPING_TERM + 100;
     case LT(U_SYM,KC_ESC):
       return TAPPING_TERM - 20;
-
     default:
       return TAPPING_TERM;
   }
@@ -111,22 +112,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
 
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
   switch(tap_hold_keycode){
-    case LT(U_MOUSE,KC_TAB) :
-      if(other_record->event.pressed){return true;}
-      break;
-    case LT(U_SYM,KC_ESC):
-      if(other_record->event.pressed){return true;}
-      break;
     case LT(U_NAV,KC_SPC):
       if(other_record->event.pressed){return true;}
       break;
-    case LT(U_FUN,KC_BSPC):
-      if(other_record->event.pressed){return true;}
-      break;
-    case LT(U_NUM,KC_DEL):
-      if(other_record->event.pressed){return true;}
-      break;
-    case LT(U_MEDIA,KC_ENT):
+    case LT(U_SYM,KC_ESC):
       if(other_record->event.pressed){return true;}
       break;
   }
@@ -136,11 +125,21 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
     case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
       other_keycode &= 0xff;  // Get base keycode.
   }
+
+  // if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { 
+  //   return true;
+  // }
+   
+
   // Allow same-hand holds with non-alpha keys.
   if (other_keycode > KC_Z) { return true; }
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  return 800;  // Use a timeout of 800 ms.
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
