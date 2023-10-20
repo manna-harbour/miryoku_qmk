@@ -13,6 +13,7 @@
 
 enum {
     U_TD_BOOT,
+    ALT_UP_MACRO,
 #define MIRYOKU_X(LAYER, STRING) U_TD_U_##LAYER,
 MIRYOKU_LAYER_LIST
 #undef MIRYOKU_X
@@ -143,6 +144,27 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    switch (keycode) {
+        case ALT_UP_MACRO:
+            if (record->event.pressed) {
+                // When the key is pressed, send Alt+Up
+                register_code(KC_LALT);
+                tap_code(KC_UP);
+                unregister_code(KC_LALT);
+            }
+            break;
+        // case ALT_DOWN_MACRO:
+        //     if (record->event.pressed) {
+        //         // When the key is pressed, send Alt+Down
+        //         register_code(KC_LALT);
+        //         tap_code(KC_DOWN);
+        //         unregister_code(KC_LALT);
+        //     }
+        //     break;
+    }
+    return true;
+
+
   if (!process_achordion(keycode, record)) { return false; }
   return true;
 }
