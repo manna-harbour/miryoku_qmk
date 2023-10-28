@@ -1,5 +1,5 @@
 {
     "split": {
-        "soft_serial_pin": "GPIO1"
+        "soft_serial_pin": "RX"
     }
 }
