@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 /* ws2812 RGB LED */
-#define RGB_DI_PIN      GPIO0
+#define RGB_DI_PIN      TX
 
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLED_NUM 54 // Number of LEDs
