@@ -5,3 +5,5 @@
 
 #pragma once
 
+MIRYOKU_KLUDGE_THUMBCOMBOS=yes
+
