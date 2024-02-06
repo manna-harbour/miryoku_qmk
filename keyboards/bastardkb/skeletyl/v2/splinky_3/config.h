@@ -19,12 +19,12 @@
 
 /* Key matrix configuration. */
 #define MATRIX_ROW_PINS \
-    { GP26, GP5, GP4, GP9 }
+    { GP2, GP3, GP4, GP5 }
 #define MATRIX_COL_PINS \
-    { GP28, GP21, GP6, GP7, GP8 }
+    { GP6, GP7, GP8, GP21, GP23 }
 
 /* Handedness. */
-#define MASTER_RIGHT
+#define MASTER_LEFT
 
 // To use the handedness pin, resistors need to be installed on the adapter PCB.
 // If so, uncomment the following code, and undefine MASTER_RIGHT above.
