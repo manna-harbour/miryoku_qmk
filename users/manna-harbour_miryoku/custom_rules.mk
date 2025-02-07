@@ -2,3 +2,4 @@
 # https://github.com/manna-harbour/miryoku
 MIRYOKU_ALPHAS=QWERTY
 COMBO_ENABLE = yes
+MIRYOKU_NAV = VI
