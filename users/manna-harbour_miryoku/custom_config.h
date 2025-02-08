@@ -14,7 +14,7 @@
       N30,  N31,  K32,  K33,  K34,         K35,  K36,  K37,  N38,  N39 \
 ) \
 LAYOUT_split_3x6_3( \
-RWIN(RCTL(KC_LEFT)),  K00,  K01,  K02,  K03,  K04,         K05,  K06,  K07,  K08,  K09,  QK_BOOTLOADER, \
+RWIN(RCTL(KC_LEFT)),  K00,  K01,  K02,  K03,  K04,         K05,  K06,  K07,  K08,  K09,  RWIN(RCTL(KC_RIGHT)), \
 RWIN(KC_LEFT),  K10,  K11,  K12,  K13,  K14,         K15,  K16,  K17,  K18,  K19,  RWIN(KC_RIGHT), \
 RSG(KC_LEFT),  K20,  K21,  K22,  K23,  K24,         K25,  K26,  K27,  K28,  K29,  RSG(KC_RIGHT) , \
                   K32,  K33,  K34,         K35,  K36,  K37 \
