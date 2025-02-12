@@ -5,3 +5,10 @@
 
 #pragma once
 
+// For gaming:
+#define MIRYOKU_LAYER_TAP \
+KC_B,              KC_Q,              KC_T,              KC_E,              KC_R,              KC_Y,              KC_U,              KC_I,              KC_O,              KC_P,              \
+KC_LSFT,           KC_A,              KC_W,              KC_D,              KC_F,              KC_H,              LSFT_T(KC_J),      LCTL_T(KC_K),      LALT_T(KC_L),      LGUI_T(KC_QUOT),   \
+KC_LCTL,           KC_Z,              KC_S,              KC_C,              KC_V,              KC_N,              KC_M,              KC_COMM,           KC_DOT,            KC_SLSH,           \
+U_NP,              U_NP,              KC_X,              KC_SPC,            KC_G,              LT(U_SYM,KC_ENT),  LT(U_NUM,KC_BSPC), LT(U_FUN,KC_DEL),  U_NP,              U_NP
+
