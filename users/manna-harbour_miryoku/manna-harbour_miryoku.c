@@ -88,4 +88,15 @@ combo_t key_combos[COMBO_COUNT] = {
   #endif
   COMBO(thumbcombos_fun, KC_APP)
 };
+
+layer_state_t default_layer_state_set_user(layer_state_t state) {
+  if (get_highest_layer(state) == U_TAP) {
+    combo_disable();
+  } else {
+    combo_enable();
+  }
+
+  return state;
+}
+
 #endif
