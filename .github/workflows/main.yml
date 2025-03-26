@@ -75,7 +75,7 @@ jobs:
       - name: Submodules
         run: |
           git config --global --add safe.directory '*'
-          make git-submodule
+          make git-submodule -d
       - name: Process inputs
         id: inputs
         run: |
