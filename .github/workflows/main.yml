@@ -118,7 +118,7 @@ jobs:
           echo "artifact_build_name=$artifact_build_name" >> $GITHUB_OUTPUT
           echo "artifact_dir=$artifact_dir" >> $GITHUB_OUTPUT
       - name: Build
-        run: qmk compile -kb ${{ matrix.keyboard }} -km manna-harbour_miryoku
+        run: qmk compile -kb ${{ matrix.keyboard }} -km manna-harbour_miryoku -e CONVERT_TO=promicro_rp2040
       - name: Copy firmware
         run: |
           cp *manna-harbour_miryoku* "${{ steps.inputs.outputs.artifact_dir }}"
