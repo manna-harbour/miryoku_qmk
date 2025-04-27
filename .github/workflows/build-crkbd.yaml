@@ -1,0 +1,11 @@
+name: 'Build crkbd'
+on:
+  - push
+  - workflow_dispatch
+jobs:
+  build:
+    uses: ./.github/workflows/main.yml
+    with:
+      keyboard: '["crkbd"]'
+      alphas: '["QWERTY"]'
+      nav: '["vi"]'
