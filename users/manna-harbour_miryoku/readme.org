@@ -28,6 +28,13 @@ New commits can be seen at the top of the [[https://github.com/manna-harbour/mir
 
 Periodically, the ~[miryoku]~ commits are squashed and merged upstream into QMK master by pull request, the ~miryoku~ branch is renamed, and a new ~miryoku~ branch is created from QMK master.
 
+**** NOTE: 
+As of 5/28/2025, there is an issue with merging the Miryoku QMK Development branch with the most recent QMK, described [[https://github.com/manna-harbour/miryoku/discussions/287][here]].
+If you are okay with using a slightly outdated version of QMK, do the following:
+
+During [[https://docs.qmk.fm/newbs_getting_started][install of QMK]], skip the step ~qmk setup~
+Instead, you should clone this repo with the QMK clone feature: ~qmk clone manna-harbour/miryoku_qmk -b miryoku~
+Then you can start compiling firmware.
 
 **** Merge
 
