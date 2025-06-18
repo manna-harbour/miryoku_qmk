@@ -1,4 +1,4 @@
-name: 'build-corne-trackpad'
+name: 'build-corne-trackpad2'
 on:
   - workflow_dispatch
 jobs:
