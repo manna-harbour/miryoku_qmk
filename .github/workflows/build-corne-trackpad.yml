@@ -1,0 +1,20 @@
+name: 'build-corne-trackpad'
+name: 'Build Example contra'
+on:
+  - workflow_dispatch
+jobs:
+  build:
+    uses: ./.github/workflows/main.yml
+    with:
+      keyboard: '["maple_computing/minidox/rev1"]'
+      alphas: '["qwerty"]'
+      nav: '["default"]'
+      clipboard: '["win"]'
+      layers:  '["default"]'
+      mapping:  '["default"]'
+      rules: '[
+        "POINTING_DEVICE_ENABLE = yes",
+        "POINTING_DEVICE_DRIVER = AZOTEQ_IQS5XX_TPS43",
+        "BOOTLOADER = rp2040"
+      ]'
+      custom_config: '["default"]'
