@@ -1,5 +1,4 @@
 name: 'build-corne-trackpad'
-name: 'Build Example contra'
 on:
   - workflow_dispatch
 jobs:
