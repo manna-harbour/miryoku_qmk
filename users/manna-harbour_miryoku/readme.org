@@ -13,10 +13,11 @@
 
 *** QMK master
 
-QMK master is the current version of QMK, but usually does not contain the current version of Miryoku QMK.
-
-QMK master is at https://github.com/qmk/qmk_firmware/tree/master. The corresponding Miryoku QMK readme is at https://github.com/qmk/qmk_firmware/tree/master/users/manna-harbour_miryoku and describes the version of Miryoku QMK in QMK master.
-
+The QMK firmware repository master (default) branch https://github.com/qmk/qmk_firmware/tree/master
+*historically* had a recent version of Miryoku QMK. However, in their November 2023 release all the
+user layouts were removed with the push to https://github.com/qmk/qmk_userspace QMK Userspace. See
+https://github.com/qmk/qmk_firmware/tree/user-keymaps-still-present/users/manna-harbour_miryoku
+for the final version of Miryoku within the QMK repository.
 
 *** Miryoku QMK development branch
 
