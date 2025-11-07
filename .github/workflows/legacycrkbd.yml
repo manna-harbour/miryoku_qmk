@@ -1,0 +1,29 @@
+name: Build Miryoku Keymap
+
+on:
+  workflow_dispatch:   # Allows manual runs
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QMK environment
+        uses: qmk/qmk_firmware@v1
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y avr-libc gcc-avr dfu-programmer dfu-util gcc-arm-none-eabi avrdude dfu-util
+
+      - name: Compile keymap
+        run: |
+          qmk compile -kb crkbd/r2g -km miryoku
