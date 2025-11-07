@@ -1,0 +1,17 @@
+name: QMK Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up QMK environment
+        run: qmk setup
+      - name: Compile firmware
+        run: qmk compile -kb crkbd/r2g -km miryoku
