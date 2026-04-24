@@ -1,0 +1,15 @@
+# Copyright 2021 Manna Harbour
+# https://github.com/manna-harbour/miryoku
+
+name: 'Build Example beekeeb/piantor'
+on:
+  - workflow_dispatch
+jobs:
+  build:
+    uses: ./.github/workflows/main.yml
+    with:
+      keyboard: '["beekeeb/piantor"]'
+      alphas: 'qwerty'
+      nav: 'vi'
+      rules: 'DEFERRED_EXEC_ENABLE = yes'
+      config: '#define TAPPING_TERM 200\n#define IGNORE_MOD_TAP_INTERRUPT\n#define BILATERAL_COMBINATIONS\n#define BILATERAL_COMBINATIONS_LIMIT_CHORD_TO_N_KEYS 4\n#define BILATERAL_COMBINATIONS_DELAY_MODS_THAT_MATCH MOD_MASK_GUI\n#define BILATERAL_COMBINATIONS_DELAY_MATCHED_MODS_BY 120\n#define BILATERAL_COMBINATIONS_ALLOW_CROSSOVER_AFTER 80\n#define BILATERAL_COMBINATIONS_ALLOW_SAMESIDED_AFTER 3000\n#define BILATERAL_COMBINATIONS_TYPING_STREAK_TIMEOUT 160\n#define BILATERAL_COMBINATIONS_TYPING_STREAK_MODMASK (~MOD_MASK_SHIFT)'
