@@ -537,6 +537,63 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
 
 [Auto Shift,](feature_auto_shift.md) has its own version of `retro tapping` called `retro shift`. It is extremely similar to `retro tapping`, but holding the key past `AUTO_SHIFT_TIMEOUT` results in the value it sends being shifted. Other configurations also affect it differently; see [here](feature_auto_shift.md#retro-shift) for more information.
 
+## Bilateral Combinations
+The last mod-tap hold will be converted to the corresponding mod-tap tap if another key on the same hand is tapped during the hold, unless a key on the other hand is tapped first.
+This option can be used to prevent accidental modifier combinations with mod-tap, in particular those caused by rollover on home row mods.  As only the last mod-tap hold is affected, it should be enabled after adjusting settings and typing style so that accidental mods happen only occasionally, e.g. with a long enough tapping term, ignore mod tap interrupt, and deliberately brief keypresses.
+When you perform a bilateral combination, it's possible that you might be *chording* multiple mods together (holding down more than one modifier key simultaneously).  All modifier keys in a *chord* are converted into taps (in the same order that you held them) as part of the bilateral combination.  And the size of a chord (how many modifier keys you can hold down to create a chord) is governed by the following setting, whose default value is the number 8 (representing all possible modifiers from both sides of the keyboard: `(GASC)R(GASC)L`).
+```c
+#define BILATERAL_COMBINATIONS_LIMIT_CHORD_TO_N_KEYS 4 /* GUI, Alt, Shift, Ctrl */
+```
+
+To enable bilateral combinations:
+
+1. Add the following line to your `config.h` file:
+
+```c
+#define BILATERAL_COMBINATIONS
+```
+
+2. Add the following line to your `rules.mk` file to enable QMK's deferred execution facility.
+
+```make
+DEFERRED_EXEC_ENABLE = yes
+```
+
+To enable *same-sided* combinations (which start on one side of the keyboard and end on the same side, such as `RSFT_T(KC_J)` and `RCTL_T(KC_K)` in the abbreviation "jk" which stands for "just kidding"), add the following line to your `config.h` and define a value: hold times greater than that value will permit same-sided combinations.  For example, if you typed `RSFT_T(KC_J)` and `RCTL_T(KC_K)` faster than the defined value, the keys `KC_J` and `KC_K` would be sent to the computer.  In contrast, if you typed slower than the defined value, the keys `RSFT(KC_K)` would be sent to the computer.
+
+```c
+#define BILATERAL_COMBINATIONS_ALLOW_SAMESIDED_AFTER 500
+```
+To enable *crossover* bilateral combinations (which start on one side of the keyboard and cross over to the other side, such as `RSFT_T(KC_J)` and `LGUI_T(KC_A)` in the word "jam"), add the following line to your `config.h` and define a value: hold times greater than that value will permit crossover bilateral combinations.  For example, if you typed `RSFT_T(KC_J)` and `LGUI_T(KC_A)` faster than the defined value, the keys `KC_J` and `KC_A` would be sent to the computer.  In contrast, if you typed slower than the defined value, the keys `RSFT(KC_A)` would be sent to the computer.
+```c
+#define BILATERAL_COMBINATIONS_ALLOW_CROSSOVER_AFTER 75
+```
+
+To delay the registration of certain modifiers (such as `KC_LGUI` and `KC_RGUI`, which are considered to be "flashing mods" because they suddenly "flash" or pop up the "Start Menu" in Microsoft Windows) during bilateral combinations, you can define a `BILATERAL_COMBINATIONS_DELAY_MODS_THAT_MATCH` setting specifying which modifiers should be delayed, and a `BILATERAL_COMBINATIONS_DELAY_MATCHED_MODS_BY` setting specifying how long that delay (measured in milliseconds) should be.
+
+1. Add the following line to your `config.h` and define a bitwise mask that matches the modifiers you want to delay.  For example, here we are defining the mask to only match the GUI and ALT modifiers.
+
+```c
+#define BILATERAL_COMBINATIONS_DELAY_MODS_THAT_MATCH (MOD_MASK_GUI|MOD_MASK_ALT) /* GUI and ALT modifiers */
+```
+2. Add the following line to your `config.h` and define a timeout value (measured in milliseconds) that specifies how long modifiers matched by `BILATERAL_COMBINATIONS_DELAY_MODS_THAT_MATCH` should be delayed.  For example, here we are defining the timeout to be 100 milliseconds long.
+```c
+#define BILATERAL_COMBINATIONS_DELAY_MATCHED_MODS_BY 100
+```
+
+To suppress mod-tap holds within a *typing streak*, add the following line to your `config.h` and define a timeout value: a typing streak ends when this much time passes after the last key in the streak is tapped.  Until such time has passed, mod-tap holds are converted into regular taps.  The default value of this definition is `0`, which disables this feature entirely.  Overall, this feature is similar in spirit to ZMK's global-quick-tap feature.
+```c
+#define BILATERAL_COMBINATIONS_TYPING_STREAK_TIMEOUT 175
+```
+If you wish to target only certain modifiers (instead of all possible modifiers) for the *typing streak timeout* setting described above, add the following line to your `config.h` and define a bit mask: only those modifiers that match this mask will be governed by the typing streak timeout.  For example, to exempt Shift modifiers from the typing streak timeout while still targeting all other modifiers, you can specify the following mask.
+```c
+#define BILATERAL_COMBINATIONS_TYPING_STREAK_MODMASK (~MOD_MASK_SHIFT)
+```
+To monitor activations in the background, enable debugging, enable the console, enable terminal bell, add `#define DEBUG_ACTION` to `config.h`, and use something like the following shell command line:
+```sh
+hid_listen | sed -u 's/BILATERAL_COMBINATIONS: change/&\a/g'
+```
+
 ## Why do we include the key record for the per key functions?
 
 One thing that you may notice is that we include the key record for all of the "per key" functions, and may be wondering why we do that.
